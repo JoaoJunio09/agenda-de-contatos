@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/global.css">
+	<link rel="stylesheet" href="styles/home/header/header.css">
+	<link rel="stylesheet" href="styles/home/toolbar-search/toolbar-search.css">
+	<title>Agenda Contatos</title>
+</head>
+<body>
+
+	<header class="header">
+		<div class="conteudo">
+			<a href="/" class="logo">Agenda</a>
+
+			<nav class="nav" id="nav">
+				<ul class="menu">
+					<li class="menu-item"><a href="#">Home</a></li>
+					<li class="menu-item"><a href="#">Contatos</a></li>
+					<li class="menu-item"><a href="#">Conta</a></li>
+				</ul>
+			</nav>
+
+			<img src="assets/img/barra-de-menu.png" alt="icon-menu" class="icon-menu" id="icon-menu">	
+		</div>
+	</header>
+	
+	<main class="main">
+
+		<section class="toolbar">
+			<div class="toolbar-search">
+				<img src="assets/img/lupa.png" alt="" class="img-search">
+				<input type="text" placeholder="Pesquisa um contato">
+			</div>
+			<div class="toolbar-button">
+				<button>Pesquisar</button>
+			</div>
+		</section>
+
+	</main>
+
+	<script type="module" src="utils/transitionNavBar.js" defer></script>
+	<script type="module" src="api/personService.js" defer></script>
+</body>
+</html>

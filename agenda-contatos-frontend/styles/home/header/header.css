@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Galada&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*
+font-family: "Galada", cursive;
+font-family: "Poppins", sans-serif;
+font-family: "Roboto", sans-serif;
+*/
+
+.header {
+	height: 90px;
+	background-color: rgb(100, 60, 232);
+}
+
+.header .conteudo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	font-family: "Galada", cursive;
+	font-size: 55px;
+	padding-inline: 10px;
+	line-height: 100px;
+	color: rgb(196, 199, 255);
+}
+
+.menu {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	padding: 50px;
+}
+
+.menu a {
+	color: #fff;
+	font-size: 18px;
+	font-family: "Poppins", sans-serif;
+}
+
+.nav {
+	z-index: 1000;
+	position: absolute;
+	background-image: url('../../../assets/img/bg.jpg');
+	width: 100%;
+	height: 280px;
+	top: 90px;
+	left: -100%;
+	border-radius: 10px;
+
+	transition: .7s ease-out;
+}
+
+.transition-nav {
+	left: 0;
+}
+
+.icon-menu {
+	width: 50px;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	top: 20px;
+}
+
+@media (min-width: 750px) {
+
+	.icon-menu {
+		display: none;
+	}
+
+	.logo {
+		font-size: 60px;
+		padding-inline: 30px;
+	}
+
+	.menu {
+		flex-direction: row;
+		padding: 0;
+		gap: 25px;
+	}
+	
+	.menu-item {
+		position: relative;
+		display: inline-block;
+		padding: 27px 0;
+
+		transition: .5s all;
+	}
+
+	.menu-item::before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		height: 4px;
+		background-color: #ffffff;
+		transition: width 0.5s ease;
+	}
+
+	.menu-item:hover::before {
+		width: 100%;
+	}
+
+	.menu-item:hover {
+		color: blue;
+		transform: scale(1.05);
+	}
+
+	.nav {
+		position: fixed;
+		background-image: inherit;
+		width: auto;
+		height: auto;
+		top: 5px;
+		right: 10px;
+		left: auto;
+	}
+}
