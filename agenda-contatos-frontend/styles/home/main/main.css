@@ -16,14 +16,13 @@ font-family: "Roboto", sans-serif;
 .header-main {
 	height: 60px;
 	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 20px;
 	position: relative;
 }
 
 .header-main button {
-	position: absolute;
-	left: 0px;
-	top: 50%;
-	translate: 0 -50%;
 	border: none;
 	height: 45px;
 	width: 110px;
@@ -49,6 +48,27 @@ font-family: "Roboto", sans-serif;
 
 .header-main button img {
 	width: 28px;
+}
+
+.box-select {
+	position: absolute;
+	right: 0;
+}
+
+.box-select label {
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+}
+
+.select {
+	height: 45px;
+	width: 110px;
+	font-family: "Poppins", sans-serif;
+	font-size: .9rem;
+	border-radius: 5px;
+}
+
+.select option {
 }
 
 .content-contacts {

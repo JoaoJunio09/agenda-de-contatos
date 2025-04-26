@@ -6,22 +6,8 @@ font-family: "Poppins", sans-serif;
 font-family: "Roboto", sans-serif;
 */
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-body {
-	display: flex;
-	flex-direction: column;
-}
-
-a {
-	font-family: sans-serif;
-	text-decoration: none;
-}
-
-main {
-	flex: 1;
+.footer {
+	height: 100vh;
+	width: 100%;
+	background-color: #333;
 }

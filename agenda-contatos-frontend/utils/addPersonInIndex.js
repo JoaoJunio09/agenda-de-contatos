@@ -3,7 +3,7 @@ import { setPerson, getPerson } from "../models/personModel.js";
 const contentDataPerson = document.querySelector(".box-contact");
 const sectionDataPerson = document.querySelector(".content-contacts");
 
-for (let i = 1; i <= 20; i++) {
+for (let i = 1; i <= 9; i++) {
 	let clone = contentDataPerson.cloneNode(true);
 
 	let id = i+1;
@@ -32,3 +32,4 @@ for (let i = 1; i <= 20; i++) {
 
 	sectionDataPerson.appendChild(clone);
 }
+

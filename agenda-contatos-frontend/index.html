@@ -7,13 +7,14 @@
 	<link rel="stylesheet" href="styles/home/header/header.css">
 	<link rel="stylesheet" href="styles/home/toolbar-search/toolbar-search.css">
 	<link rel="stylesheet" href="styles/home/main/main.css">
+	<link rel="stylesheet" href="styles/home/footer/footer.css">
 	<title>Agenda Contatos</title>
 </head>
 <body>
 
 	<header class="header">
 		<div class="conteudo">
-			<a href="/" class="logo">Portal do Aluno</a>
+			<a href="/" class="logo">AGENDA</a>
 
 			<nav class="nav" id="nav">
 				<ul class="menu">
@@ -42,6 +43,15 @@
 			<button>
 				Novo
 				<img src="assets/img/adicionar-usuario.png" alt="novo-person">
+			</button>
+
+			<div class="box-select">
+				<label for="select">Filtre por:</label>
+				<select name="select" id="select" class="select">
+					<option value="recentes">Recentes</option>
+					<option value="ultimos">Últimos</option>
+				</select>
+
 			</div>
 		</div>
 
@@ -64,6 +74,10 @@
 			</div>
 		</section>
 	</main>
+
+	<footer class="footer">
+		<h1>Footer</h1>
+	</footer>
 
 	<script type="module" src="utils/transitionNavBar.js" defer></script>
 	<script type="module" src="utils/addPersonInIndex.js" defer></script>
