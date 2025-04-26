@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Galada&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*
+font-family: "Galada", cursive;
+font-family: "Poppins", sans-serif;
+font-family: "Roboto", sans-serif;
+*/
+
+.main {
+	width: 90%;
+	border-top: 1px solid gray;
+	height: 100vh;
+	margin: 0 auto;
+}
+
+.header-main {
+	height: 60px;
+	width: 100%;
+	position: relative;
+}
+
+.header-main button {
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	translate: 0 -50%;
+	border: none;
+	height: 45px;
+	width: 110px;
+	border-radius: 5px;
+	background-color: rgb(56, 149, 255);
+	color: #fff;
+	font-family: "Roboto", sans-serif;
+	font-size: 15px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 6px;
+
+	transition: .3s ease-in;
+}
+
+.header-main button:hover {
+	background-color: transparent;
+	border: 1px solid rgb(56, 149, 255);
+	color: rgb(56, 149, 255);
+}
+
+.header-main button img {
+	width: 28px;
+}
+
+.content-contacts {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 30px;
+}
+
+.box-contact {
+	border: 1px solid rgb(196, 196, 196);
+	height: 230px;
+	width: 300px;
+	border-radius: 15px;
+}
+
+.box-contact {
+	padding: 5px;
+}
+
+.box-contact-title {
+	border-bottom: 1px solid rgb(218, 218, 218);
+	padding: 10px 4px;
+	position: relative;
+}
+
+.box-contact-title h4 {
+	font-family: "Roboto", sans-serif;
+	font-size: 1.1rem;
+}
+
+.box-contact-data {
+	padding: 24px 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.box-contact-data p {
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+}
+
+.box-contact-imgs {
+	display: flex;
+	gap: 12px;
+	position: absolute;
+	top: 50%;
+	translate: 0 -50%;
+	right: 0;
+	cursor: pointer;
+}
+
+.box-contact-imgs img {
+	width: 27px;
+}
+
+.box-contact-imgs img:button {
+	
+}
+
+@media (min-width: 1100px) {
+
+	.main {
+		width: 54%;
+	}
+
+	.header-main {
+		margin-top: 10px;
+	}
+	
+}
+
+@media (min-width: 1200px) {
+
+	.main {
+		width: 67%;
+	}
+	
+}
+
+@media (min-width: 1400px) {
+
+	.content-contacts {
+		padding-block: 10px;
+		justify-content: space-between;
+	}
+
+}

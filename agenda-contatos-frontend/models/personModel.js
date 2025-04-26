@@ -8,4 +8,5 @@ function setPerson(dataPerson) {
 	person = dataPerson;
 }
 
+
 export { setPerson, getPerson };
