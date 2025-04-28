@@ -1,6 +1,7 @@
 package com.joaojunio.contact.services;
 
 import com.joaojunio.contact.data.dto.StateDTO;
+import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.model.State;
 import com.joaojunio.contact.repositories.StateRepository;
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ public class StateService {
         logger.info("Finds by ID State");
 
         var entity = repository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Not Record this ID : " + id));
+            .orElseThrow(() -> new NotFoundException("Not found record this ID : " + id));
         return parseObject(entity, StateDTO.class);
     }
 
@@ -50,7 +51,7 @@ public class StateService {
         logger.info("Update a State");
 
         var entity = repository.findById(stateDTO.getId())
-            .orElseThrow(() -> new RuntimeException("Not Record this ID : " + stateDTO.getId()));
+            .orElseThrow(() -> new NotFoundException("Not found record this ID : " + stateDTO.getId()));
         entity.setName(stateDTO.getName());
         entity.setAcronym(stateDTO.getAcronym());
 
@@ -62,7 +63,7 @@ public class StateService {
         logger.info("Delete a State");
 
         var state = repository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Not Record this ID : " + id));
+            .orElseThrow(() -> new NotFoundException("Not found record this ID : " + id));
         repository.delete(state);
     }
 }

@@ -4,10 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="styles/global.css">
-	<link rel="stylesheet" href="styles/home/header/header.css">
+	<link rel="stylesheet" href="styles/header.css">
 	<link rel="stylesheet" href="styles/home/toolbar-search/toolbar-search.css">
 	<link rel="stylesheet" href="styles/home/main/main.css">
 	<link rel="stylesheet" href="styles/home/footer/footer.css">
+	<link rel="stylesheet" href="styles/home/user/user.css">
 	<title>Agenda Contatos</title>
 </head>
 <body>
@@ -20,25 +21,47 @@
 				<ul class="menu">
 					<li class="menu-item"><a href="#">Home</a></li>
 					<li class="menu-item"><a href="#">Contatos</a></li>
-					<li class="menu-item"><a href="#">Conta</a></li>
+					<li class="menu-item"><a href="pages/conta.html">Conta</a></li>
 				</ul>
 			</nav>
 
-			<img src="assets/img/barra-de-menu.png" alt="icon-menu" class="icon-menu" id="icon-menu">	
+			<img src="assets/img/barra-de-menu.png" alt="icon-menu" class="icon-menu" id="icon-menu">
 		</div>
 	</header>
 
-	<section class="toolbar">
-		<div class="toolbar-search">
-			<img src="assets/img/lupa.png" alt="" class="img-search">
-			<input type="text" placeholder="Pesquise um contato">
+	<div class="container-user">
+		<div class="container-user-img">
+			<img src="assets/img/homem.png" alt="user-img">
 		</div>
-		<div class="toolbar-button">
-			<button>Pesquisar</button>
+		<div class="container-user-data">
+			<h2>User:</h2>
+			<h4>email: teste@gmail.com</h4>
+			<p>senha: ********</p>
 		</div>
-	</section>
+		<div class="container-user-exit">
+			<button class="button-exit">
+				Sair
+				<img src="assets/img/sair.png" alt="">
+			</button>
+
+			<button class="button-configuracoes">
+				Configurações
+				<img src="assets/img/definicoes.png" alt="">
+			</button>
+		</div>
+	</div>
 
 	<main class="main">
+		<section class="toolbar">
+			<div class="toolbar-search">
+				<img src="assets/img/lupa.png" alt="" class="img-search">
+				<input type="text" placeholder="Pesquise um contato (first name)">
+			</div>
+			<div class="toolbar-button">
+				<button>Pesquisar</button>
+			</div>
+		</section>
+
 		<div class="header-main">
 			<button>
 				Novo
@@ -51,7 +74,6 @@
 					<option value="recentes">Recentes</option>
 					<option value="ultimos">Últimos</option>
 				</select>
-
 			</div>
 		</div>
 

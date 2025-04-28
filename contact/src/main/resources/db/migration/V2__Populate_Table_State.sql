@@ -1,0 +1,1 @@
+INSERT INTO `tb_state` VALUES (1,'SP','São Paulo'),(2,'AL','Alagoas'),(3,'RJ','Rio de Janeiro'),(4,'MA','Maranhão'),(6,'BA','Bahia');

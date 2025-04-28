@@ -8,7 +8,6 @@ font-family: "Roboto", sans-serif;
 
 .main {
 	width: 90%;
-	border-top: 1px solid gray;
 	height: 100vh;
 	margin: 0 auto;
 }
@@ -27,7 +26,7 @@ font-family: "Roboto", sans-serif;
 	height: 45px;
 	width: 110px;
 	border-radius: 5px;
-	background-color: rgb(56, 149, 255);
+	background-color: rgb(10, 148, 179);
 	color: #fff;
 	font-family: "Roboto", sans-serif;
 	font-size: 15px;
@@ -53,6 +52,9 @@ font-family: "Roboto", sans-serif;
 .box-select {
 	position: absolute;
 	right: 0;
+	display: flex;
+	align-items: center;
+	gap: 10px;
 }
 
 .box-select label {
