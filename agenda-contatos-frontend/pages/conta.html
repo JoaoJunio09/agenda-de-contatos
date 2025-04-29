@@ -7,9 +7,12 @@
 	<link rel="stylesheet" href="../styles/header.css">
 	<link rel="stylesheet" href="../styles/conta/main/main.css">
 	<link rel="stylesheet" href="../styles/home/footer/footer.css">
+	<link rel="stylesheet" href="../styles/conta/modal-nova-conta/modal-nova-conta.css">
 	<title>Agenda Contatos | Conta</title>
 </head>
 <body>
+	<div class="fade" id="hide"></div>
+
 	<header class="header">
 		<div class="conteudo">
 			<a href="/" class="logo">AGENDA</a>
@@ -18,7 +21,7 @@
 				<ul class="menu">
 					<li class="menu-item"><a href="../index.html">Home</a></li>
 					<li class="menu-item"><a href="#">Contatos</a></li>
-					<li class="menu-item"><a href="pages/conta.html">Conta</a></li>
+					<li class="menu-item"><a href="conta.html">Conta</a></li>
 				</ul>
 			</nav>
 
@@ -153,7 +156,41 @@
 					</div>
 				</div>
 			</div>
-		</div>
+			<div class="div-button-nova-conta">
+				<button class="button-nova-conta">Criar nova conta</button>
+
+				<div class="modal-nova-conta">
+					<div class="header-modal-nova-conta">
+						<h2>Criar nova conta</h2>
+
+						<img src="../assets/img/excluir (1).png" alt="sair-img" class="button-exit-modal">
+					</div>
+					<div class="body-modal-nova-conta">
+						<h3>Preencha os dados.</h3>
+
+						<div class="body-modal-box">
+							
+
+							<div class="body-modal-group-flex">
+								<div class="body-modal-group">
+									<label for="nome">Nome:</label>
+									<input type="text" id="nome" >
+								</div>
+								<div class="body-modal-group">
+									<label for="sobrenome">Sobrenome:</label>
+									<input type="text" id="sobrenome" >
+								</div>
+							</div>
+							<div class="body-modal-group">
+								<label for="sobrenome">Sobrenome:</label>
+								<input type="text" id="sobrenome" >
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
 	</main>
 
 	<footer class="footer"> 
@@ -161,5 +198,6 @@
 	</footer>
 
 	<script type="module" src="../utils/transitionNavBar.js" defer></script>
+	<script type="module" src="../utils/modalNewAccount.js" defer></script>
 </body>
 </html>
