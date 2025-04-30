@@ -1,3 +1,5 @@
+import { setPerson } from '../models/personModel.js';
+
 const buttonOpenModal = document.querySelector(".button-nova-conta");
 const buttonExitModal = document.querySelector(".button-exit-modal");
 const divModal = document.querySelector(".modal-nova-conta");

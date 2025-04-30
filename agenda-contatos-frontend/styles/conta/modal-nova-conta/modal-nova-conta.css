@@ -11,7 +11,7 @@ font-family: "Roboto", sans-serif;
 }
 
 .modal-nova-conta {
-	height: 600px;
+	height: auto;
 	width: 98%;
 	background-color: #ffffff;
 	border-radius: 20px;
@@ -75,6 +75,7 @@ font-family: "Roboto", sans-serif;
 
 .body-modal-nova-conta {
 	padding: 10px 4px;
+	overflow: hidden;
 }
 
 .body-modal-nova-conta h3 {
@@ -118,11 +119,49 @@ font-family: "Roboto", sans-serif;
 	font-size: .9rem;
 }
 
+.box-button-proximo-and-anterior {
+	display: flex;
+	justify-content: end;
+	gap: 10px;
+}
+
+.box-button-proximo-and-anterior button {
+	height: 40px;
+	width: 100px;
+	outline: none;
+	border: none;
+	border-radius: 20px;
+	color: #fff;
+	font-family: "Poppins", sans-serif;
+	cursor: pointer;
+
+	transition: .3s;
+}
+
+.box-button-proximo-and-anterior button:nth-child(1) {
+	background-color: rgb(197, 9, 9);
+}
+
+.box-button-proximo-and-anterior button:nth-child(1):hover {
+	background-color: rgb(172, 2, 47);
+}
+
+.box-button-proximo-and-anterior button:nth-child(2) {
+	background-color: rgb(56, 155, 10);
+}
+
+.box-button-proximo-and-anterior button:nth-child(2):hover {
+	background-color: #04a814;
+}
+
+
+
 @media (min-width: 1000px) {
 
 	.modal-nova-conta {
-		height: 600px;
-		width: 120vh;
+		height: auto;
+		padding: 20px;
+		width: 90vh;
 	}
 
 }
