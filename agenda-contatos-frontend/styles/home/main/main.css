@@ -4,73 +4,17 @@
 font-family: "Galada", cursive;
 font-family: "Poppins", sans-serif;
 font-family: "Roboto", sans-serif;
+
+colors:
+#252525 - preto
+#1f6ce8 - azul
+#e9e9e9 - branco
 */
 
 .main {
 	width: 90%;
 	height: 100vh;
 	margin: 0 auto;
-}
-
-.header-main {
-	height: 60px;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	position: relative;
-}
-
-.header-main button {
-	border: none;
-	height: 45px;
-	width: 110px;
-	border-radius: 5px;
-	background-color: rgb(10, 148, 179);
-	color: #fff;
-	font-family: "Roboto", sans-serif;
-	font-size: 15px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 6px;
-
-	transition: .3s ease-in;
-}
-
-.header-main button:hover {
-	background-color: transparent;
-	border: 1px solid rgb(56, 149, 255);
-	color: rgb(56, 149, 255);
-}
-
-.header-main button img {
-	width: 28px;
-}
-
-.box-select {
-	position: absolute;
-	right: 0;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.box-select label {
-	font-family: "Poppins", sans-serif;
-	font-size: 1rem;
-}
-
-.select {
-	height: 45px;
-	width: 110px;
-	font-family: "Poppins", sans-serif;
-	font-size: .9rem;
-	border-radius: 5px;
-}
-
-.select option {
 }
 
 .content-contacts {
@@ -83,7 +27,7 @@ font-family: "Roboto", sans-serif;
 }
 
 .box-contact {
-	border: 1px solid rgb(196, 196, 196);
+	border: 1px solid #e9e9e9;
 	height: 230px;
 	width: 300px;
 	border-radius: 15px;
@@ -102,6 +46,7 @@ font-family: "Roboto", sans-serif;
 .box-contact-title h4 {
 	font-family: "Roboto", sans-serif;
 	font-size: 1.1rem;
+	color: #e9e9e9;
 }
 
 .box-contact-data {
@@ -114,6 +59,7 @@ font-family: "Roboto", sans-serif;
 .box-contact-data p {
 	font-family: "Poppins", sans-serif;
 	font-size: 1rem;
+	opacity: .8;
 }
 
 .box-contact-imgs {

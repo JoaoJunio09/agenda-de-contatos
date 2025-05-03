@@ -4,6 +4,11 @@
 font-family: "Galada", cursive;
 font-family: "Poppins", sans-serif;
 font-family: "Roboto", sans-serif;
+
+colors:
+#252525 - preto
+#1f6ce8 - azul
+#e9e9e9 - branco
 */
 
 .container-user {
@@ -12,11 +17,11 @@ font-family: "Roboto", sans-serif;
 	margin: 0 auto;
 	display: flex;
 	gap: 20px;
-	border: 1px solid rgb(210, 210, 210);
 	margin-top: 20px;
 	border-radius: 20px;
 	padding: 20px;
 	position: relative;
+	box-shadow: 0px 0px 150px #1f6ce856;
 }
 
 .container-user-img img {
@@ -26,11 +31,13 @@ font-family: "Roboto", sans-serif;
 .container-user-data h2 {
 	font-family: "Roboto", sans-serif;
 	margin-bottom: 4px;
+	color: #e1e1e1;
 }
 
 .container-user-data h4, p {
 	font-family: "Poppins", sans-serif;
 	font-size: .7rem;
+	color: #e1e1e1;
 }
 
 .container-user-exit {
@@ -52,7 +59,7 @@ font-family: "Roboto", sans-serif;
 	border: none;
 	border-radius: 50px;
 	cursor: pointer;
-	background-color: rgb(236, 102, 102);
+	background-color: rgb(182, 41, 41);
 	color: #fff;
 
 	transition: .3s ease-out;
@@ -66,11 +73,11 @@ font-family: "Roboto", sans-serif;
 	justify-content: center;
 	gap: 5px;
 	font-family: "Poppins", sans-serif;
-	border: none;
+	border: 1px solid #1d1d1d;
 	border-radius: 50px;
 	cursor: pointer;
-	background-color: rgb(34, 34, 34);
-	color: #fff;
+	background-color: #1d1d1d;
+	color: #ffffff;
 
 	transition: .3s ease-out;
 }
@@ -83,8 +90,8 @@ font-family: "Roboto", sans-serif;
 
 .container-user-exit .button-configuracoes:hover {
 	background-color: transparent;
-	border: 1px solid rgb(34, 34, 34);
-	color: rgb(34, 34, 34);
+	border: 1px solid #1f6ce8;
+	color: #1f6ce8;
 }
 
 .container-user-exit .button-exit img {

@@ -4,164 +4,200 @@
 font-family: "Galada", cursive;
 font-family: "Poppins", sans-serif;
 font-family: "Roboto", sans-serif;
+
+colors:
+#252525 - preto
+#1f6ce8 - azul
+#e9e9e9 - branco
 */
 
 .main {
-	position: relative;
-}
-
-.modal-nova-conta {
-	height: auto;
-	width: 98%;
-	background-color: #ffffff;
-	border-radius: 20px;
-	padding: 10px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 102;
-	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-	visibility: hidden;
-	pointer-events: none;
-
-	opacity: 0;
-}
-
-.modal-nova-conta.active-modal {
-	display: initial;
+	
 }
 
 .fade {
-	z-index: 11;
 	position: fixed;
-	top: 0;
-	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.568);
-	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+	background-color: rgba(0, 0, 0, 0.607);
+	z-index: 100;
+
+	opacity: 0;
+	visibility: hidden;
+
+	transition: opacity .5s ease;
+}
+
+.modal-nova-conta {
+	height: 620px;
+	width: 95%;
+	background-color: #252525;
+	box-shadow: 0px 0px 100px rgb(41, 41, 41);
+	border-radius: 20px;
+	position: fixed;
+	overflow: hidden;
+	z-index: 101;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
 
-	opacity: 0;
+	transition: opacity .3s ease;
 }
 
-.fade.show, .modal-nova-conta.show {
+.modal-nova-conta.show {
 	opacity: 1;
 	visibility: visible;
 	pointer-events: auto;
+}  
+
+.fade.show {
+	opacity: 1;
+	visibility: visible;
 }
 
-.modal-nova-conta .header-modal-nova-conta {
-	display: flex;
-	position: relative;
-	padding: 10px 4px;
+.header-modal {
+	height: 60px;
+	width: 100%;
 	border-bottom: 1px solid gray;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.modal-nova-conta .header-modal-nova-conta h2 {
-	font-size: 1.8rem;
-	font-family: "Roboto", sans-serif;
+.header-modal h2 {
+	font-family: "Poppins", sans-serif;
+	color: #e9e9e9;
 }
 
-.modal-nova-conta .header-modal-nova-conta img {
-	position: absolute;
-	width: 40px;
-	top: -20px;
-	right: -20px;
+.header-modal img {
+	width: 35px;
 	cursor: pointer;
 }
 
-.body-modal-nova-conta {
-	padding: 10px 4px;
+.wrapper {
 	overflow: hidden;
+	width: 300%;
+	height: 500px;
 }
-
-.body-modal-nova-conta h3 {
-	font-family: "Poppins", sans-serif;
-}
-
-.body-modal-box {
+  
+.slider {
 	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	width: 100%;
-	border-radius: 20px;
-	padding: 20px 0;
+	width: 33.33%; /* 3 slides */
+	transition: transform 0.5s ease;
 }
-
-.body-modal-group-flex {
-	display: flex;
-	gap: 20px;
-	flex-wrap: wrap;
-	width: 100%;
-}
-
-.body-modal-group {
-	flex: 1;
+  
+.body-modal {
+	width: 100%; /* Cada slide ocupa 1/3 */
+	flex-shrink: 0;
 	display: flex;
 	flex-direction: column;
 }
-
-.body-modal-group label {
-	font-family: "Poppins", sans-serif;
+  
+.flex {
+	display: flex;
+	justify-content: center;
 }
 
-.body-modal-group input {
-	outline: none;
+.footer-modal {
+	height: 50px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	gap: 5px;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	padding: 2px;
+}
+
+.footer-modal button {
+	height: 100%;
+	width: 100px;
+	border-radius: 30px;
 	border: none;
+	font-family: "Poppins", sans-serif;
+	cursor: pointer;
+	color: #fff;
+
+	transition: .3s ease-out;
+}
+
+.footer-modal button:nth-child(1) {
+	background-color: rgb(255, 0, 0);
+}
+
+.footer-modal button:nth-child(2) {
+	background-color: rgb(34, 172, 0);
+}
+
+.footer-modal button:nth-child(1):hover {
+	background-color: rgb(196, 3, 3);
+}
+
+.footer-modal button:nth-child(2):hover {
+	background-color: rgb(35, 161, 4);
+}
+
+.form {
+	height: 100%;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.form-flex {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 5px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	width: 100%;
+}
+
+.form-group label {
+	font-family: "Poppins", sans-serif;
+	font-size: 1.1rem;
+	color: #e9e9e9;
+}
+
+.form-group input {
+	width: 100%;
 	height: 40px;
+	border: none;
+	outline: none;
 	border-radius: 20px;
-	background-color: aliceblue;
+	background-color: rgb(59, 59, 59);
+	color: #e9e9e9;
 	padding: 10px;
 	font-family: "Poppins", sans-serif;
 	font-size: .9rem;
 }
 
-.box-button-proximo-and-anterior {
-	display: flex;
-	justify-content: end;
-	gap: 10px;
-}
-
-.box-button-proximo-and-anterior button {
-	height: 40px;
-	width: 100px;
-	outline: none;
-	border: none;
-	border-radius: 20px;
-	color: #fff;
-	font-family: "Poppins", sans-serif;
-	cursor: pointer;
-
-	transition: .3s;
-}
-
-.box-button-proximo-and-anterior button:nth-child(1) {
-	background-color: rgb(197, 9, 9);
-}
-
-.box-button-proximo-and-anterior button:nth-child(1):hover {
-	background-color: rgb(172, 2, 47);
-}
-
-.box-button-proximo-and-anterior button:nth-child(2) {
-	background-color: rgb(56, 155, 10);
-}
-
-.box-button-proximo-and-anterior button:nth-child(2):hover {
-	background-color: #04a814;
-}
-
-
-
-@media (min-width: 1000px) {
+@media (min-width: 600px) {
 
 	.modal-nova-conta {
-		height: auto;
-		padding: 20px;
-		width: 90vh;
+		width: 700px;
+		height: 400px;
+	}
+
+	.wrapper {
+		height: 370px;
+	}
+
+	.form-flex {
+		flex-wrap: nowrap;
 	}
 
 }

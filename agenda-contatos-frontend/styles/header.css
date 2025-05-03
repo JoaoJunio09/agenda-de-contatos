@@ -4,11 +4,16 @@
 font-family: "Galada", cursive;
 font-family: "Poppins", sans-serif;
 font-family: "Roboto", sans-serif;
+
+colors:
+#252525 - preto
+#1f6ce8 - azul
+#e9e9e9 - branco
 */
 
 .header {
 	height: 90px;
-	background-color: rgb(30, 160, 216);
+	background-color: #252525;
 }
 
 .header .conteudo {
@@ -22,7 +27,7 @@ font-family: "Roboto", sans-serif;
 	font-size: 55px;
 	padding-inline: 10px;
 	line-height: 100px;
-	color: rgb(255, 255, 255);
+	color: #e9e9e9;
 }
 
 .menu {
@@ -34,7 +39,7 @@ font-family: "Roboto", sans-serif;
 }
 
 .menu a {
-	color: #fff;
+	color: #e9e9e9;
 	font-size: 18px;
 	font-family: "Poppins", sans-serif;
 }
@@ -96,7 +101,7 @@ font-family: "Roboto", sans-serif;
 		left: 0;
 		width: 0%;
 		height: 4px;
-		background-color: #ffffff;
+		background-color: #1f6ce8;
 		transition: width 0.5s ease;
 	}
 
@@ -105,7 +110,6 @@ font-family: "Roboto", sans-serif;
 	}
 
 	.menu-item:hover {
-		color: blue;
 		transform: scale(1.05);
 	}
 
