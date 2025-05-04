@@ -1,28 +1,30 @@
-import { setPerson } from "../models/personModel.js";
+const API_BASE_URL = "http://localhost:8080/api/person/v1";
 
-fetch('http://localhost:8080/api/person/v1/10')
-	.then(response => {
-		console.log("Status da requisição:", response.status);
-		return response.text();
-	})
-	.then(text => {
-		try {
-			const person = JSON.parse(text);
-			console.log("Dados recebidos:", person);
-			if (!person) {
-				throw new Error("Dados inválidos");
-			}
-			else {
-				setPerson(person);
-				console.log("Dados armazenados:", person);
+async function createPerson(person) {
+	try {
+		const response = await fetch(API_BASE_URL, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(person)
+		});
 
-				document.dispatchEvent(new CustomEvent("dataPersonSuccess"));
-			}
+		if (!response.ok) {
+			const errorData = await response.json().catch(() => ({}));
+			const errorMessage = errorData.message || `Erro ${response.status}`;
+			throw new Error(errorMessage);
 		}
-		catch (error) {
-			console.log("Erro ao converter para texto:", error);
-		}
-	})
-	.catch(error => {
-		console.log("Erro ao consumir a API:", error)
-	})
+
+    console.log(response.json());
+		return await response.json();
+	}
+	catch (error) {
+		console.log("[PersonService] Erro ao cadastrar pessoa: ", error.message);
+		throw error;
+	}
+}
+
+export const PersonService = {
+	cadastrar: createPerson
+};
