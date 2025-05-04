@@ -20,7 +20,7 @@ public class StateController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<StateDTO>> findAll() {
-        return ResponseEntity.ok(service.findAll());
+        return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping(
@@ -28,7 +28,7 @@ public class StateController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<StateDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.findById(id));
+        return ResponseEntity.ok().body(service.findById(id));
     }
 
     @PostMapping(
@@ -36,7 +36,7 @@ public class StateController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<StateDTO> create(@RequestBody StateDTO stateDTO) {
-        return ResponseEntity.ok(service.create(stateDTO));
+        return ResponseEntity.ok().body(service.create(stateDTO));
     }
 
     @PutMapping(
@@ -44,7 +44,7 @@ public class StateController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<StateDTO> update(@RequestBody StateDTO stateDTO) {
-        return ResponseEntity.ok(service.update(stateDTO));
+        return ResponseEntity.ok().body(service.update(stateDTO));
     }
 
     @DeleteMapping(
