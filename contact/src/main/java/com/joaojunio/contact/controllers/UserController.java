@@ -33,6 +33,7 @@ public class UserController {
         return ResponseEntity.ok().body(service.findById(id));
     }
 
+    @CrossOrigin("http://localhost:5050")
     @PostMapping(
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE

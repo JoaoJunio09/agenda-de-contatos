@@ -50,6 +50,7 @@ buttonNextPage.addEventListener("click", () => {
         dataValid = validationDataPage3();
 
         if (dataValid) {
+          console.log(getPerson());
           PersonService.cadastrar(getPerson());
         }
       }
@@ -279,52 +280,54 @@ function validationDataPage3() {
   return true;
 }
 
-let personData = {
-  nome: "",
-  sobrenome: "",
-  nascimento: "",
+let user = {
+  id: null,
   email: "",
-  telefone: "",
-  sexo: "",
-  endereco: "",
-  complemento: "",
-  numero: "",
-  nacionalidade: "",
-  cpf: "",
-  rg: "",
-  emailConta: "",
-  senhaConta: "",
-  administrador: "",
+  password: "",
+  person: {
+    id: null,
+    firstName: "",
+    lastName: "",
+    birthDate: null,
+    email: "",
+    phone: "",
+    gender: "",
+    address: "",
+    complement: "",
+    number: "",
+    nationality: "",
+    cpf: "",
+    rg: "",
+  }
 };
 
 function getDataFormPage1() {
-  personData.nome = nomeInput.value;
-  personData.sobrenome = sobrenomeInput.value;
-  personData.nascimento = nascimentoInput.value;
-  personData.email = emailInput.value;
-  personData.telefone = telefoneInput.value;
-  personData.sexo = sexoInput.value;
+  user.person.firstName = nomeInput.value;
+  user.person.lastName = sobrenomeInput.value;
+  user.person.birthDate = nascimentoInput.value;
+  user.person.email = emailInput.value;
+  user.person.phone = telefoneInput.value;
+  user.person.gender = sexoInput.value;
 
-  setPerson(personData);
+  setPerson(user);
 }
 
 function getDataFormPage2() {
-  personData.endereco = enderecoInput.value;
-  personData.complemento = complementoInput.value;
-  personData.numero = numeroInput.value;
-  personData.nacionalidade = nacionalidadeInput.value;
-  personData.cpf = cpfInput.value;
-  personData.rg = rgInput.value;
+  user.person.address = enderecoInput.value;
+  user.person.complement = complementoInput.value;
+  user.person.number = numeroInput.value;
+  user.person.nationality = nacionalidadeInput.value;
+  user.person.cpf = cpfInput.value;
+  user.person.rg = rgInput.value;
 
-  setPerson(personData);
+  setPerson(user);
 }
 
 function getDataFormPage3() {
-  personData.emailConta = emailContaInput.value,
-  personData.senhaConta = senhaContaInput.value;
-  personData.administrador = administradorContaInput.value;
+  user.email = emailContaInput.value,
+  user.password = senhaContaInput.value;
 
-  setPerson(personData);
+  setPerson(user);
 }
 
 function processData() {

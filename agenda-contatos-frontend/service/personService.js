@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8080/api/person/v1";
+const API_BASE_URL = "http://localhost:8080/api/user/v1";
 
 async function createPerson(person) {
 	try {
@@ -16,8 +16,9 @@ async function createPerson(person) {
 			throw new Error(errorMessage);
 		}
 
-    console.log(response.json());
-		return await response.json();
+		const data = await response.json();
+    	console.log(data);
+		return data;
 	}
 	catch (error) {
 		console.log("[PersonService] Erro ao cadastrar pessoa: ", error.message);
