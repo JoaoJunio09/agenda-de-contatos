@@ -1,4 +1,5 @@
 import { openMessageFailure, openSpanDetails, closeMessageFailure, closeSpanDetails } from "../utils/messageFailure.js";
+import { openMessageSuccess, closeMessageSuccess } from "../utils/messageSuccess.js";
 import { setPerson, getPerson } from "../models/personModel.js";
 import { PersonService } from "../service/personService.js";
 
@@ -7,15 +8,18 @@ const fade = document.querySelector(".fade");
 const buttonOpenModal = document.querySelector("#button-open-modal");
 const buttonExitModal = document.querySelector("#button-exit-modal");
 
-buttonOpenModal.addEventListener('click', () => {
+function openModal() {
   modal.classList.add("show");
   fade.classList.add("show");
-})
+}
 
-buttonExitModal.addEventListener('click', () => {
+function closeModal() {
   modal.classList.remove("show");
   fade.classList.remove("show");
-})
+}
+
+buttonOpenModal.addEventListener('click', openModal);
+buttonExitModal.addEventListener('click', closeModal);
 
 // controlar páginação do modal:
 
@@ -52,6 +56,10 @@ buttonNextPage.addEventListener("click", () => {
         if (dataValid) {
           console.log(getPerson());
           PersonService.cadastrar(getPerson());
+
+          closeModal();
+          openMessageSuccess("Usuário cadastrado!");
+          currentStage = 0;
         }
       }
 
@@ -246,7 +254,11 @@ function validationDataPage3() {
     const errorExistSenhaConta = errors.some(error => error.type === "senha-conta");
 
     if (!errorExistSenhaConta) {
-      errors.push({ type: "senha-conta", message: "Dígite uma senha forte!", details: "A senha deve conter 8 caracteres, <br> 1 letra maiúscula, <br> 1 número, <br> 1 caracter especial" });
+      errors.push({ 
+        type: "senha-conta",
+        message: "Dígite uma senha forte!", 
+        details: "A senha deve conter 8 caracteres, <br> 1 letra maiúscula, <br> 1 número, <br> 1 caracter especial"
+      });
     }
   }
   else {
