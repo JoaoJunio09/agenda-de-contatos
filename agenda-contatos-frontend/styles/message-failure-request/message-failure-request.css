@@ -11,10 +11,10 @@ colors:
 #e9e9e9 - branco
 */
 
-.message-success {
+.message-failure-request {
 	height: 200px;
 	width: 80%;
-	background-color: rgb(79, 79, 79);
+	background-color: rgb(255, 68, 0);
 	position: fixed;
 	left: 50%;
 	top: 50%;
@@ -32,26 +32,32 @@ colors:
 	transition: .5s all;
 }
 
-.message-success.show {
+.message-failure-request.show {
 	opacity: 1;
 	visibility: visible;
 	pointer-events: auto;
 }
 
-.message-success p {
+.message-failure-request p {
 	color: #ffffff;
 	font-family: "Poppins", sans-serif;
 	font-size: 1.1rem;
 }
 
-#gif-success {
-	width: 250px;
-	margin-bottom: -80px;
-	margin-top: -80px;
-	border-radius: 50%;
+#message-failure-request-text-details {
+	font-size: .9rem;
+	margin-right: auto;
+	font-weight: 200;
+	margin-bottom: 5px;
 }
 
-.message-success-flex {
+#gif-failure-request {
+	width: 110px;
+	border-radius: 50%;
+	background-color: red;
+}
+
+.message-failure-request-flex {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -59,7 +65,7 @@ colors:
 	align-items: center;
 }
 
-#button-close-message-success {
+#button-close-message-failure-request {
 	width: 35px;
 	cursor: pointer;
 	position: absolute;
@@ -69,13 +75,9 @@ colors:
 
 @media (min-width: 400px) {
 
-	.message-success {
+	.message-failure-request {
 		width: 350px;
 		height: 230px;
-	}
-
-	#gif-success {
-		width: 300px;
 	}
 
 }

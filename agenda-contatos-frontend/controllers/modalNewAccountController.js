@@ -1,5 +1,6 @@
 import { openMessageFailure, openSpanDetails, closeMessageFailure, closeSpanDetails } from "../utils/messageFailure.js";
 import { openMessageSuccess, closeMessageSuccess } from "../utils/messageSuccess.js";
+import { openMessageFailureRequest } from "../utils/messageFailureRequest.js";
 import { setPerson, getPerson } from "../models/personModel.js";
 import { PersonService } from "../service/personService.js";
 
@@ -54,12 +55,18 @@ buttonNextPage.addEventListener("click", () => {
         dataValid = validationDataPage3();
 
         if (dataValid) {
-          console.log(getPerson());
-          PersonService.cadastrar(getPerson());
+          try {
+            PersonService.cadastrar(getPerson());
 
-          closeModal();
-          openMessageSuccess("Usuário cadastrado!");
-          currentStage = 0;
+            closeModal();
+            openMessageSuccess("Usuário cadastrado!");
+            currentStage = 0;
+          }
+          catch (error) {
+            currentStage = -1;
+
+            openMessageFailureRequest(error);
+          }
         }
       }
 

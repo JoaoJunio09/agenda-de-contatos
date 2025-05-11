@@ -45,7 +45,7 @@ colors:
 	visibility: hidden;
 	pointer-events: none;
 
-	transition: opacity .3s ease;
+	transition: .5s all;
 }
 
 .modal-nova-conta.show {

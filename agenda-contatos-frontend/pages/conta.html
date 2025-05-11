@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="../styles/home/footer/footer.css">
 	<link rel="stylesheet" href="../styles/conta/modal-nova-conta/modal-nova-conta.css">
 	<link rel="stylesheet" href="../styles/message-failure/message-failure.css">
+	<link rel="stylesheet" href="../styles/message-failure-request/message-failure-request.css">
 	<link rel="stylesheet" href="../styles/message-success/message-success.css">
 	<title>Agenda Contatos | Conta</title>
 </head>
@@ -282,11 +283,22 @@
 	</div>
 
 	<div class="message-success">
-		<p id="message-success">Cadastro com sucesso!</p>
-
-		<img src="../assets/img/Successfully Done (1).gif" alt="" id="gif-success">
+		<div class="message-success-flex">
+			<img src="../assets/img/Successfully Done (1).gif" alt="" id="gif-success">
+			<p id="message-success">Cadastrado com sucesso!</p>
+		</div>		
 
 		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-success">
+	</div>
+
+	<div class="message-failure-request">
+		<div class="message-failure-request-flex">
+			<img src="../assets/img/erro.gif" alt="" id="gif-failure-request">
+			<p id="message-failure-request-text" class="message-failure-request-text-title">Erro ao cadastrar usúario!</p>
+			<p id="message-failure-request-text-details" class="message-failure-request-text-body">Failed fetch</p>
+		</div>		
+
+		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-failure-request">
 	</div>
 
 	<footer class="footer"> 

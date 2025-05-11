@@ -6,7 +6,7 @@ function openMessageFailure(message) {
 	messageFailure.querySelector(".message-failure p").innerHTML = message;
 	messageFailure.classList.add("show");
 
-	setInterval(() => {
+	setTimeout(() => {
 		messageFailure.classList.remove("show");
 	}, 4000);
 }
