@@ -6,7 +6,7 @@ import { PersonService } from "../service/personService.js";
 
 const modal = document.querySelector(".modal-nova-conta");
 const fade = document.querySelector(".fade");
-const buttonOpenModal = document.querySelector("#button-open-modal");
+const buttonOpenModal = document.querySelector("#buttonOpenModal");
 const buttonExitModal = document.querySelector("#button-exit-modal");
 
 function openModal() {
@@ -82,6 +82,7 @@ buttonNextPage.addEventListener("click", () => {
 async function handleUserRegistration(user) {
   try {
     await PersonService.cadastrar(user);
+    await PersonService.listar();
 
     currentStage = 0;
     closeModal();
@@ -317,8 +318,8 @@ function validationDataPage3() {
 
 let user = {
   id: null,
-  email: "email-conta",
-  password: "senha-conta",
+  email: "",
+  password: "",
   person: {
     id: null,
     firstName: "",
@@ -342,7 +343,10 @@ function getDataFormPage1() {
   user.person.birthDate = nascimentoInput.value;
   user.person.email = emailInput.value;
   user.person.phone = telefoneInput.value;
-  user.person.gender = sexoInput.value;
+
+  sexoInput.forEach(gender => {
+     user.person.gender = gender.value;
+  });
 
   setPerson(user);
 }

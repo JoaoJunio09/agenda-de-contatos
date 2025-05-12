@@ -7,15 +7,9 @@
 	<link rel="stylesheet" href="../styles/header.css">
 	<link rel="stylesheet" href="../styles/conta/main/main.css">
 	<link rel="stylesheet" href="../styles/home/footer/footer.css">
-	<link rel="stylesheet" href="../styles/conta/modal-nova-conta/modal-nova-conta.css">
-	<link rel="stylesheet" href="../styles/message-failure/message-failure.css">
-	<link rel="stylesheet" href="../styles/message-failure-request/message-failure-request.css">
-	<link rel="stylesheet" href="../styles/message-success/message-success.css">
 	<title>Agenda Contatos | Conta</title>
 </head>
 <body>
-	<div class="fade"></div>
-
 	<header class="header">
 		<div class="conteudo">
 			<a href="/" class="logo">AGENDA</a>
@@ -166,162 +160,14 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="div-button-nova-conta">
-				<button class="button-nova-conta" id="button-open-modal">
-					Nova conta
-					<img src="../assets/img/do-utilizador.png" alt="img-button-nova-conta">
-				</button>
-			</div>		
+			</div>	
 		</div>
 	</main>
-
-	<div class="modal-nova-conta">
-		<div class="header-modal">
-			<h2>Criar nova conta</h2>
-
-			<img src="../assets/img/excluir (1).png" alt="img-sair" id="button-exit-modal">
-		</div>
-		<div class="wrapper">
-			<div class="slider">
-				<div class="body-modal">
-					<form action="" class="form form-flex-page-1">
-						<div class="form-flex">
-							<div class="form-group">
-								<label for="nome-usuario">Nome:</label>
-								<input type="text" id="nome-usuario" placeholder="nome123">
-							</div>
-							<div class="form-group">
-								<label for="sobrenome-usuario">Sobrenome:</label>
-								<input type="text" id="sobrenome-usuario" placeholder="sobrenome123">
-							</div>
-						</div>
-						<div class="form-flex">
-							<div class="form-group">
-								<label for="nascimento-usuario">Nascimento:</label>
-								<input type="date" id="nascimento-usuario">
-							</div>
-							<div class="form-group">
-								<label for="email-usuario">E-mail:</label>
-								<input type="email" id="email-usuario" placeholder="email@gmail.com">
-							</div>
-						</div>
-						<div class="form-flex">
-							<div class="form-group">
-								<label for="telefone-usuario">Telefone:</label>
-								<input type="text" id="telefone-usuario" placeholder="(17) 12345-1234">
-							</div>
-							<div class="form-group">
-								<label for="sexo-usuario">Sexo:</label>
-								<select name="select-sexo-usuario" id="select-sexo-usuario">
-									<option value="Masculino" class="option-sexo-usuario">Prefiro não dizer</option>
-									<option value="Masculino" class="option-sexo-usuario">Masculino</option>
-									<option value="Feminino" class="option-sexo-usuario">Feminino</option>
-								</select>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="body-modal">
-					<form action="" class="form form-flex-page-2">
-						<div class="form-flex">
-							<div class="form-group">
-								<label for="endereco-usuario">Endereço:</label>
-								<input type="text" id="endereco-usuario" placeholder="R. exemplo, 123">
-							</div>
-							<div class="form-group">
-								<label for="complemento-usuario">Complemento:</label>
-								<input type="text" id="complemento-usuario" placeholder="Casa / Apartamento">
-							</div>
-						</div>
-						<div class="form-flex form-flex-page-2">
-							<div class="form-group">
-								<label for="numero-usuario">Número:</label>
-								<input type="number" id="numero-usuario" placeholder="123">
-							</div>
-							<div class="form-group">
-								<label for="nacionalidade-usuario">Nacionalidade:</label>
-								<input type="text" id="nacionalidade-usuario" placeholder="País em que nasceu">
-							</div>
-						</div>
-						<div class="form-flex">
-							<div class="form-group">
-								<label for="cpf-usuario">Cpf:</label>
-								<input type="text" id="cpf-usuario" placeholder="12345678912">
-							</div>
-							<div class="form-group">
-								<label for="rg-usuario">Rg:</label>
-								<input type="text" id="rg-usuario" placeholder="123456789">
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="body-modal">
-					<form action="" class="form form-flex-page-3">
-						<h2>Dados da conta.</h2>
-						<div class="form-flex">
-							<div class="form-group">
-								<label for="email-usuario-conta">E-mail:</label>
-								<input type="email" id="email-usuario-conta" placeholder="email123@gmail.com">
-							</div>
-							<div class="form-group">
-								<label for="senha-usuario">Senha:</label>
-								<input type="password" id="senha-usuario-conta" placeholder="senha123">
-							</div>
-						</div>
-						<div class="form-flex">
-							<div class="form-group">
-								<label for="administrador-usuario">Administrador:</label>
-								<select name="select-administrador-usuario-conta" id="select-administrador-usuario-conta">
-									<option value="option-administrador-usuario-conta">Permitido</option>
-									<option value="option-administrador-usuario-conta">Não permitido</option>
-								</select>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		  
-		<div class="footer-modal">
-			<span class="span-info-form" id="span-details"></span>
-
-			<button id="button-previous-page">Anterior</button>
-			<button id="button-next-page">Próximo</button>
-		</div>
-	</div>
-
-	<div class="message-failure">
-		<p id="message-failure">Preencha os dados.</p>
-
-		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-failure">
-	</div>
-
-	<div class="message-success">
-		<div class="message-success-flex">
-			<img src="../assets/img/Successfully Done (1).gif" alt="" id="gif-success">
-			<p id="message-success">Cadastrado com sucesso!</p>
-		</div>		
-
-		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-success">
-	</div>
-
-	<div class="message-failure-request">
-		<div class="message-failure-request-flex">
-			<img src="../assets/img/erro.gif" alt="" id="gif-failure-request">
-			<p id="message-failure-request-text" class="message-failure-request-text-title">Erro ao cadastrar usúario!</p>
-			<p id="message-failure-request-text-details" class="message-failure-request-text-body">Failed fetch</p>
-		</div>		
-
-		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-failure-request">
-	</div>
 
 	<footer class="footer"> 
 
 	</footer>
 
 	<script type="module" src="../utils/transitionNavBar.js" defer></script>
-	<script type="module" src="../controllers/modalNewAccountController.js" defer></script>
-	<script type="module" src="../utils/messageFailure.js" defer></script>
 </body>
 </html>
