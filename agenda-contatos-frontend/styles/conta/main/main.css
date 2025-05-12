@@ -138,6 +138,31 @@ colors:
 	box-shadow: 0px -50px 180px #313131;
 }
 
+.container-main-content-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: .9rem;
+}
+
+.container-main-content-title button {
+	border-radius: 30px;
+	height: 40px;
+	width: 120px;
+	cursor: pointer;
+	background-color: #1f6ce8;
+	color: #ffffff;
+	border: none;
+	font-family: "Poppins", sans-serif;
+
+	transition: .5s all;
+}
+
+.container-main-content-title button:hover {
+	background-color: #fff;
+	color: #000;
+}
+
 .container-main-content-title h1 {
 	font-family: "Roboto", sans-serif;
 	font-size: 1.6rem;

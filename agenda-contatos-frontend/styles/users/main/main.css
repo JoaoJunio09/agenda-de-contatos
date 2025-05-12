@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Galada&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*
+font-family: "Galada", cursive;
+font-family: "Poppins", sans-serif;
+font-family: "Roboto", sans-serif;
+
+colors:
+#252525 - preto
+#1f6ce8 - azul
+#e9e9e9 - branco
+*/
+
+.main {
+	margin: 0 auto;
+	width: 95%;
+}
+
+.container-toolbar {
+	height: 120px;
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0px 0px 100px rgb(23, 23, 23);
+	position: relative;
+}
+
+.container-toolbar h2 {
+	color: #fff;
+	font-family: "Roboto", sans-serif;
+	border-bottom: 1px solid rgb(219, 201, 0);
+	opacity: .8;
+	padding-bottom: 10px;
+}
+
+.container-toolbar p {
+	font-family: "Poppins", sans-serif;
+	font-size: .8rem;
+	color: #ffffff;
+	padding: 20px 0;
+}
+
+.container-toolbar img {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	width: 30px;
+}
+
+.container-gerenciamento-usuarios {
+	margin-top: 20px;
+	padding: 20px;
+	height: 100vh;
+	border-radius: 20px;
+	box-shadow: 0px 0px 150px #151515;
+}
+
+.gerenciamento-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-block: 0 20px;
+}
+
+.gerenciamento-title h1 {
+	font-family: "Roboto", sans-serif;
+	color: #E0E0E0;
+	font-size: 1.7rem;
+}
+
+.gerenciamento-title img {
+	cursor: pointer;
+	width: 40px;
+}
+
+.gerenciamento-tipo-pesquisa {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+}
+
+.gerenciamento-status, .gerenciamento-funcao {
+	border-radius: 10px;
+	height: 190px;
+	width: 320px;
+	border: 1px solid rgb(76, 76, 76);
+}
+
+@media (min-width: 700px) {
+	
+	.main {
+		width: 85%;
+	}
+
+	.gerenciamento-tipo-pesquisa {
+		flex-wrap: nowrap;
+		flex-direction: row;
+	}
+
+}
+
+@media (min-width: 1000px) {
+
+	.gerenciamento-tipo-pesquisa {
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+
+}

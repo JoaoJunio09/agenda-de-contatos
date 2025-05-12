@@ -16,7 +16,7 @@ public class User implements Serializable {
     @Column(name = "email", length = 100, nullable = false)
     private String email;
 
-    @Column(name = "password", length = 8, nullable = false)
+    @Column(name = "password", length = 20, nullable = false)
     private String password;
 
     @OneToOne(cascade = CascadeType.MERGE)

@@ -1,36 +1,30 @@
 const API_BASE_URL = "http://localhost:8080/api/user/v1";
 
-function createPerson(person) {
-	// try {
-	// 	const response = await fetch(API_BASE_URL, {
-	// 		method: "POST",
-	// 		headers: {
-	// 			"Content-Type": "application/json"
-	// 		},
-	// 		body: JSON.stringify(person)
-	// 	});
+async function createPerson(person) {
+  const response = await fetch(API_BASE_URL, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(person)
+	});
 
-	// 	if (response.ok) {
-	// 		const errorData = await response.json().catch(() => ({}));
-	// 		const errorMessage = errorData.message || `Erro ${response.status}`;
+	if (!response.ok) {
+		const errorData = await response.json().catch(() => ({}));
+		const errorMessage = errorData.message || `Erro ${response.status}`;
 
-			const objectError = {
-				title: "Erro ao cadastrar usuário.",
-				body: "errorMessage",
-			};
+		const objectError = {
+			title: errorData.title,
+			body: errorMessage || "",
+		};
 
-			throw objectError;
-		// }
+		throw objectError;
+	}
 
-		// const data = await response.json();
-    	// console.log(data.JSON);
-		// return data;
-	// }
-	// catch (error) {
-	// 	console.log(`Error: `, error.message);
-	// }
+	const data = await response.json();
+	return data;
 }
 
 export const PersonService = {
-	cadastrar: createPerson
+    cadastrar: createPerson
 };

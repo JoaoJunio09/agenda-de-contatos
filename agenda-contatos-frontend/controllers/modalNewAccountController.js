@@ -42,6 +42,8 @@ function updateSliderPosition() {
 }
 
 buttonNextPage.addEventListener("click", () => {
+    let processPage3 = false;
+
     try {
       let dataValid;
 
@@ -53,34 +55,48 @@ buttonNextPage.addEventListener("click", () => {
       }
       else if (currentStage === 2) { 
         dataValid = validationDataPage3();
-
-        if (dataValid) {
-          try {
-            PersonService.cadastrar(getPerson());
-
-            closeModal();
-            openMessageSuccess("Usuário cadastrado!");
-            currentStage = 0;
-          }
-          catch (error) {
-            currentStage = -1;
-
-            openMessageFailureRequest(error);
-          }
-        }
+        
+        processPage3 = true;
       }
 
       if (dataValid) {
         processData();
+
+        if (processPage3) {
+          handleUserRegistration(getPerson());
+        }
   
         currentStage++;
-        updateSliderPosition();
+
+        if (currentStage <= 2) {
+          console.log(currentStage);
+          updateSliderPosition();
+        }
       }
     }
     catch (error) {
       openMessageFailure(error.message);
     }
 });
+
+async function handleUserRegistration(user) {
+  try {
+    await PersonService.cadastrar(user);
+
+    currentStage = 0;
+    closeModal();
+
+    updateSliderPosition();
+
+    openMessageSuccess("Usuário cadastrado!");
+  }
+  catch (error) {
+    currentStage = 0;
+    updateSliderPosition();
+
+    openMessageFailureRequest(error);
+  }
+}
 
 buttonPreviousPage.addEventListener("click", () => {
   if (currentStage > 0) {
@@ -103,7 +119,7 @@ const sobrenomeInput = document.querySelector("#sobrenome-usuario");
 const nascimentoInput = document.querySelector("#nascimento-usuario");
 const emailInput = document.querySelector("#email-usuario");
 const telefoneInput = document.querySelector("#telefone-usuario");
-const sexoInput = document.querySelector("#sexo-usuario");
+const sexoInput = document.querySelectorAll("#sexo-usuario");
 const enderecoInput = document.querySelector("#endereco-usuario");
 const complementoInput = document.querySelector("#complemento-usuario");
 const numeroInput = document.querySelector("#numero-usuario");
@@ -113,7 +129,7 @@ const rgInput = document.querySelector("#rg-usuario");
 
 const emailContaInput = document.querySelector("#email-usuario-conta");
 const senhaContaInput = document.querySelector("#senha-usuario-conta");
-const administradorContaInput = document.querySelector("#administrador-usuario-conta");
+const administradorContaInput = document.querySelectorAll("#administrador-usuario-conta");
 
 const inputsPage1 = document.querySelectorAll(".form-flex-page-1 input");
 const inputsPage2 = document.querySelectorAll(".form-flex-page-2 input");
@@ -301,8 +317,8 @@ function validationDataPage3() {
 
 let user = {
   id: null,
-  email: "",
-  password: "",
+  email: "email-conta",
+  password: "senha-conta",
   person: {
     id: null,
     firstName: "",

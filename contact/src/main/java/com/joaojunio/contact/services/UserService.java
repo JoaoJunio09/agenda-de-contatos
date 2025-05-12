@@ -54,8 +54,6 @@ public class UserService {
             throw new NotFoundException("Este usuário já existe.");
         }
 
-        System.out.println(userDTO);
-
         PersonDTO personDTO = userDTO.getPerson();
         Person person;
 
