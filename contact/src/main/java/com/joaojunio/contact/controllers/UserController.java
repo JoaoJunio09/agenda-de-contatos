@@ -2,9 +2,7 @@ package com.joaojunio.contact.controllers;
 
 import com.joaojunio.contact.data.dto.UserDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
-import com.joaojunio.contact.model.User;
 import com.joaojunio.contact.services.UserService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

@@ -1,7 +1,9 @@
 package com.joaojunio.contact.controllers;
 
+import com.joaojunio.contact.controllers.docs.PersonControllerDocs;
 import com.joaojunio.contact.data.dto.PersonDTO;
 import com.joaojunio.contact.services.PersonService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/person/v1")
-public class PersonController {
+@Tag(name = "Person", description = "Documentation of the Person entity.")
+public class PersonController implements PersonControllerDocs {
 
     @Autowired
     private PersonService service;
@@ -19,6 +22,7 @@ public class PersonController {
     @GetMapping(
         produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Override
     public ResponseEntity<List<PersonDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
@@ -27,6 +31,7 @@ public class PersonController {
         value = "/{id}",
         produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Override
     public ResponseEntity<PersonDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
@@ -35,6 +40,7 @@ public class PersonController {
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
+    @Override
     public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO personDTO) {
         return ResponseEntity.ok().body(service.create(personDTO));
     }

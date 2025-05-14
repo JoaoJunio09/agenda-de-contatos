@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import static com.joaojunio.contact.mapper.ObjectMapper.parseListObjects;
 import static com.joaojunio.contact.mapper.ObjectMapper.parseObject;
 
-import java.util.Date;
 import java.util.List;
 
 @Service

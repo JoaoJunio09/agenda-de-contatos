@@ -12,10 +12,6 @@ buttonSearch.addEventListener("click", () => {
 	if (search == "" || search == undefined || search == null) {
 		openMessageFailureRequest({ title: "Erro ao buscar usuário", body: "Informe um conteúdo." });
 	}
-
-	
-
-	console.log(search);
 });
 
 async function findAllPerson() {
@@ -47,7 +43,7 @@ async function findAllPerson() {
 		});
 	}
 	catch (error) {
-		console.log(error);
+		openMessageFailureRequest({ title: "Erro ao listar usuários", body: error.message });
 	}
 }
 
