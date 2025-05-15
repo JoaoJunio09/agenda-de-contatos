@@ -44,4 +44,23 @@ public class PersonController implements PersonControllerDocs {
     public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO personDTO) {
         return ResponseEntity.ok().body(service.create(personDTO));
     }
+
+    @PutMapping(
+        produces = MediaType.APPLICATION_JSON_VALUE,
+        consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Override
+    public ResponseEntity<PersonDTO> update(PersonDTO personDTO) {
+        return ResponseEntity.ok().body(service.update(personDTO));
+    }
+
+    @DeleteMapping(
+        value = "/{id}"
+    )
+    @Override
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

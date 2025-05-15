@@ -41,7 +41,76 @@ public interface PersonControllerDocs {
     )
     ResponseEntity<List<PersonDTO>> findAll();
 
+    @Operation(
+        tags = {"Person"},
+        summary = "Finding one Person entity.",
+        description = "Finding one Person entity.",
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = @Content(schema = @Schema(implementation = PersonDTO.class))
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Unauthorized", responseCode = "402", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content),
+        }
+    )
     ResponseEntity<PersonDTO> findById(@PathVariable Long id);
 
+    @Operation(
+        tags = {"Person"},
+        summary = "Create a new Person entity.",
+        description = "Create a new Person entity.",
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = @Content(schema = @Schema(implementation = PersonDTO.class))
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
     ResponseEntity<PersonDTO> create(@RequestBody PersonDTO personDTO);
+
+    @Operation(
+        tags = {"Person"},
+        summary = "Updating one Person entity",
+        description = "Updating one Person entity",
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = @Content(schema = @Schema(implementation = PersonDTO.class))
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<PersonDTO> update(@RequestBody PersonDTO personDTO);
+
+    @Operation(
+        tags = {"Person"},
+        summary = "Deleting one Person entity.",
+        description = "Deleting one Person entity.",
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = @Content(schema = @Schema(implementation = PersonDTO.class))
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "204", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<?> delete(@PathVariable Long id);
+
 }

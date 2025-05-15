@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/user/v1")
-public class UserController {
+public class UserController implements com.joaojunio.contact.controllers.docs.UserControllerDocs {
 
     @Autowired
     private UserService service;
@@ -22,6 +22,7 @@ public class UserController {
     @GetMapping(
         produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Override
     public ResponseEntity<List<UserDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
@@ -30,6 +31,7 @@ public class UserController {
         value = "/{id}",
         produces = MediaType.APPLICATION_JSON_VALUE
     )
+    @Override
     public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
@@ -39,6 +41,7 @@ public class UserController {
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
+    @Override
     public ResponseEntity<?> create(@RequestBody UserDTO userDTO) {
         try {
             return ResponseEntity.ok().body(service.create(userDTO));

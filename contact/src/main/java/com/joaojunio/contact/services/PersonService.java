@@ -1,6 +1,7 @@
 package com.joaojunio.contact.services;
 
 import com.joaojunio.contact.data.dto.PersonDTO;
+import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.model.Person;
 import com.joaojunio.contact.repositories.PersonRepository;
 import org.slf4j.Logger;
@@ -32,7 +33,10 @@ public class PersonService {
 
         logger.info("Finds a Person");
 
-        return parseObject(repository.findById(id), PersonDTO.class);
+        var entity = repository.findById(id)
+            .orElseThrow(() -> new NotFoundException("Not Found this ID : " + id));
+
+        return parseObject(entity, PersonDTO.class);
     }
 
     public PersonDTO create(PersonDTO personDTO) {
@@ -51,7 +55,7 @@ public class PersonService {
         return null;
     }
 
-    public void delete(PersonDTO personDTO) {
+    public void delete(Long id) {
 
         logger.info("Delete a Person");
 
