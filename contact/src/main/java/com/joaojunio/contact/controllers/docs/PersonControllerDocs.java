@@ -36,7 +36,7 @@ public interface PersonControllerDocs {
             @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
             @ApiResponse(description = "Unauthorized", responseCode = "402", content = @Content),
             @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
-            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         }
     )
     ResponseEntity<List<PersonDTO>> findAll();

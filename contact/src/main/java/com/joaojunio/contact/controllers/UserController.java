@@ -3,6 +3,7 @@ package com.joaojunio.contact.controllers;
 import com.joaojunio.contact.data.dto.UserDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.services.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,13 +15,18 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/user/v1")
+@Tag(name = "User", description = "Documentation of the User entity.")
 public class UserController implements com.joaojunio.contact.controllers.docs.UserControllerDocs {
 
     @Autowired
     private UserService service;
 
     @GetMapping(
-        produces = MediaType.APPLICATION_JSON_VALUE
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
     )
     @Override
     public ResponseEntity<List<UserDTO>> findAll() {
@@ -29,7 +35,11 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
 
     @GetMapping(
         value = "/{id}",
-        produces = MediaType.APPLICATION_JSON_VALUE
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
     )
     @Override
     public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
@@ -54,5 +64,25 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
                     "message", e.getMessage()
                 ));
         }
+    }
+
+    @PutMapping(
+        produces = MediaType.APPLICATION_JSON_VALUE,
+        consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Override
+    public ResponseEntity<UserDTO> update(UserDTO userDTO) {
+        return ResponseEntity.ok().body(service.update(userDTO));
+    }
+
+    @DeleteMapping(
+        value = "/{id}",
+        produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Override
+    public ResponseEntity<?> delete(Long id) {
+        service.delete(id);
+
+        return ResponseEntity.noContent().build();
     }
 }

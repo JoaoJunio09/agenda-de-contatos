@@ -39,11 +39,14 @@ public class UserService {
 
         logger.info("Find a User");
 
-        return parseObject(repository.findById(id), UserDTO.class);
+        var entity = repository.findById(id)
+            .orElseThrow(() -> new NotFoundException(("Not Found this ID : " + id)));
+
+        return parseObject(entity, UserDTO.class);
     }
 
     public UserDTO create(UserDTO userDTO) {
-        // Implementar:
+        // Implementar:s
         // não adicionar novos person com o mesmo cpf e rg;
         // não adicionar novos user com o mesmo email;
         // o cadastro e login serão únicos.
@@ -78,6 +81,21 @@ public class UserService {
 
         logger.info("Update a User");
 
-        return null;
+        var entity = repository.findById(userDTO.getId())
+            .orElseThrow(() -> new NotFoundException(("Not Found this ID : " + userDTO.getId())));
+        entity.setEmail(userDTO.getEmail());
+        entity.setPassword(userDTO.getPassword());
+
+        return parseObject(repository.save(entity), UserDTO.class);
+    }
+
+    public void delete(Long id) {
+
+        logger.info("Deleting one User");
+
+        var entity = repository.findById(id)
+            .orElseThrow(() -> new NotFoundException(("Not Found this ID : " + id)));
+
+        repository.delete(entity);
     }
 }
