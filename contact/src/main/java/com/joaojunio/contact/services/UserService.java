@@ -1,5 +1,6 @@
 package com.joaojunio.contact.services;
 
+import com.joaojunio.contact.controllers.UserController;
 import com.joaojunio.contact.data.dto.PersonDTO;
 import com.joaojunio.contact.data.dto.UserDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import static com.joaojunio.contact.mapper.ObjectMapper.parseListObjects;
 import static com.joaojunio.contact.mapper.ObjectMapper.parseObject;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import java.util.List;
 
@@ -32,7 +35,10 @@ public class UserService {
 
         logger.info("Finds All User");
 
-        return parseListObjects(repository.findAll(), UserDTO.class);
+        var list = parseListObjects(repository.findAll(), UserDTO.class);
+        list.forEach(this::addHateoasLinks);
+
+        return list;
     }
 
     public UserDTO findById(Long id) {
@@ -41,8 +47,11 @@ public class UserService {
 
         var entity = repository.findById(id)
             .orElseThrow(() -> new NotFoundException(("Not Found this ID : " + id)));
+        var dto = parseObject(entity, UserDTO.class);
 
-        return parseObject(entity, UserDTO.class);
+        addHateoasLinks(dto);
+
+        return dto;
     }
 
     public UserDTO create(UserDTO userDTO) {
@@ -74,7 +83,10 @@ public class UserService {
         user.setPassword(userDTO.getPassword());
         user.setPerson(person);
 
-        return parseObject(repository.save(user), UserDTO.class);
+        var dto = parseObject(repository.save(user), UserDTO.class);
+        addHateoasLinks(dto);
+
+        return dto;
     }
 
     public UserDTO update(UserDTO userDTO) {
@@ -86,7 +98,10 @@ public class UserService {
         entity.setEmail(userDTO.getEmail());
         entity.setPassword(userDTO.getPassword());
 
-        return parseObject(repository.save(entity), UserDTO.class);
+        var dto = parseObject(repository.save(entity), UserDTO.class);
+        addHateoasLinks(dto);
+
+        return dto;
     }
 
     public void delete(Long id) {
@@ -97,5 +112,13 @@ public class UserService {
             .orElseThrow(() -> new NotFoundException(("Not Found this ID : " + id)));
 
         repository.delete(entity);
+    }
+
+    private void addHateoasLinks(UserDTO dto) {
+        dto.add(linkTo(methodOn(UserController.class).findById(dto.getId())).withSelfRel().withType("GET"));
+        dto.add(linkTo(methodOn(UserController.class).findAll()).withRel("findAll").withType("GET"));
+        dto.add(linkTo(methodOn(UserController.class).create(dto)).withRel("create").withType("POST"));
+        dto.add(linkTo(methodOn(UserController.class).update(dto)).withRel("update").withType("UPDATE"));
+        dto.add(linkTo(methodOn(UserController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
     }
 }

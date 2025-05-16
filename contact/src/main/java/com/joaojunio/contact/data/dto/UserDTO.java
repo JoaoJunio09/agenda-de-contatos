@@ -2,10 +2,12 @@ package com.joaojunio.contact.data.dto;
 
 import com.joaojunio.contact.model.Person;
 import com.joaojunio.contact.model.User;
+import org.springframework.hateoas.RepresentationModel;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class UserDTO implements Serializable {
+public class UserDTO extends RepresentationModel<UserDTO> implements Serializable {
 
     private Long id;
     private String email;
