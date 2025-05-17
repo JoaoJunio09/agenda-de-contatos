@@ -20,7 +20,11 @@ public class PersonController implements PersonControllerDocs {
     private PersonService service;
 
     @GetMapping(
-        produces = MediaType.APPLICATION_JSON_VALUE
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
     )
     @Override
     public ResponseEntity<List<PersonDTO>> findAll() {
@@ -29,7 +33,11 @@ public class PersonController implements PersonControllerDocs {
 
     @GetMapping(
         value = "/{id}",
-        produces = MediaType.APPLICATION_JSON_VALUE
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
     )
     @Override
     public ResponseEntity<PersonDTO> findById(@PathVariable Long id) {
@@ -37,8 +45,16 @@ public class PersonController implements PersonControllerDocs {
     }
 
     @PostMapping(
-        produces = MediaType.APPLICATION_JSON_VALUE,
-        consumes = MediaType.APPLICATION_JSON_VALUE
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        },
+        consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
     )
     @Override
     public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO personDTO) {
@@ -46,8 +62,16 @@ public class PersonController implements PersonControllerDocs {
     }
 
     @PutMapping(
-        produces = MediaType.APPLICATION_JSON_VALUE,
-        consumes = MediaType.APPLICATION_JSON_VALUE
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        },
+        consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
     )
     @Override
     public ResponseEntity<PersonDTO> update(PersonDTO personDTO) {

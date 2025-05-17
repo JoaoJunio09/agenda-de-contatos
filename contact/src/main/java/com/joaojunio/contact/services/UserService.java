@@ -1,5 +1,6 @@
 package com.joaojunio.contact.services;
 
+import com.joaojunio.contact.controllers.PersonController;
 import com.joaojunio.contact.controllers.UserController;
 import com.joaojunio.contact.data.dto.PersonDTO;
 import com.joaojunio.contact.data.dto.UserDTO;
@@ -118,7 +119,15 @@ public class UserService {
         dto.add(linkTo(methodOn(UserController.class).findById(dto.getId())).withSelfRel().withType("GET"));
         dto.add(linkTo(methodOn(UserController.class).findAll()).withRel("findAll").withType("GET"));
         dto.add(linkTo(methodOn(UserController.class).create(dto)).withRel("create").withType("POST"));
-        dto.add(linkTo(methodOn(UserController.class).update(dto)).withRel("update").withType("UPDATE"));
+        dto.add(linkTo(methodOn(UserController.class).update(dto)).withRel("update").withType("PUT"));
         dto.add(linkTo(methodOn(UserController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
+
+        if (dto.getPerson() != null) {
+            dto.getPerson().add(linkTo(methodOn(PersonController.class).findById(dto.getPerson().getId())).withSelfRel().withType("GET"));
+            dto.getPerson().add(linkTo(methodOn(PersonController.class).findAll()).withRel("findAll").withType("GET"));
+            dto.getPerson().add(linkTo(methodOn(PersonController.class).create(dto.getPerson())).withRel("create").withType("POST"));
+            dto.getPerson().add(linkTo(methodOn(PersonController.class).update(dto.getPerson())).withRel("update").withType("PUT"));
+            dto.getPerson().add(linkTo(methodOn(PersonController.class).delete(dto.getPerson().getId())).withRel("delete").withType("DELETE"));
+        }
     }
 }

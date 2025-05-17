@@ -1,6 +1,5 @@
 package com.joaojunio.contact.data.dto;
 
-import com.joaojunio.contact.model.Person;
 import com.joaojunio.contact.model.User;
 import org.springframework.hateoas.RepresentationModel;
 
