@@ -46,7 +46,6 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         return ResponseEntity.ok().body(service.findById(id));
     }
 
-    @CrossOrigin("http://localhost:5050")
     @PostMapping(
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE
