@@ -1,7 +1,7 @@
-package PACKAGE_NAME;
+package com.joaojunio.contact.exceptions;
 
 public class DataIsNullException extends RuntimeException {
-  public DataIsNullException(String message) {
-    super(message);
-  }
+    public DataIsNullException(String message) {
+        super(message);
+    }
 }

@@ -2,11 +2,14 @@ package com.joaojunio.contact.controllers.docs;
 
 import com.joaojunio.contact.data.dto.PersonDTO;
 import com.joaojunio.contact.data.dto.UserDTO;
+import com.joaojunio.contact.model.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.coyote.Response;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -74,12 +77,12 @@ public interface UserControllerDocs {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         }
     )
-    ResponseEntity<?> create(@RequestBody UserDTO userDTO);
+    ResponseEntity<?> create(@RequestBody UserDTO userDTO, HttpServletRequest request);
 
     @Operation(
         tags = {"User"},
-        summary = "Updating one User entity",
-        description = "Updating one User entity",
+        summary = "Updating one User entity.",
+        description = "Updating one User entity.",
         responses = {
             @ApiResponse(
                 description = "Success",

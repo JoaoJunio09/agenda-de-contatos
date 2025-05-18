@@ -63,6 +63,7 @@ buttonNextPage.addEventListener("click", () => {
         processData();
 
         if (processPage3) {
+          console.log(getPerson());
           handleUserRegistration(getPerson());
         }
   

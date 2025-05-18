@@ -1,5 +1,8 @@
 package com.joaojunio.contact.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.joaojunio.contact.model.enums.UserStatus;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -19,17 +22,26 @@ public class User implements Serializable {
     @Column(name = "password", length = 20, nullable = false)
     private String password;
 
+    @Column(name = "status", nullable = false)
+    private Integer status = UserStatus.ACTIVE.getCode();
+
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "person_id", referencedColumnName = "id", nullable = false)
     private Person person;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "record_history_id", referencedColumnName = "id")
+    private RecordHistory recordHistory;
+
     public User() {}
 
-    public User(Long id, String email, String password, Person person) {
+    public User(Long id, String email, String password, Person person, RecordHistory recordHistory) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.person = person;
+        setUserStatus(UserStatus.ACTIVE);
+        this.recordHistory = recordHistory;
     }
 
     public Long getId() {
@@ -62,6 +74,28 @@ public class User implements Serializable {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public UserStatus getUserStatus() {
+        if (status == null) return null;
+        return UserStatus.fromCode(status);
+    }
+
+    public void setUserStatus(UserStatus status) {
+        if (status == null) {
+            this.status = null;
+        } else {
+            this.status = status.getCode();
+        }
+    }
+
+
+    public RecordHistory getRecordHistory() {
+        return recordHistory;
+    }
+
+    public void setRecordHistory(RecordHistory recordHistory) {
+        this.recordHistory = recordHistory;
     }
 
     @Override

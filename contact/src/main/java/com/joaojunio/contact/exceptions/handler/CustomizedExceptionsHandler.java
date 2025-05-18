@@ -1,6 +1,7 @@
 package com.joaojunio.contact.exceptions.handler;
 
 import com.fasterxml.jackson.databind.DatabindException;
+import com.joaojunio.contact.exceptions.DataIsNullException;
 import com.joaojunio.contact.exceptions.ExceptionResponse;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,16 @@ public class CustomizedExceptionsHandler {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ExceptionResponse> handleNotFoundException(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+            ex.getMessage(),
+            request.getDescription(false),
+            new Date()
+        );
+        return ResponseEntity.ok(exceptionResponse);
+    }
+
+    @ExceptionHandler(DataIsNullException.class)
+    public ResponseEntity<ExceptionResponse> handleDataIsNullException(Exception ex, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(
             ex.getMessage(),
             request.getDescription(false),

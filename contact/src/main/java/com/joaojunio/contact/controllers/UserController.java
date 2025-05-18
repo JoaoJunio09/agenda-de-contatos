@@ -4,6 +4,7 @@ import com.joaojunio.contact.data.dto.UserDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -51,9 +52,9 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @Override
-    public ResponseEntity<?> create(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<?> create(@RequestBody UserDTO userDTO, HttpServletRequest request) {
         try {
-            return ResponseEntity.ok().body(service.create(userDTO));
+            return ResponseEntity.ok().body(service.create(userDTO, request));
         }
         catch (NotFoundException e) {
             return ResponseEntity
@@ -70,7 +71,7 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @Override
-    public ResponseEntity<UserDTO> update(UserDTO userDTO) {
+    public ResponseEntity<UserDTO> update(@RequestBody UserDTO userDTO) {
         return ResponseEntity.ok().body(service.update(userDTO));
     }
 
@@ -79,7 +80,7 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     @Override
-    public ResponseEntity<?> delete(Long id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         service.delete(id);
 
         return ResponseEntity.noContent().build();
