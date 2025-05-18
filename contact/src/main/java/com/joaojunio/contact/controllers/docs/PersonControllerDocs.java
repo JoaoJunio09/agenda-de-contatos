@@ -1,6 +1,7 @@
 package com.joaojunio.contact.controllers.docs;
 
 import com.joaojunio.contact.data.dto.PersonDTO;
+import com.joaojunio.contact.data.dto.PersonResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -39,7 +40,7 @@ public interface PersonControllerDocs {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         }
     )
-    ResponseEntity<List<PersonDTO>> findAll();
+    ResponseEntity<List<PersonResponseDTO>> findAll();
 
     @Operation(
         tags = {"Person"},
@@ -58,7 +59,7 @@ public interface PersonControllerDocs {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content),
         }
     )
-    ResponseEntity<PersonDTO> findById(@PathVariable Long id);
+    ResponseEntity<PersonResponseDTO> findById(@PathVariable Long id);
 
     @Operation(
         tags = {"Person"},
@@ -76,7 +77,7 @@ public interface PersonControllerDocs {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         }
     )
-    ResponseEntity<PersonDTO> create(@RequestBody PersonDTO personDTO);
+    ResponseEntity<PersonResponseDTO> create(@RequestBody PersonDTO personDTO);
 
     @Operation(
         tags = {"Person"},
@@ -94,7 +95,7 @@ public interface PersonControllerDocs {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         }
     )
-    ResponseEntity<PersonDTO> update(@RequestBody PersonDTO personDTO);
+    ResponseEntity<PersonResponseDTO> update(@RequestBody PersonDTO personDTO);
 
     @Operation(
         tags = {"Person"},

@@ -1,14 +1,12 @@
 package com.joaojunio.contact.data.dto;
 
-import com.joaojunio.contact.model.Person;
-import jakarta.persistence.Column;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class PersonDTO implements Serializable {
+public class PersonResponseDTO extends RepresentationModel<PersonResponseDTO> implements Serializable {
 
     private Long id;
     private String firstName;
@@ -16,20 +14,14 @@ public class PersonDTO implements Serializable {
     private Date birthDate;
     private String email;
     private String phone;
-    private String address;
-    private String complement;
-    private Integer number;
     private String nationality;
     private String gender;
-    private String cpf;
-    private String rg;
 
-    public PersonDTO() {}
+    public PersonResponseDTO() {}
 
-    public PersonDTO(
+    public PersonResponseDTO(
             Long id, String firstName, String lastName, Date birthDate,
-            String email, String phone, String address, String complement,
-            String gender, Integer number, String nationality, String cpf, String rg
+            String email, String phone,String gender, String nationality
     ) {
         this.id = id;
         this.firstName = firstName;
@@ -37,13 +29,8 @@ public class PersonDTO implements Serializable {
         this.birthDate = birthDate;
         this.email = email;
         this.phone = phone;
-        this.address = address;
-        this.complement = complement;
         this.gender = gender;
-        this.number = number;
         this.nationality = nationality;
-        this.cpf = cpf;
-        this.rg = rg;
     }
 
     public Long getId() {
@@ -94,30 +81,6 @@ public class PersonDTO implements Serializable {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getComplement() {
-        return complement;
-    }
-
-    public void setComplement(String complement) {
-        this.complement = complement;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
     public String getNationality() {
         return nationality;
     }
@@ -132,22 +95,6 @@ public class PersonDTO implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
     }
 
     @Override

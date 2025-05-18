@@ -1,35 +1,22 @@
-package com.joaojunio.contact.model;
+package com.joaojunio.contact.data.dto;
 
-import jakarta.persistence.*;
+import com.joaojunio.contact.model.RecordHistory;
+
 import java.util.Date;
 import java.util.Objects;
 
-@Entity
-@Table(name = "tb_record_history")
-public class RecordHistory {
+public class RecordHistoryDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "ip_address")
     private String ip;
-
-    @Column(name = "browser")
     private String browser;
-
-    @Column(name = "operating_system")
     private String operatingSystem;
-
-    @Column(name = "datetime_access")
     private Date datetimeAccess;
-
-    @Column(name = "datetime_registration", nullable = false)
     private Date datetimeRegistration;
 
-    public RecordHistory() {}
+    public RecordHistoryDTO() {}
 
-    public RecordHistory(String ip, String browser, String operatingSystem, Date datetimeAccess, Date datetimeRegistration) {
+    public RecordHistoryDTO(String ip, String browser, String operatingSystem, Date datetimeAccess, Date datetimeRegistration) {
         this.ip = ip;
         this.browser = browser;
         this.operatingSystem = operatingSystem;

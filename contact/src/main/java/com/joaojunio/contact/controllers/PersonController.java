@@ -2,9 +2,11 @@ package com.joaojunio.contact.controllers;
 
 import com.joaojunio.contact.controllers.docs.PersonControllerDocs;
 import com.joaojunio.contact.data.dto.PersonDTO;
+import com.joaojunio.contact.data.dto.PersonResponseDTO;
 import com.joaojunio.contact.services.PersonService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +29,7 @@ public class PersonController implements PersonControllerDocs {
         }
     )
     @Override
-    public ResponseEntity<List<PersonDTO>> findAll() {
+    public ResponseEntity<List<PersonResponseDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
@@ -40,7 +42,7 @@ public class PersonController implements PersonControllerDocs {
         }
     )
     @Override
-    public ResponseEntity<PersonDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<PersonResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 
@@ -57,7 +59,7 @@ public class PersonController implements PersonControllerDocs {
         }
     )
     @Override
-    public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO personDTO) {
+    public ResponseEntity<PersonResponseDTO> create(@RequestBody PersonDTO personDTO) {
         return ResponseEntity.ok().body(service.create(personDTO));
     }
 
@@ -74,7 +76,7 @@ public class PersonController implements PersonControllerDocs {
         }
     )
     @Override
-    public ResponseEntity<PersonDTO> update(PersonDTO personDTO) {
+    public ResponseEntity<PersonResponseDTO> update(PersonDTO personDTO) {
         return ResponseEntity.ok().body(service.update(personDTO));
     }
 
@@ -86,5 +88,4 @@ public class PersonController implements PersonControllerDocs {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 }

@@ -1,7 +1,9 @@
 package com.joaojunio.contact.controllers;
 
 import com.joaojunio.contact.data.dto.UserDTO;
+import com.joaojunio.contact.data.dto.UserResponseDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
+import com.joaojunio.contact.exceptions.ObjectAlreadyExistsException;
 import com.joaojunio.contact.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,7 +32,7 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         }
     )
     @Override
-    public ResponseEntity<List<UserDTO>> findAll() {
+    public ResponseEntity<List<UserResponseDTO>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
@@ -43,13 +45,21 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         }
     )
     @Override
-    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 
     @PostMapping(
-        produces = MediaType.APPLICATION_JSON_VALUE,
-        consumes = MediaType.APPLICATION_JSON_VALUE
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        },
+        consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
     )
     @Override
     public ResponseEntity<?> create(@RequestBody UserDTO userDTO, HttpServletRequest request) {
@@ -64,20 +74,35 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
                     "message", e.getMessage()
                 ));
         }
+        catch (ObjectAlreadyExistsException e) {
+            return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(Map.of(
+                    "title", "Não foi possível cadastrar.",
+                    "message", e.getMessage()
+                ));
+        }
     }
 
     @PutMapping(
-        produces = MediaType.APPLICATION_JSON_VALUE,
-        consumes = MediaType.APPLICATION_JSON_VALUE
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        },
+        consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
     )
     @Override
-    public ResponseEntity<UserDTO> update(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserResponseDTO> update(@RequestBody UserDTO userDTO) {
         return ResponseEntity.ok().body(service.update(userDTO));
     }
 
     @DeleteMapping(
-        value = "/{id}",
-        produces = MediaType.APPLICATION_JSON_VALUE
+        value = "/{id}"
     )
     @Override
     public ResponseEntity<?> delete(@PathVariable Long id) {

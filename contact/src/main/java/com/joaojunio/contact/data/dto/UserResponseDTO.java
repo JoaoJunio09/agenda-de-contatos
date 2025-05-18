@@ -1,29 +1,27 @@
 package com.joaojunio.contact.data.dto;
 
-import com.joaojunio.contact.model.RecordHistory;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.joaojunio.contact.model.User;
 import com.joaojunio.contact.model.enums.UserStatus;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class UserDTO implements Serializable {
+public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implements Serializable {
 
     private Long id;
     private String email;
-    private String password;
     private Integer status;
-    private PersonDTO person;
-    private RecordHistory recordHistory;
+    private PersonResponseDTO person;
 
-    public UserDTO() {}
+    public UserResponseDTO() {}
 
-    public UserDTO(Long id, String email, String password, PersonDTO person, RecordHistory recordHistory) {
+    public UserResponseDTO(Long id, String email, PersonResponseDTO person) {
         this.id = id;
         this.email = email;
-        this.password = password;
-        this.person = person;
         setUserStatus(UserStatus.ACTIVE);
-        this.recordHistory = recordHistory;
+        this.person = person;
     }
 
     public Long getId() {
@@ -42,22 +40,15 @@ public class UserDTO implements Serializable {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public PersonDTO getPerson() {
+    public PersonResponseDTO getPerson() {
         return person;
     }
 
-    public void setPerson(PersonDTO person) {
+    public void setPerson(PersonResponseDTO person) {
         this.person = person;
     }
 
+    @JsonProperty("userStatus")
     public UserStatus getUserStatus() {
         if (status == null) return null;
         return UserStatus.fromCode(status);
@@ -71,18 +62,10 @@ public class UserDTO implements Serializable {
         }
     }
 
-    public RecordHistory getRecordHistory() {
-        return recordHistory;
-    }
-
-    public void setRecordHistory(RecordHistory recordHistory) {
-        this.recordHistory = recordHistory;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        UserDTO user = (UserDTO) o;
+        User user = (User) o;
         return Objects.equals(getId(), user.getId());
     }
 

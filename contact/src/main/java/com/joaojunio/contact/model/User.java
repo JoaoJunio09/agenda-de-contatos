@@ -1,7 +1,5 @@
 package com.joaojunio.contact.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.joaojunio.contact.model.enums.UserStatus;
 import jakarta.persistence.*;
 
@@ -88,7 +86,6 @@ public class User implements Serializable {
             this.status = status.getCode();
         }
     }
-
 
     public RecordHistory getRecordHistory() {
         return recordHistory;
