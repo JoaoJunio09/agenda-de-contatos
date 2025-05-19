@@ -6,18 +6,18 @@ import com.joaojunio.contact.model.enums.UserStatus;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class UserDTO implements Serializable {
+public class UserRequestDTO implements Serializable {
 
     private Long id;
     private String email;
     private String password;
     private Integer status;
-    private PersonDTO person;
+    private PersonRequestDTO person;
     private RecordHistory recordHistory;
 
-    public UserDTO() {}
+    public UserRequestDTO() {}
 
-    public UserDTO(Long id, String email, String password, PersonDTO person, RecordHistory recordHistory) {
+    public UserRequestDTO(Long id, String email, String password, PersonRequestDTO person, RecordHistory recordHistory) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -50,11 +50,11 @@ public class UserDTO implements Serializable {
         this.password = password;
     }
 
-    public PersonDTO getPerson() {
+    public PersonRequestDTO getPerson() {
         return person;
     }
 
-    public void setPerson(PersonDTO person) {
+    public void setPerson(PersonRequestDTO person) {
         this.person = person;
     }
 
@@ -82,7 +82,7 @@ public class UserDTO implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        UserDTO user = (UserDTO) o;
+        UserRequestDTO user = (UserRequestDTO) o;
         return Objects.equals(getId(), user.getId());
     }
 

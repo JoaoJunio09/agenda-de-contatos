@@ -1,12 +1,14 @@
 package com.joaojunio.contact.data.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.joaojunio.contact.model.User;
 import com.joaojunio.contact.model.enums.UserStatus;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implements Serializable {
 
@@ -14,6 +16,7 @@ public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implem
     private String email;
     private Integer status;
     private PersonResponseDTO person;
+    Set<ContactResponseDTO> contacts = new HashSet<>();
 
     public UserResponseDTO() {}
 
@@ -62,10 +65,19 @@ public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implem
         }
     }
 
+    @JsonProperty("contacts")
+    public Set<ContactResponseDTO> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Set<ContactResponseDTO> contacts) {
+        this.contacts = contacts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        UserResponseDTO user = (UserResponseDTO) o;
         return Objects.equals(getId(), user.getId());
     }
 

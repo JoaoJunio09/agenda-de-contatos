@@ -1,6 +1,6 @@
 package com.joaojunio.contact.controllers.docs;
 
-import com.joaojunio.contact.data.dto.UserDTO;
+import com.joaojunio.contact.data.dto.UserRequestDTO;
 import com.joaojunio.contact.data.dto.UserResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -75,7 +75,7 @@ public interface UserControllerDocs {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         }
     )
-    ResponseEntity<?> create(@RequestBody UserDTO userDTO, HttpServletRequest request);
+    ResponseEntity<?> create(@RequestBody UserRequestDTO userDTO, HttpServletRequest request);
 
     @Operation(
         tags = {"User"},
@@ -93,7 +93,7 @@ public interface UserControllerDocs {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         }
     )
-    ResponseEntity<UserResponseDTO> update(@RequestBody UserDTO userDTO);
+    ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO userDTO);
 
     @Operation(
         tags = {"User"},

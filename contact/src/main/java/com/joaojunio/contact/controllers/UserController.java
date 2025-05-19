@@ -1,6 +1,6 @@
 package com.joaojunio.contact.controllers;
 
-import com.joaojunio.contact.data.dto.UserDTO;
+import com.joaojunio.contact.data.dto.UserRequestDTO;
 import com.joaojunio.contact.data.dto.UserResponseDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.exceptions.ObjectAlreadyExistsException;
@@ -62,7 +62,7 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         }
     )
     @Override
-    public ResponseEntity<?> create(@RequestBody UserDTO userDTO, HttpServletRequest request) {
+    public ResponseEntity<?> create(@RequestBody UserRequestDTO userDTO, HttpServletRequest request) {
         try {
             return ResponseEntity.ok().body(service.create(userDTO, request));
         }
@@ -97,7 +97,7 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         }
     )
     @Override
-    public ResponseEntity<UserResponseDTO> update(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO userDTO) {
         return ResponseEntity.ok().body(service.update(userDTO));
     }
 

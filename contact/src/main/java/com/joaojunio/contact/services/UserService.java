@@ -2,8 +2,8 @@ package com.joaojunio.contact.services;
 
 import com.joaojunio.contact.controllers.PersonController;
 import com.joaojunio.contact.controllers.UserController;
-import com.joaojunio.contact.data.dto.PersonDTO;
-import com.joaojunio.contact.data.dto.UserDTO;
+import com.joaojunio.contact.data.dto.PersonRequestDTO;
+import com.joaojunio.contact.data.dto.UserRequestDTO;
 import com.joaojunio.contact.data.dto.UserResponseDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.exceptions.ObjectAlreadyExistsException;
@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.joaojunio.contact.mapper.ObjectMapper.parseListObjects;
 import static com.joaojunio.contact.mapper.ObjectMapper.parseObject;
@@ -39,6 +40,7 @@ public class UserService {
     @Autowired
     PersonRepository personRepository;
 
+    @Transactional
     public List<UserResponseDTO> findAll() {
 
         logger.info("Finds All User");
@@ -49,6 +51,7 @@ public class UserService {
         return list;
     }
 
+    @Transactional
     public UserResponseDTO findById(Long id) {
 
         logger.info("Find a User");
@@ -61,7 +64,8 @@ public class UserService {
         return dto;
     }
 
-    public UserResponseDTO create(UserDTO userDTO, HttpServletRequest request) {
+    @Transactional
+    public UserResponseDTO create(UserRequestDTO userDTO, HttpServletRequest request) {
 
         logger.info("Create a new User");
 
@@ -80,7 +84,7 @@ public class UserService {
             }
         }
 
-        PersonDTO personDTO = userDTO.getPerson();
+        PersonRequestDTO personDTO = userDTO.getPerson();
         Person person;
 
         if (personDTO.getId() != null) {
@@ -109,7 +113,8 @@ public class UserService {
         return dto;
     }
 
-    public UserResponseDTO update(UserDTO userDTO) {
+    @Transactional
+    public UserResponseDTO update(UserRequestDTO userDTO) {
 
         logger.info("Update a User");
 

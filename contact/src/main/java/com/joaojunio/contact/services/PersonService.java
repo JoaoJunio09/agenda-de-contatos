@@ -1,7 +1,7 @@
 package com.joaojunio.contact.services;
 
 import com.joaojunio.contact.controllers.PersonController;
-import com.joaojunio.contact.data.dto.PersonDTO;
+import com.joaojunio.contact.data.dto.PersonRequestDTO;
 import com.joaojunio.contact.data.dto.PersonResponseDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.model.Person;
@@ -49,7 +49,7 @@ public class PersonService {
         return dto;
     }
 
-    public PersonResponseDTO create(PersonDTO personDTO) {
+    public PersonResponseDTO create(PersonRequestDTO personDTO) {
         // antes de cadrastrar, o RG e CPF não podem ser iguais: concertar isso depois.
 
         logger.info("Create a new Person");
@@ -65,7 +65,7 @@ public class PersonService {
         return dto;
     }
 
-    public PersonResponseDTO update(PersonDTO personDTO) {
+    public PersonResponseDTO update(PersonRequestDTO personDTO) {
 
         logger.info("Update a Person");
 

@@ -100,7 +100,7 @@ public class PersonResponseDTO extends RepresentationModel<PersonResponseDTO> im
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        PersonDTO person = (PersonDTO) o;
+        PersonRequestDTO person = (PersonRequestDTO) o;
         return Objects.equals(getId(), person.getId());
     }
 

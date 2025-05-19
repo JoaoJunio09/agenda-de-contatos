@@ -1,14 +1,10 @@
 package com.joaojunio.contact.data.dto;
 
-import com.joaojunio.contact.model.Person;
-import jakarta.persistence.Column;
-import org.springframework.hateoas.RepresentationModel;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class PersonDTO implements Serializable {
+public class PersonRequestDTO implements Serializable {
 
     private Long id;
     private String firstName;
@@ -24,9 +20,9 @@ public class PersonDTO implements Serializable {
     private String cpf;
     private String rg;
 
-    public PersonDTO() {}
+    public PersonRequestDTO() {}
 
-    public PersonDTO(
+    public PersonRequestDTO(
             Long id, String firstName, String lastName, Date birthDate,
             String email, String phone, String address, String complement,
             String gender, Integer number, String nationality, String cpf, String rg
@@ -153,7 +149,7 @@ public class PersonDTO implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        PersonDTO person = (PersonDTO) o;
+        PersonRequestDTO person = (PersonRequestDTO) o;
         return Objects.equals(getId(), person.getId());
     }
 

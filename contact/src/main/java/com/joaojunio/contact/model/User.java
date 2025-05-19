@@ -1,10 +1,13 @@
 package com.joaojunio.contact.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.joaojunio.contact.model.enums.UserStatus;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_user")
@@ -30,6 +33,9 @@ public class User implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "record_history_id", referencedColumnName = "id")
     private RecordHistory recordHistory;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    Set<Contact> contacts = new HashSet<>();
 
     public User() {}
 
@@ -93,6 +99,14 @@ public class User implements Serializable {
 
     public void setRecordHistory(RecordHistory recordHistory) {
         this.recordHistory = recordHistory;
+    }
+
+    public Set<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Set<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     @Override
