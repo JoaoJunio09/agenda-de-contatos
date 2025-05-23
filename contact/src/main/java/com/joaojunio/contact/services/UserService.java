@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +41,7 @@ public class UserService {
     @Autowired
     PersonRepository personRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<UserResponseDTO> findAll() {
 
         logger.info("Finds All User");
@@ -51,7 +52,7 @@ public class UserService {
         return list;
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public UserResponseDTO findById(Long id) {
 
         logger.info("Find a User");
@@ -64,7 +65,6 @@ public class UserService {
         return dto;
     }
 
-    @Transactional
     public UserResponseDTO create(UserRequestDTO userDTO, HttpServletRequest request) {
 
         logger.info("Create a new User");

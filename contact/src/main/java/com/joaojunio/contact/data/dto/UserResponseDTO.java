@@ -1,6 +1,5 @@
 package com.joaojunio.contact.data.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.joaojunio.contact.model.enums.UserStatus;
 import org.springframework.hateoas.RepresentationModel;
@@ -65,7 +64,6 @@ public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implem
         }
     }
 
-    @JsonProperty("contacts")
     public Set<ContactResponseDTO> getContacts() {
         return contacts;
     }

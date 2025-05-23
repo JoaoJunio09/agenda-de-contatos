@@ -1,6 +1,5 @@
 package com.joaojunio.contact.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.joaojunio.contact.model.enums.UserStatus;
 import jakarta.persistence.*;
 
