@@ -1,5 +1,7 @@
 package com.joaojunio.contact.data.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,16 +11,16 @@ public class ContactResponseDTO implements Serializable {
     private String title;
     private String description;
     private String contact;
-    private Long userId;
+    private UserResponseDTO user;
 
     public ContactResponseDTO() {}
 
-    public ContactResponseDTO(Long id, String title, String description, String contact, Long userId) {
+    public ContactResponseDTO(Long id, String title, String description, String contact, UserResponseDTO user) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.contact = contact;
-        this.userId = userId;
+        this.user = user;
     }
 
     public Long getId() {
@@ -53,12 +55,13 @@ public class ContactResponseDTO implements Serializable {
         this.contact = contact;
     }
 
-    public Long getUserId() {
-        return userId;
+    @JsonIgnore
+    public UserResponseDTO getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserResponseDTO user) {
+        this.user = user;
     }
 
     @Override

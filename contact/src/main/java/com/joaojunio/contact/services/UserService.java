@@ -134,9 +134,12 @@ public class UserService {
         logger.info("Deleting one User");
 
         var entity = repository.findById(id)
-            .orElseThrow(() -> new NotFoundException(("Not Found this ID : " + id)));
+            .orElseThrow(() -> new NotFoundException("Not Found this ID : " + id));
+        var person = personRepository.findById(entity.getPerson().getId())
+            .orElseThrow(() -> new NotFoundException("Not Found this ID : " + id));
 
         repository.delete(entity);
+        personRepository.delete(person);
     }
 
     private void addHateoasLinks(UserResponseDTO dto) {
@@ -157,6 +160,7 @@ public class UserService {
 
     private RecordHistory addUserAccessData(HttpServletRequest request) {
         RecordHistory recordHistory = new RecordHistory();
+        recordHistory.setIp(request.getRemoteAddr());
         recordHistory.setOperatingSystem(System.getProperty("os.name"));
         recordHistory.setBrowser(identifyBrowser(request.getHeader("User-Agent")));
         recordHistory.setDatetimeRegistration(new Date());

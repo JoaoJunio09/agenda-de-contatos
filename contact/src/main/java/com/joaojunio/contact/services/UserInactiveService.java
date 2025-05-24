@@ -25,7 +25,10 @@ public class UserInactiveService {
 
     @Scheduled(cron = "0 0 0 * * *")
     public void inactivateInactiveUsers() {
+
         var list = repository.findAll();
+
+        logger.info("Buscando usuários no banco");
         
         list.stream()
             .filter(this::isInactiveFor30Days)
@@ -33,6 +36,8 @@ public class UserInactiveService {
                 repository.inactiveUserStatus(UserStatus.INACTIVE.getCode(), user.getId());
                 System.out.println("Imprimir relatório de usuários INATIVADOS.");
             });
+
+        logger.info("Usuários com acesso à mais de 30 dias INATIVADOS");
     }
 
     private boolean isInactiveFor30Days(User user) {
