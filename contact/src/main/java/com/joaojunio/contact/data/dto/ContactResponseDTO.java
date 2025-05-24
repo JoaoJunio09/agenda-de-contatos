@@ -1,11 +1,12 @@
 package com.joaojunio.contact.data.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class ContactResponseDTO implements Serializable {
+public class ContactResponseDTO extends RepresentationModel<ContactResponseDTO> implements Serializable {
 
     private Long id;
     private String title;
