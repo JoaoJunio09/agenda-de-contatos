@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../styles/global.css">
+	<link rel="stylesheet" href="../styles/index.css">
+	<link rel="stylesheet" href="../styles/table.css">
+	<title>Contactify | Gerenciar Usuários</title>
+</head>
+<body>
+	<div id="fade"></div>
+
+	<div id="header"></div>
+
+	<main class="main">
+		<section class="section-search-contact">
+			<div class="box-title-img">
+				<h1>Gerenciar Usuários</h1>
+			</div>
+		</section>
+
+		<section class="section-table">
+			<table class="table">
+				<thead align="left">
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>Status</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Bruna Oliveira</td>
+						<td>brunaoliver@gmail.com</td>
+						<td>
+							<div class="atividade-usuario">Ativo</div>
+						</td>
+						<td>
+							<div>
+								<button class="btn-open-modal-edit-user"><img src="../assets/img/editar (3).png" alt=""></button>
+								<button><img src="../assets/img/excluir (3).png" alt=""></button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>João Junio</td>
+						<td>joaojunio818@gmail.com</td>
+						<td>
+							<div class="atividade-usuario">Inativo</div>
+						</td>
+						<td>
+							<div>
+								<button><img src="../assets/img/editar (3).png" alt=""></button>
+								<button><img src="../assets/img/excluir (3).png" alt=""></button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>José Ricardo</td>
+						<td>ricardojose@gmail.com</td>
+						<td>
+							<div class="atividade-usuario">Ativo</div>
+						</td>
+						<td>
+							<div>
+								<button><img src="../assets/img/editar (3).png" alt=""></button>
+								<button><img src="../assets/img/excluir (3).png" alt=""></button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>José Ricardo</td>
+						<td>ricardojose@gmail.com</td>
+						<td>
+							<div class="atividade-usuario">Ativo</div>
+						</td>
+						<td>
+							<div>
+								<button><img src="../assets/img/editar (3).png" alt=""></button>
+								<button><img src="../assets/img/excluir (3).png" alt=""></button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>José Ricardo</td>
+						<td>ricardojose@gmail.com</td>
+						<td>
+							<div class="atividade-usuario">Ativo</div>
+						</td>
+						<td>
+							<div>
+								<button><img src="../assets/img/editar (3).png" alt=""></button>
+								<button><img src="../assets/img/excluir (3).png" alt=""></button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>José Ricardo</td>
+						<td>ricardojose@gmail.com</td>
+						<td>
+							<div class="atividade-usuario">Ativo</div>
+						</td>
+						<td>
+							<div>
+								<button><img src="../assets/img/editar (3).png" alt=""></button>
+								<button><img src="../assets/img/excluir (3).png" alt=""></button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>José Ricardo</td>
+						<td>ricardojose@gmail.com</td>
+						<td>
+							<div class="atividade-usuario">Ativo</div>
+						</td>
+						<td>
+							<div>
+								<button><img src="../assets/img/editar (3).png" alt=""></button>
+								<button><img src="../assets/img/excluir (3).png" alt=""></button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="card-mobile">
+				<div class="box-search search-mobile">
+					<img src="../assets/img/pesquisa.png" alt="">
+					<input type="text" placeholder="Buscar contatos">
+				</div>
+
+				<div class="card-mobile-content">
+					<div class="card-body">
+						<div class="img-title">
+							<div class="div-img-title">
+								<img src="../assets/img/homem (1).png" alt="">
+							</div>
+							<div>
+								<h1>João Junio</h1>
+								<p>joaojunio818@gmail.com</p>
+							</div>
+						</div>
+						<div class="active-status">
+							<div class="box-status">								
+								<p>Ativo</p>
+							</div>
+							<div class="box-buttons">
+								<button class="btn-open-modal-edit-user">
+									<img src="../assets/img/editar (3).png" alt="">
+									Editar
+								</button>
+								<button>
+									<img src="../assets/img/excluir (3).png" alt="">
+									Excluir
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<div class="modal-edit-user">
+		<div class="modal-edit-user-header">
+			<h2>Editar Usuário</h2>
+
+			<img src="../assets/img/remover.png" alt="" class="btn-close-modal-edit-user">
+		</div>
+	</div>
+	
+	<script type="module" src="../controllers/menuLoader.js"></script>
+	<script type="module" src="../controllers/userManagementController.js"></script>
+</body>
+</html>
