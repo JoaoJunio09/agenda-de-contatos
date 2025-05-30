@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teste Fade e Modal</title>
+<style>
+  #fade {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(0,0,0,0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 1001;
+  }
+  .show-fade {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal {
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1c163e;
+    color: white;
+    width: 300px; height: 200px;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 1002;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .show-modal {
+    opacity: 1;
+    pointer-events: all;
+  }
+</style>
+</head>
+<body>
+
+<button id="openBtn">Abrir Modal</button>
+
+<div id="fade"></div>
+
+<div class="modal" id="modal">
+  <h2>Modal Aqui</h2>
+  <button id="closeBtn">Fechar</button>
+</div>
+
+<script>
+  const fade = document.getElementById('fade');
+  const modal = document.getElementById('modal');
+  const openBtn = document.getElementById('openBtn');
+  const closeBtn = document.getElementById('closeBtn');
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('show-modal');
+    fade.classList.add('show-fade');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('show-modal');
+    fade.classList.remove('show-fade');
+  });
+
+  fade.addEventListener('click', () => {
+    modal.classList.remove('show-modal');
+    fade.classList.remove('show-fade');
+  });
+</script>
+
+</body>
+</html>
