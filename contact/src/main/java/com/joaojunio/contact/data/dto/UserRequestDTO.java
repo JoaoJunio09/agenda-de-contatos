@@ -1,6 +1,7 @@
 package com.joaojunio.contact.data.dto;
 
 import com.joaojunio.contact.model.RecordHistory;
+import com.joaojunio.contact.model.enums.UserAdmin;
 import com.joaojunio.contact.model.enums.UserStatus;
 
 import java.io.Serializable;
@@ -12,17 +13,19 @@ public class UserRequestDTO implements Serializable {
     private String email;
     private String password;
     private Integer status;
+    private Integer admin = 1;
     private PersonRequestDTO person;
     private RecordHistory recordHistory;
 
     public UserRequestDTO() {}
 
-    public UserRequestDTO(Long id, String email, String password, PersonRequestDTO person, RecordHistory recordHistory) {
+    public UserRequestDTO(Long id, String email, String password, Integer code, PersonRequestDTO person, RecordHistory recordHistory) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.person = person;
         setUserStatus(UserStatus.ACTIVE);
+        setUserAdmin(code);
         this.recordHistory = recordHistory;
     }
 
@@ -69,6 +72,17 @@ public class UserRequestDTO implements Serializable {
         } else {
             this.status = status.getCode();
         }
+    }
+
+    public UserAdmin getUserAdmin() {
+        if (admin == null) return null;
+        return UserAdmin.fromCode(admin);
+    }
+
+    public void setUserAdmin(Integer code) {
+        UserAdmin admin = UserAdmin.fromCode(code);
+
+        this.admin = admin.getCode();
     }
 
     public RecordHistory getRecordHistory() {

@@ -1,7 +1,10 @@
 package com.joaojunio.contact.controllers;
 
+import com.joaojunio.contact.controllers.docs.UserControllerDocs;
+import com.joaojunio.contact.data.dto.UserDetailsDTO;
 import com.joaojunio.contact.data.dto.UserRequestDTO;
 import com.joaojunio.contact.data.dto.UserResponseDTO;
+import com.joaojunio.contact.data.dto.UserUpdateRequestDTO;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.exceptions.ObjectAlreadyExistsException;
 import com.joaojunio.contact.services.UserService;
@@ -19,7 +22,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/user/v1")
 @Tag(name = "User", description = "Documentation of the User entity.")
-public class UserController implements com.joaojunio.contact.controllers.docs.UserControllerDocs {
+public class UserController implements UserControllerDocs {
 
     @Autowired
     private UserService service;
@@ -47,6 +50,19 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
     @Override
     public ResponseEntity<UserResponseDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
+    }
+
+    @GetMapping(
+        value = "/{id}/details",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<UserDetailsDTO> detailsUser(@PathVariable Long id) {
+        return ResponseEntity.ok().body(service.detailsUser(id));
     }
 
     @PostMapping(
@@ -97,7 +113,7 @@ public class UserController implements com.joaojunio.contact.controllers.docs.Us
         }
     )
     @Override
-    public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO userDTO) {
+    public ResponseEntity<UserResponseDTO> update(@RequestBody UserUpdateRequestDTO userDTO) {
         return ResponseEntity.ok().body(service.update(userDTO));
     }
 

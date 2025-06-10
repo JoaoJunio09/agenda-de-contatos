@@ -2,9 +2,7 @@ package com.joaojunio.contact.services;
 
 import com.joaojunio.contact.controllers.PersonController;
 import com.joaojunio.contact.controllers.UserController;
-import com.joaojunio.contact.data.dto.PersonRequestDTO;
-import com.joaojunio.contact.data.dto.UserRequestDTO;
-import com.joaojunio.contact.data.dto.UserResponseDTO;
+import com.joaojunio.contact.data.dto.*;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.exceptions.ObjectAlreadyExistsException;
 import com.joaojunio.contact.exceptions.RequiredObjectIsNullException;
@@ -18,7 +16,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,6 +60,16 @@ public class UserService {
         addHateoasLinks(dto);
 
         return dto;
+    }
+
+    @Transactional(readOnly = true)
+    public UserDetailsDTO detailsUser(Long id) {
+
+        logger.info("Find a details User");
+
+        User entity = repository.findById(id)
+            .orElseThrow(() -> new NotFoundException(("Not Found this ID : " + id)));
+        return parseObject(entity, UserDetailsDTO.class);
     }
 
     public UserResponseDTO create(UserRequestDTO userDTO, HttpServletRequest request) {
@@ -114,7 +121,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponseDTO update(UserRequestDTO userDTO) {
+    public UserResponseDTO update(UserUpdateRequestDTO userDTO) {
 
         logger.info("Update a User");
 
@@ -122,6 +129,9 @@ public class UserService {
             .orElseThrow(() -> new NotFoundException(("Not Found this ID : " + userDTO.getId())));
         entity.setEmail(userDTO.getEmail());
         entity.setPassword(userDTO.getPassword());
+        entity.setUserStatus(userDTO.getUserStatus());
+        entity.getPerson().setFirstName(userDTO.getPerson().getFirstName());
+        entity.getPerson().setLastName(userDTO.getPerson().getLastName());
 
         var dto = parseObject(repository.save(entity), UserResponseDTO.class);
         addHateoasLinks(dto);

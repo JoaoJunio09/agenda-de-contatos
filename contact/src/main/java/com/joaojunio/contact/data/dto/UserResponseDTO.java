@@ -1,6 +1,7 @@
 package com.joaojunio.contact.data.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.joaojunio.contact.model.enums.UserAdmin;
 import com.joaojunio.contact.model.enums.UserStatus;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -14,15 +15,17 @@ public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implem
     private Long id;
     private String email;
     private Integer status;
+    private Integer admin = 1;
     private PersonResponseDTO person;
     Set<ContactResponseDTO> contacts = new HashSet<>();
 
     public UserResponseDTO() {}
 
-    public UserResponseDTO(Long id, String email, PersonResponseDTO person) {
+    public UserResponseDTO(Long id, String email, Integer code, PersonResponseDTO person) {
         this.id = id;
         this.email = email;
         setUserStatus(UserStatus.ACTIVE);
+        setUserAdmin(code);
         this.person = person;
     }
 
@@ -62,6 +65,18 @@ public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implem
         } else {
             this.status = status.getCode();
         }
+    }
+
+    @JsonProperty("userAdmin")
+    public UserAdmin getUserAdmin() {
+        if (admin == null) return null;
+        return UserAdmin.fromCode(admin);
+    }
+
+    public void setUserAdmin(Integer code) {
+        UserAdmin admin = UserAdmin.fromCode(code);
+
+        this.admin = admin.getCode();
     }
 
     public Set<ContactResponseDTO> getContacts() {

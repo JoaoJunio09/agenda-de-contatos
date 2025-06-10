@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Galada&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Galada&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 /*
 font-family: "Galada", cursive;
@@ -58,12 +58,34 @@ tbody tr {
 	border-top: 2px solid #fafafa;
 }
 
-.atividade-usuario {
+.atividade-usuario-ativo {
 	border-radius: 20px;
 	height: 30px;
 	width: 90px;
 	background-color: rgb(237, 255, 233);
 	color: rgb(5, 98, 11);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.atividade-usuario-inativo {
+	border-radius: 20px;
+	height: 30px;
+	width: 90px;
+	background-color: rgb(255, 213, 213);
+	color: rgb(98, 5, 5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.atividade-usuario-banido {
+	border-radius: 20px;
+	height: 30px;
+	width: 90px;
+	background-color: rgb(222, 213, 255);
+	color: rgb(44, 9, 74);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -257,7 +279,6 @@ tbody tr td:nth-child(4) button img {
 	pointer-events: all !important;
 }
 
-
 .modal-edit-user-body-group {
 	width: 100%;
 	display: flex;
@@ -299,6 +320,10 @@ tbody tr td:nth-child(4) button img {
 	color: #9ca3af;
 	font-size: .9rem;
 	font-family: "Poppins", sans-serif;
+}
+
+input[type="date"] {
+	padding-right: 40px;
 }
 
 .modal-edit-user-body-buttons {
@@ -385,6 +410,16 @@ tbody tr td:nth-child(4) button img {
 	flex-direction: column;
 }
 
+.modal-edit-user-body-group input.input-error {
+	border: 1px solid rgb(238, 0, 0);
+	background-image: url("../assets/img/aviso.png");
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 1.3rem;
+	padding-left: 5px;
+	background-color: rgba(255, 0, 0, 0.046);
+}
+
 @media(min-width: 700px) {
 
 	.modal-edit-user {
@@ -417,4 +452,4 @@ tbody tr td:nth-child(4) button img {
 		flex-wrap: nowrap;
 	}
 
-}
+} */

@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../styles/index.css">
 	<link rel="stylesheet" href="../styles/table.css">
 	<link rel="stylesheet" href="../styles/detailsFailure.css">
+	<link rel="stylesheet" href="../styles/responseAndOthersFailure.css">
 	<title>Contactify | Gerenciar Usuários</title>
 </head>
 <body>
@@ -32,7 +33,7 @@
 						<th></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="table-body">
 					<tr>
 						<td>Bruna Oliveira</td>
 						<td>brunaoliver@gmail.com</td>
@@ -174,34 +175,35 @@
 		<div class="modal-edit-user-body wrapper">
 			<div class="slider">
 				<div class="slider-body">
-					<form action="" class="form form-1">
+					<form action="" class="form form-1" autocomplete="off">
 						<div class="modal-edit-user-flex">
+							<input type="hidden" id="id-person" value="">
 							<div class="modal-edit-user-body-group">
-								<label for="text">Nome:</label>
+								<label for="firstName">Nome:</label>
 								<input type="text" placeholder="nome" id="firstName">
 							</div>
 							<div class="modal-edit-user-body-group">
-								<label for="text">Sobrenome:</label>
+								<label for="lastName">Sobrenome:</label>
 								<input type="text" placeholder="sobrenome" id="lastName">
 							</div>
 						</div>
 						<div class="modal-edit-user-flex">
 							<div class="modal-edit-user-body-group">
-								<label for="text">Nascimento:</label>
-								<input type="datetime" placeholder="nome" id="birthDate">
+								<label for="birthDate">Nascimento:</label>
+								<input type="date" placeholder="" id="birthDate">
 							</div>
 							<div class="modal-edit-user-body-group">
-								<label for="text">Email:</label>
+								<label for="email">Email:</label>
 								<input type="email" placeholder="emailteste@gmail.com" id="email">
 							</div>
 						</div>
 						<div class="modal-edit-user-flex">
 							<div class="modal-edit-user-body-group">
-								<label for="text">Telefone:</label>
-								<input type="number" placeholder="nome" id="phone">
+								<label for="phone">Telefone:</label>
+								<input type="tel" placeholder="(__) _____-____" id="phone">
 							</div>
 							<div class="modal-edit-user-body-group">
-								<label for="text">Sexo:</label>
+								<label for="gender">Sexo:</label>
 								<select name="" id="gender">
 									<option value="male">Masculino</option>
 									<option value="female">Feminino</option>
@@ -212,7 +214,7 @@
 				</div>
 
 				<div class="slider-body">
-					<form action="" class="form form-2">
+					<form action="" class="form form-2" autocomplete="off">
 						<div class="modal-edit-user-flex">
 							<div class="modal-edit-user-body-group">
 								<label for="text">Endereço:</label>
@@ -247,7 +249,7 @@
 				</div>
 
 				<div class="slider-body">
-					<form action="" class="form form-2">
+					<form action="" class="form form-2" autocomplete="off">
 						<div class="modal-edit-user-flex">
 							<h1>Dados da conta</h1>
 						</div>
@@ -264,9 +266,10 @@
 						<div class="modal-edit-user-flex">
 							<div class="modal-edit-user-body-group">
 								<label for="text">Administrador:</label>
-								<select name="" id="admin">
+								<select name="" id="admin-account">
 									<option value="permitido">Permitido</option>
-									<option value="não permitido">Não Permitido</option>
+									<option value="nao_permitido">Não Permitido</option>
+									<option value="nao_informado">Não Informado</option>
 								</select>
 							</div>
 							<div class="modal-edit-user-body-group">
@@ -285,14 +288,63 @@
 		</div>
 	</div>
 
+	<script>
+		// format phone input
+		var phoneInput = document.querySelector("#phone");
+
+		phoneInput.addEventListener('input', function(e) {
+			let value = e.target.value;
+
+			value = value.replace(/\D/g, '');
+
+			if (value.length > 2) {
+				let ddd = value.slice(0, 2);
+				let firstPart = value.slice(2, 7);
+				let lastPart = value.slice(7, 11);
+
+				value = `(${ddd}) ${firstPart}${lastPart.length > 0 ? '-' : ''}${lastPart}`;
+			}
+			else if (value.length > 0) {
+				value = `(${value}`;
+			}
+
+			e.target.value = value;
+		});
+	</script>
+
 	<div class="container-details-failure">
-		<p>Informe um complemento válido</p>
+		<p>Teste</p>
 		<span class="animation"></span>
-		<img src="../assets/img/remover.png" alt="" id="btnCloseFailure">
+		<img src="../assets/img/atencao.png" alt="" id="img-info">
+		<img src="../assets/img/botao-fechar.png" alt="" id="btnCloseFailure">
+	</div>
+
+	<div class="container-password-invalid">
+		<img src="../assets/img/botao-fechar.png" alt="" class="btn-close-password-invalid">
+		<div>
+			<img src="../assets/img/erro.gif" alt="" class="img-gif">
+		</div>
+		<div>
+			<p>Senha inválida.</p><br>
+			<span>Pelo menos uma letra minúscula</span><br>
+			<span>Pelo menos um número</span><br>
+			<span>Mínimo de 8 caracteres</span><br>
+		</div>
+	</div>
+
+	<div class="message-failure-request">
+		<div class="message-failure-request-flex">
+			<img src="../assets/img/erro.gif" alt="" id="gif-failure-request">
+			<p id="message-failure-request-text" class="message-failure-request-text-title">Erro ao cadastrar usúario!</p>
+			<p id="message-failure-request-text-details" class="message-failure-request-text-body">Failed fetch</p>
+		</div>		
+
+		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-failure-request">
 	</div>
 	
 	<script type="module" src="../controllers/menuLoader.js"></script>
 	<script type="module" src="../controllers/userController.js"></script>
 	<script type="module" src="../utils/detailsFailure.js"></script>
+	<script type="module" src="../utils/requestAndOthersfailure.js"></script>
 </body>
 </html>

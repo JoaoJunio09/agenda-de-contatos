@@ -1,7 +1,9 @@
 package com.joaojunio.contact.controllers.docs;
 
+import com.joaojunio.contact.data.dto.UserDetailsDTO;
 import com.joaojunio.contact.data.dto.UserRequestDTO;
 import com.joaojunio.contact.data.dto.UserResponseDTO;
+import com.joaojunio.contact.data.dto.UserUpdateRequestDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -60,6 +62,25 @@ public interface UserControllerDocs {
     ResponseEntity<UserResponseDTO> findById(@PathVariable Long id);
 
     @Operation(
+        summary = "Finding one User entity.",
+        description = "Finding one User entity.",
+        tags = {"User"},
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = @Content(schema = @Schema(implementation = UserResponseDTO.class))
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Unauthorized", responseCode = "402", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<UserDetailsDTO> detailsUser(@PathVariable Long id);
+
+    @Operation(
         tags = {"User"},
         summary = "Create a new User entity.",
         description = "Create a new User entity.",
@@ -93,7 +114,7 @@ public interface UserControllerDocs {
             @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
         }
     )
-    ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO userDTO);
+    ResponseEntity<UserResponseDTO> update(@RequestBody UserUpdateRequestDTO userDTO);
 
     @Operation(
         tags = {"User"},

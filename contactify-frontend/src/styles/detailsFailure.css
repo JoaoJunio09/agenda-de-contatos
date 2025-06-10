@@ -15,19 +15,20 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 */
 
 .container-details-failure {
+	z-index: 5000;
 	position: fixed;
-	right: 20px;
-	bottom: 20px;
-	height: 60px;
-	width: 330px;
-	border-radius: 12px;
-	background-color: rgb(255, 226, 226);
+	right: 5px;
+	bottom: 15px;
+	height: 55px;
+	width: 95%;
+	border-radius: 0px;
+	background-color: rgb(255, 74, 74);
+	box-shadow: 3px 3px 0px rgb(56, 0, 0);
 	overflow: hidden;
-	padding: 18px 15px;
 
 	opacity: 0;
 	pointer-events: none;
-	transition: .3s opacity all;
+	transition: opacity .3s all;
 }
 
 .show-details-failure {
@@ -35,33 +36,35 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 	pointer-events: all;
 }
 
-.container-details-failure img {
-	width: 25px;
+#btnCloseFailure {
+	width: 20px;
 	position: absolute;
 	right: 4px;
-	top: 4px;
+	top: 50%;
+	right: 4%;
+	transform: translate(-0%, -50%);
 	cursor: pointer;
+	filter: invert(90%);
+}
+
+#img-info {
+	width: 30px;
+	position: absolute;
+	right: 4px;
+	top: 50%;
+	left: 4%;
+	transform: translate(-0%, -50%);
+	cursor: pointer;
+
 }
 
 .container-details-failure p {
-	color: #fc0000;
+	color: #dbdbdb;
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
-
-}
-
-.animation {
-	height: 5px;
-	width: 100%;
-	background-color: rgb(255, 0, 51);
-	position: absolute;
-	bottom: 0;
-	left: -100%;
-	animation-name: delay-close-container-details-failure;
-	animation-duration: 5.5s;
-	animation-timing-function: ease-in-out;
-	animation-delay: 0s;
-	animation-iteration-count: 1;
+	font-size: .85rem;
+	margin-left: 55px;
+	line-height: 55px;
 }
 
 @keyframes delay-close-container-details-failure {
@@ -71,4 +74,78 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 	100% {
 		left: 0%;
 	}
+}
+
+.animation {
+	height: 5px;
+	width: 100%;
+	background-color: rgb(255, 181, 181);
+	position: absolute;
+	bottom: 0;
+	left: -100%;
+}
+
+.animation.show {
+	animation-name: delay-close-container-details-failure;
+	animation-duration: 6.5s;
+	animation-timing-function: ease-in-out;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+}
+
+.container-password-invalid {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	border-radius: 8px;
+	background-color: rgb(231, 0, 0);
+	z-index: 3000;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+
+	height: 280px;
+	width: 350px;
+	pointer-events: none;
+	transition: .7s ease;
+}
+
+.show-password-invalid {
+	transform: translate(-50%, -50%) scale(1);
+	pointer-events: all;
+}
+
+.img-gif {
+	width: 85px;
+	border-radius: 50%;
+}
+
+.btn-close-password-invalid {
+	width: 25px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	filter: invert(85%);
+	cursor: pointer;
+}
+
+.container-password-invalid span, p {
+	color: #fff;
+	font-family: "Poppins", sans-serif;
+	font-size: .9rem;
+}
+
+
+
+@media (min-width: 450px) {
+
+	.container-details-failure {
+		right: 20px;
+		top: 20px;
+		width: 400px;
+	}
+
 }
