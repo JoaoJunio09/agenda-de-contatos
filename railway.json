@@ -1,5 +1,7 @@
 {
   "build": {
-    "root": "contact"
+    "root": "contact",
+    "buildCommand": "./mvnw clean install",
+    "startCommand": "java -jar target/contact-0.0.1-SNAPSHOT.jar"
   }
 }
