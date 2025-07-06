@@ -264,7 +264,7 @@ function addsRequestDataToTheUserTableAndDard(data, tableBody, cardMobileContent
 			cardBody.classList.add("card-body");
 			cardBody.setAttribute("data-id", user.id);
 
-			let status;
+			let status = undefined;
 			let classStyleStatusDesktop;
 			let classStyleStatusMobile;
 			if (user.userStatus === "ACTIVE") {
