@@ -1,13 +1,15 @@
 cors:
   originPatterns: http://localhost:5050,http://localhost:5500,https://estudodosjovens.com.br
 spring:
+  server:
+    port: ${PORT:8080}
   application:
     name: contact
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/contact?useTimezone=true&serverTimezone=UTC
-    username: developer
-    password: 1234567
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update

@@ -1,9 +1,11 @@
-const API_BASE_URL_FINDALL = "http://localhost:8080/api/user/v1";
-const API_BASE_URL_FINDALLPAGEABLE = "http://localhost:8080/api/user/v1/pageable?page=:page&size=:size&direction=:direction";
-const API_BASE_URL_FINDBYID = "http://localhost:8080/api/user/v1/:id";
-const API_BASE_URL_DETAILS_USER = "http://localhost:8080/api/user/v1/:id/details";
-const API_BASE_URL_UPDATE = "http://localhost:8080/api/user/v1";
-const API_BASE_URL_CREATE = "http://localhost:8080/api/user/v1";
+const BASE_URL = "https://contactfy-backend-production.up.railway.app";
+
+const API_BASE_URL_FINDALL = `${BASE_URL}api/user/v1`;
+const API_BASE_URL_FINDALLPAGEABLE = `${BASE_URL}/api/user/v1/pageable?page=:page&size=:size&direction=:direction`;
+const API_BASE_URL_FINDBYID = `${BASE_URL}/api/user/v1/:id`;
+const API_BASE_URL_DETAILS_USER = `${BASE_URL}/api/user/v1/:id/details`;
+const API_BASE_URL_UPDATE = `${BASE_URL}/api/user/v1`;
+const API_BASE_URL_CREATE = `${BASE_URL}/api/user/v1`;
 
 async function findAll() {
 	const response = await fetch(API_BASE_URL_FINDALL, {

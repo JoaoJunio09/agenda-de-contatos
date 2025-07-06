@@ -13,6 +13,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Value("${cors.originPatterns:default}")
     private String corsOriginsPatterns = "";
 
+    @Value("${PORT:8080}")
+    private int port;
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         var allowedOrigins = corsOriginsPatterns.split(",");

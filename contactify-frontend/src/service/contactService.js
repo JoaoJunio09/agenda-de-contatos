@@ -1,9 +1,11 @@
-const API_BASE_URL_FINDALL = "http://localhost:8080/api/contact/v1";
-const API_BASE_URL_FINDBYID = "http://localhost:8080/api/contact/v1/:id";
-const API_BASE_URL_DELETE = "http://localhost:8080/api/contact/v1/:id";
-const API_BASE_URL_FINDCONTACTSBYUSER = "http://localhost:8080/api/contact/v1/findContactsByUser/:id";
-const API_BASE_URL_CREATE = "http://localhost:8080/api/contact/v1";
-const API_BASE_URL_UPDATE = "http://localhost:8080/api/contact/v1";
+const BASE_URL = "https://contactfy-backend-production.up.railway.app";
+
+const API_BASE_URL_FINDALL = `${BASE_URL}/api/contact/v1`;
+const API_BASE_URL_FINDBYID = `${BASE_URL}/api/contact/v1/:id`;
+const API_BASE_URL_DELETE = `${BASE_URL}/api/contact/v1/:id`;
+const API_BASE_URL_FINDCONTACTSBYUSER = `${BASE_URL}/api/contact/v1/findContactsByUser/:id`;
+const API_BASE_URL_CREATE = `${BASE_URL}/api/contact/v1`;
+const API_BASE_URL_UPDATE = `${BASE_URL}/api/contact/v1`;
 
 async function findAll() {
 	const response = await fetch(API_BASE_URL_FINDALL, {
