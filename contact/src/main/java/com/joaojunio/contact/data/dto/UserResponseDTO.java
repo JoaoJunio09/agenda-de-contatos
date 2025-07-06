@@ -1,31 +1,34 @@
 package com.joaojunio.contact.data.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.joaojunio.contact.model.enums.UserAdmin;
 import com.joaojunio.contact.model.enums.UserStatus;
 import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Relation(collectionRelation = "user")
 public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implements Serializable {
 
     private Long id;
     private String email;
     private Integer status;
-    private Integer admin = 1;
+    private Integer admin;
     private PersonResponseDTO person;
+
+    @JsonIgnore
     Set<ContactResponseDTO> contacts = new HashSet<>();
 
     public UserResponseDTO() {}
 
-    public UserResponseDTO(Long id, String email, Integer code, PersonResponseDTO person) {
+    public UserResponseDTO(Long id, String email, PersonResponseDTO person) {
         this.id = id;
         this.email = email;
-        setUserStatus(UserStatus.ACTIVE);
-        setUserAdmin(code);
         this.person = person;
     }
 
@@ -65,6 +68,24 @@ public class UserResponseDTO extends RepresentationModel<UserResponseDTO> implem
         } else {
             this.status = status.getCode();
         }
+    }
+
+    @JsonIgnore
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @JsonIgnore
+    public Integer getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Integer admin) {
+        this.admin = admin;
     }
 
     @JsonProperty("userAdmin")

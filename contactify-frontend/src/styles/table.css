@@ -179,8 +179,36 @@ tbody tr td:nth-child(4) button img {
 	align-items: center;
 }
 
-.active-status .box-status p {
+.box-status-ativo {
 	background-color: rgb(3, 106, 72);
+	color: rgb(255, 255, 255);
+	height: 35px;
+	width: 90px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-size: 1.2rem;
+}
+
+.box-status-inativo {
+	background-color: rgb(131, 46, 46);
+	color: rgb(255, 255, 255);
+	height: 35px;
+	width: 90px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-size: 1.2rem;
+}
+
+.box-status-banido {
+	background-color: rgb(159, 4, 105);
 	color: rgb(255, 255, 255);
 	height: 35px;
 	width: 90px;
@@ -235,7 +263,7 @@ tbody tr td:nth-child(4) button img {
 	width: 95%;
 	background-color: #1c163e;
 	border-radius: 20px;
-	position: absolute;
+	position: fixed;
 	overflow: hidden;
 	top: 50%;
 	left: 50%;
@@ -363,6 +391,44 @@ input[type="date"] {
 
 .modal-edit-user-body-buttons button:nth-child(2):hover {
 	background-color: rgb(18, 176, 13);
+}
+
+.box-buttons-card-and-table-user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	margin-top: 30px;
+	margin-bottom: 0px;
+}
+
+.box-page-p {
+	background-color: rgba(90, 90, 208, 0.159);
+	padding: 10px;
+	width: 35px;
+	height: 35px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.box-page-p p {
+	font-size: 1.2rem;
+	color: #054eec;
+	font-family: "Poppins", sans-serif;
+}
+
+.box-buttons-card-and-table-user img {
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	filter: contrast(0%);
+	opacity: .5;
+}
+
+.box-buttons-card-and-table-user img:nth-child(1) {
+	transform: rotate(180deg);
 }
 
 .status-group {

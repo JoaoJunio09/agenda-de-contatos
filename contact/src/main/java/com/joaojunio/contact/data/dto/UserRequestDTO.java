@@ -13,7 +13,7 @@ public class UserRequestDTO implements Serializable {
     private String email;
     private String password;
     private Integer status;
-    private Integer admin = 1;
+    private Integer admin;
     private PersonRequestDTO person;
     private RecordHistory recordHistory;
 

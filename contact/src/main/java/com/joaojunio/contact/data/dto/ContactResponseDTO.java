@@ -1,6 +1,5 @@
 package com.joaojunio.contact.data.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
@@ -56,7 +55,6 @@ public class ContactResponseDTO extends RepresentationModel<ContactResponseDTO> 
         this.contact = contact;
     }
 
-    @JsonIgnore
     public UserResponseDTO getUser() {
         return user;
     }

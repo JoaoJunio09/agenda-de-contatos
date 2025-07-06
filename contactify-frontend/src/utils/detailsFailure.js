@@ -25,6 +25,11 @@ export function showDetailsFailure(message) {
 	animation.addEventListener('animationend', handleAnimationEnd);
 }
 
+export function closeShowDetailsFailure() {
+	const failure = document.querySelector(".container-details-failure");
+	failure.classList.remove("show-details-failure");
+}
+
 export function showPasswordInvalid(message) {
 	const container = document.querySelector(".container-password-invalid");
 	const text = document.querySelector(".container-password-invalid p");

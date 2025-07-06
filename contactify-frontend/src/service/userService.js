@@ -1,11 +1,47 @@
 const API_BASE_URL_FINDALL = "http://localhost:8080/api/user/v1";
+const API_BASE_URL_FINDALLPAGEABLE = "http://localhost:8080/api/user/v1/pageable?page=:page&size=:size&direction=:direction";
+const API_BASE_URL_FINDBYID = "http://localhost:8080/api/user/v1/:id";
 const API_BASE_URL_DETAILS_USER = "http://localhost:8080/api/user/v1/:id/details";
 const API_BASE_URL_UPDATE = "http://localhost:8080/api/user/v1";
+const API_BASE_URL_CREATE = "http://localhost:8080/api/user/v1";
 
 async function findAll() {
 	const response = await fetch(API_BASE_URL_FINDALL, {
 		method: 'GET',
 	});
+
+	if (!response.ok) {
+		throw new Error("Não foi possível listar Usuários");
+	}
+
+	const data = await response.json();
+	return data;
+}
+
+async function findAllPageable(page, size, direction) {
+	let url;
+	url = API_BASE_URL_FINDALLPAGEABLE.replace(":page", page);
+	url = url.replace(":size", size);
+	url = url.replace("direction", direction);
+
+	const response = await fetch(url, {
+		method: 'GET',
+	});
+
+	const data = await response.json();
+	return data;
+}
+
+async function findById(id) {
+	const url = API_BASE_URL_FINDBYID.replace(":id", id);
+
+	const response = await fetch(url, {
+		method: 'GET',
+	});
+
+	if (!response.ok) {
+		throw new Error("Erro ao buscar usuário");
+	}
 
 	const data = await response.json();
 	return data;
@@ -20,6 +56,31 @@ async function findUserDetails(id) {
 
 	if (!response.ok) {
 		throw new Error("Erro ao busar dados do usuário");
+	}
+
+	const data = await response.json();
+	return data;
+}
+
+async function create(user) {
+	const response = await fetch(API_BASE_URL_CREATE, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(user)
+	});
+
+	if (!response.ok) {
+		const errorData = await response.json().catch(() => ({}));
+		const errorMessage = errorData.message || `Erro ${response.status}`;
+
+		const objectError = {
+			title: errorData.title,
+			body: errorMessage || "",
+		};
+
+		throw objectError;
 	}
 
 	const data = await response.json();
@@ -45,6 +106,9 @@ async function update(user) {
 
 export const UserService = {
 	findAll,
+	findAllPageable,
+	findById,
 	findUserDetails,
+	create,
 	update,
 }

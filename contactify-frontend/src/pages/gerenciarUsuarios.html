@@ -14,7 +14,46 @@
 <body>
 	<div id="fade"></div>
 
-	<div id="header"></div>
+	<header class="header">
+		<div class="content">
+			<div class="box-img-logo">
+				<img src="/src/assets/img/ChatGPT Image 25 de mai. de 2025, 10_36_56.png" alt="img-logo" class="img-logo">
+			</div>
+
+			<nav class="nav" id="nav">
+				<ul class="menu">
+					<li class="menu-item select">
+						<img src="/src/assets/img/postagem-no-instagram.png" alt="">
+						<a href="/src/index.html" class="menu-link">Contatos</a>
+					</li>
+					<li class="menu-item">
+						<img src="/src/assets/img/perfil-de-usuario.png" alt="">
+						<a href="/src/pages/gerenciarUsuarios.html" class="menu-link">Gerenciar Usuários</a>
+					</li>
+					<li class="menu-item">
+						<img src="/src/assets/img/configuracoes.png" alt="">
+						<a href="" class="menu-link">Configurações</a>
+					</li>
+				</ul>
+
+				<div class="info-account">
+					<div class="info-account-img">
+						<img src="/src/assets/img/homem (1).png" alt="">
+					</div>
+					<div class="info-account-data">
+						<h2>João Junio</h2>
+						<p>joaojunio818@gmail.com</p>
+					</div>
+				</div>
+			</nav>
+
+			<div class="box-menu" id="button-toggle">
+				<div class="menu-ham menu-ham-1"></div>
+				<div class="menu-ham menu-ham-2"></div>
+				<div class="menu-ham menu-ham-3"></div>
+			</div>
+		</div>
+	</header>
 
 	<main class="main">
 		<section class="section-search-contact">
@@ -147,7 +186,7 @@
 						</div>
 						<div class="active-status">
 							<div class="box-status">								
-								<p>Ativo</p>
+								<p class="">Ativo</p>
 							</div>
 							<div class="box-buttons">
 								<button class="btn-open-modal-edit-user">
@@ -163,6 +202,15 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="box-buttons-card-and-table-user">
+				<img src="../assets/img/proximo.png" alt="" class="button-previous-page">
+					<div class="box-page-p">
+						<p class="number-for-page-actual"></p>
+					</div>
+				<img src="../assets/img/proximo.png" alt="" class="button-next-page">
+			</div>
+			<br>
 		</section>
 	</main>
 
@@ -267,14 +315,17 @@
 							<div class="modal-edit-user-body-group">
 								<label for="text">Administrador:</label>
 								<select name="" id="admin-account">
-									<option value="permitido">Permitido</option>
-									<option value="nao_permitido">Não Permitido</option>
-									<option value="nao_informado">Não Informado</option>
+									<option value="allowed">Permitido</option>
+									<option value="not_allowed">Não Permitido</option>
 								</select>
 							</div>
 							<div class="modal-edit-user-body-group">
 								<label for="text">Status:</label>
-								<div class="status-group"><span id="status-user-account">Ativo</span></div>
+								<select name="" id="status-account">
+									<option value="active">Ativo</option>
+									<option value="inactive">Inativo</option>
+									<option value="banned">Banido</option>
+								</select>
 							</div>
 						</div>
 					</form>
@@ -342,7 +393,6 @@
 		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-failure-request">
 	</div>
 	
-	<script type="module" src="../controllers/menuLoader.js"></script>
 	<script type="module" src="../controllers/userController.js"></script>
 	<script type="module" src="../utils/detailsFailure.js"></script>
 	<script type="module" src="../utils/requestAndOthersfailure.js"></script>

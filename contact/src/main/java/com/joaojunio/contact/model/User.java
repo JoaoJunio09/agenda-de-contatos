@@ -1,5 +1,6 @@
 package com.joaojunio.contact.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joaojunio.contact.model.enums.UserAdmin;
 import com.joaojunio.contact.model.enums.UserStatus;
 import jakarta.persistence.*;
@@ -27,7 +28,7 @@ public class User implements Serializable {
     private Integer status = UserStatus.ACTIVE.getCode();
 
     @Column(name = "admin", nullable = false)
-    private Integer admin = 1;
+    private Integer admin = UserAdmin.NOT_ALLOWED.getCode();
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "person_id", referencedColumnName = "id", nullable = false)
@@ -42,13 +43,13 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(Long id, String email, String password, Integer code, Person person, RecordHistory recordHistory) {
+    public User(Long id, String email, String password, Person person, RecordHistory recordHistory) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.person = person;
         setUserStatus(UserStatus.ACTIVE);
-        setUserAdmin(code);
+        setUserAdmin(UserAdmin.NOT_ALLOWED);
         this.recordHistory = recordHistory;
     }
 
@@ -102,10 +103,12 @@ public class User implements Serializable {
         return UserAdmin.fromCode(admin);
     }
 
-    public void setUserAdmin(Integer code) {
-        UserAdmin admin = UserAdmin.fromCode(code);
-
-        this.admin = admin.getCode();
+    public void setUserAdmin(UserAdmin admin) {
+        if (admin == null) {
+            this.admin = null;
+        } else {
+            this.admin = admin.getCode();
+        }
     }
 
     public RecordHistory getRecordHistory() {
@@ -116,12 +119,13 @@ public class User implements Serializable {
         this.recordHistory = recordHistory;
     }
 
+    @JsonIgnore
     public Set<Contact> getContacts() {
         return contacts;
     }
 
-    public void setContacts(Set<Contact> contacts) {
-        this.contacts = contacts;
+    public void addContacts(Contact contact) {
+        contacts.add(contact);
     }
 
     @Override

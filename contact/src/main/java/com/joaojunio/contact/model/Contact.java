@@ -1,5 +1,6 @@
 package com.joaojunio.contact.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;

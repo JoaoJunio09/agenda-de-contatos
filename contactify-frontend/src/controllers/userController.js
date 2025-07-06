@@ -14,6 +14,7 @@ document.querySelector(".table-body").addEventListener('click', async (event) =>
 	const btn = event.target.closest(".btn-open-modal-edit-user");
 	const row = event.target.closest("tr");
 	userId = row.getAttribute("data-id");
+	console.log(userId);
 
 	if (!btn || !row) return;
 
@@ -21,6 +22,45 @@ document.querySelector(".table-body").addEventListener('click', async (event) =>
 		const user = await findUserDetails(userId);
 		
 		document.querySelector("#id-person").value = user.person.id;
+		personId = document.querySelector("#id-person").value;
+
+		fillInFields(user);
+	}
+	catch (error) {
+		openMessageFailureRequest({ title: "Erro inesperado", body: "Não foi possível visualizar usuário" });
+	}
+});
+
+document.querySelector(".card-mobile-content").addEventListener('click', async (event) => {
+	const btn = event.target.closest(".btn-open-modal-edit-user");
+	const cardBody = event.target.closest(".card-body");
+
+	if (!btn || !cardBody) return;
+
+	userId = cardBody.getAttribute("data-id");
+
+	try {
+		const user = await findUserDetails(userId);
+
+		fillInFields(user);
+	}
+	catch (error) {
+		openMessageFailureRequest({ title: "Erro inesperado", body: "Não foi possível visualizar usuário" });
+	}
+});
+
+const userLogin = null;
+
+export function identifyUserLogin() {
+	if (!userLogin) {
+		return userLogin;
+	}
+
+	return null;
+}
+
+function fillInFields(user) {
+	document.querySelector("#id-person").value = user.person.id;
 		personId = document.querySelector("#id-person").value;
 
 		document.querySelector("#firstName").value = user.person.firstName;
@@ -51,29 +91,32 @@ document.querySelector(".table-body").addEventListener('click', async (event) =>
 
 		document.querySelector("#email-account").value = user.email;
 		document.querySelector("#password-account").value = user.password;
-		
-		const admin = document.querySelector("#admin-account");
-		const adminBackend = user.admin;
 
-		if (adminBackend === "ALLOWED") {
-			admin.value = "permitido";
+		const status = document.querySelector("#status-account");
+		const statusBackend = user.userStatus;
+
+		if (statusBackend === "ACTIVE") {
+			status.value = "active";
 		}
-		else if (adminBackend === "NOT_ALLOWED") {
-			admin.value = "nao_permitido";
+		else if (statusBackend === "INACTIVE") {
+			status.value = "inactive";
+		}
+		else if (statusBackend === "BANNED") {
+			status.value = "banned";
+		}
+
+		const admin = document.querySelector("#admin-account");
+
+		if (user.userAdmin === "NOT_ALLOWED") {
+			admin.value = "not_allowed";
 		}
 		else {
-			admin.value = "nao_permitido";
+			admin.value = "allowed";
 		}
-
-		document.querySelector("#status-user-account").value = user.userStatus;
 
 		modalEdit.classList.add("show-modal-edit-user");
         fade.classList.add("show-fade");
-	}
-	catch (error) {
-		openMessageFailureRequest({ title: "Erro inesperado", body: "Não foi possível visualizar usuário" });
-	}
-})
+}
 
 async function findUserDetails(id) {
 	try {
@@ -96,13 +139,17 @@ async function update(user) {
 }
 
 btnsCloseModalEditUser.forEach(btn => {
-    btn.addEventListener('click', () => {
-        modalEdit.classList.remove("show-modal-edit-user");
-        fade.classList.remove("show-fade");
-
-		currentStage = 0;
-    });
+	btn.addEventListener('click', () => {
+		closeModal();
+	});
 });
+
+function closeModal() {
+    modalEdit.classList.remove("show-modal-edit-user");
+    fade.classList.remove("show-fade");
+
+	currentStage = 0;
+}
 
 const btnNextPage = document.getElementById("btn-next-page");
 const btnPreviousPage = document.querySelector("#btn-previous-page");
@@ -112,33 +159,134 @@ let currentStage = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
 	findAllUser();
-})
+});
 
 async function findAllUser() {
+
+	let NUMBER_PAGE = 0;
+	let listUsers = undefined;
+	let pageActual = 1;
+
 	try {
 		const tableBody = document.querySelector(".table-body");
 		tableBody.innerHTML = "";
 
-		const data = await UserService.findAll();
+		const cardMobileContent = document.querySelector(".card-mobile-content");
+		cardMobileContent.innerHTML = "";
+
+		let data = await UserService.findAllPageable(NUMBER_PAGE, 8, "asc");
+
+		if (data != null) {
+			const containerElementForButtonsNextOrPreviousPage = document.querySelector(".box-buttons-card-and-table-user");
+			const buttonNextPage = document.querySelector(".button-next-page");				
+			const buttonPreviousPage = document.querySelector(".button-previous-page");
+			const numberForPageActual = document.querySelector(".number-for-page-actual");
+
+			numberForPageActual.innerHTML = pageActual;
+
+			if (data.page.totalPages > 1) {
+				buttonPreviousPage.style.opacity = (NUMBER_PAGE === 0) ? "0" : "1";
+				buttonNextPage.style.opacity = (NUMBER_PAGE >= data.page.totalPages - 1) ? "0" : "1";
+
+				buttonNextPage.addEventListener('click', async () => {
+					pageActual++;
+					numberForPageActual.innerHTML = pageActual;
+
+					NUMBER_PAGE++;
+					data = await UserService.findAllPageable(NUMBER_PAGE, 8, "asc");
+
+					try {
+						if (data._embedded.user == null || data._embedded.user == undefined) {
+							return;
+						}
+					}
+					catch (error) {
+						showDetailsFailure("Todos os usuários foram requeridos.");
+					}
+					
+					listUsers = data._embedded.user;
+
+					tableBody.innerHTML = "";
+					cardMobileContent.innerHTML = "";
+
+					buttonPreviousPage.style.opacity = (NUMBER_PAGE === 0) ? "0" : "1";
+					buttonNextPage.style.opacity = (NUMBER_PAGE >= data.page.totalPages - 1) ? "0" : "1";
+					addsRequestDataToTheUserTableAndDard(listUsers, tableBody, cardMobileContent);
+				});
+
+				buttonPreviousPage.addEventListener('click', async () => {
+					pageActual--;
+					numberForPageActual.innerHTML = pageActual;
+
+					NUMBER_PAGE--;
+					data = await UserService.findAllPageable(NUMBER_PAGE, 8, "asc");
+
+					try {
+						if (data._embedded.user == null || data._embedded.user == undefined) {
+							return;	
+						}
+					}
+					catch (error) {
+						showDetailsFailure("Todos os usuários foram requeridos.");
+					}
+					
+					listUsers = data._embedded.user;
+
+					tableBody.innerHTML = "";
+					cardMobileContent.innerHTML = "";
+
+					buttonPreviousPage.style.opacity = (NUMBER_PAGE === 0) ? "0" : "1";
+					buttonNextPage.style.opacity = (NUMBER_PAGE >= data.page.totalPages - 1) ? "0" : "1";
+					addsRequestDataToTheUserTableAndDard(listUsers, tableBody, cardMobileContent);
+				});
+			}
+			else {
+				containerElementForButtonsNextOrPreviousPage.style.display = "none";
+			}
+		}
 		
-		data.forEach(user => {
+		listUsers = data._embedded.user;
+		
+		addsRequestDataToTheUserTableAndDard(listUsers, tableBody, cardMobileContent);
+	}
+	catch (error) {
+		openMessageFailureRequest({ title: "Erro inesperado", body: "Não foi possível listar os usuários." });
+	}
+}
+
+function addsRequestDataToTheUserTableAndDard(data, tableBody, cardMobileContent) {
+	try {
+			data.forEach(user => {
 			const row = document.createElement("tr");
 			row.setAttribute("data-id", user.id);
 
-			let status = user.userStatus === "ACTIVE" ? "Ativo" : "Inativo";
-			let classStyleStatus = "";
+			const cardBody = document.createElement("div");
+			cardBody.classList.add("card-body");
+			cardBody.setAttribute("data-id", user.id);
 
-			if (status === "Ativo") {
-				classStyleStatus = "atividade-usuario-ativo";
+			let status;
+			let classStyleStatusDesktop;
+			let classStyleStatusMobile;
+			if (user.userStatus === "ACTIVE") {
+				status = "Ativo";
+				classStyleStatusDesktop = "atividade-usuario-ativo";
+				classStyleStatusMobile = "box-status-ativo";
+			}
+			else if (user.userStatus === "INACTIVE") {
+				status = "Inativo";
+				classStyleStatusDesktop = "atividade-usuario-inativo";
+				classStyleStatusMobile = "box-status-inativo";
 			}
 			else {
-				classStyleStatus = "atividade-usuario-inativo";
+				status = "Banido";
+				classStyleStatusDesktop = "atividade-usuario-banido";
+				classStyleStatusMobile = "box-status-banido";
 			}
 
 			row.innerHTML = `
 				<td>${user.person.firstName}</td>
 				<td>${user.email}</td>
-				<td><div class="${classStyleStatus}">${status}</div></td>
+				<td><div class="${classStyleStatusDesktop}">${status}</div></td>
 				<td>
 					<div>
 						<button class="btn-open-modal-edit-user"><img src="../assets/img/editar (3).png" alt=""></button>
@@ -147,11 +295,39 @@ async function findAllUser() {
 				</td>
 			`;
 
+			cardBody.innerHTML = `
+				<div class="img-title">
+					<div class="div-img-title">
+						<img src="../assets/img/homem (1).png" alt="">
+					</div>
+					<div>
+						<h1>${user.person.firstName}</h1>
+						<p>${user.email}</p>
+					</div>
+				</div>
+				<div class="active-status">
+					<div class="box-status">								
+						<p class="${classStyleStatusMobile}">${status}</p>
+					</div>
+					<div class="box-buttons">
+						<button class="btn-open-modal-edit-user">
+							<img src="../assets/img/editar (3).png" alt="">
+							Editar
+						</button>
+						<button>
+							<img src="../assets/img/excluir (3).png" alt="">
+							Excluir
+						</button>
+					</div>
+				</div>
+			`;
+
 			tableBody.appendChild(row);
-		})
+			cardMobileContent.appendChild(cardBody);
+		});
 	}
 	catch (error) {
-		openMessageFailureRequest({ title: "Erro inesperado", body: "Não foi possível listar os usuários." });
+		throw error;
 	}
 }
 
@@ -182,24 +358,21 @@ btnNextPage.addEventListener('click', () => {
 				user.id = Number.parseInt(userId);
 				user.person.id = Number.parseInt(personId);
 
-				if (user.status === "ACTIVE") {
-					user.status = 1;
+				if (user.userStatus === "active") {
+					user.userStatus = 1;
 				}
-				else if (user.status === "INACTIVE") {
-					user.status = 2;
+				else if (user.userStatus === "inactive") {
+					user.userStatus = 2;
 				}
 				else {
-					user.status = 3;
+					user.userStatus = 3;
 				}
 
-				if (user.admin === "ALLOWED") {
-					user.admin = 1;
+				if (user.userAdmin === "allowed") {
+					user.userAdmin = 1;
 				}
-				else if (user.admin === "NOT_ALLOWED") {
-					user.admin = 2;
-				}
-				else {
-					user.admin = 3;
+				else if (user.userAdmin === "not_allowed") {
+					user.userAdmin = 2;
 				}
 
 				if (user.person.gender === "female") {
@@ -209,9 +382,17 @@ btnNextPage.addEventListener('click', () => {
 					user.person.gender = "Masculino";
 				}
 
-				console.log(user);
 				const res = update(user);
-				console.log(res);
+				res
+					.then(() => {
+						closeModal();
+						findAllUser();
+
+						currentStage = 0;
+					})
+					.catch(error => {
+						openMessageFailureRequest({ title: "Erro ao atualizar", body: "Não foi possível atualizar usuário." });
+					})
 			}
 
 			currentStage++;
@@ -512,7 +693,7 @@ function getDataFormPage3() {
 	const emailAccount    = document.getElementById("email-account").value;
 	const passwordAccount = document.getElementById("password-account").value;
 	const adminAccount    = document.getElementById("admin-account").value;
-	const statusAccount   = document.getElementById("status-user-account").value;
+	const statusAccount   = document.getElementById("status-account").value;
 
     user = new User(
         null,

@@ -4,20 +4,65 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles/detailsFailure.css">
+	<link rel="stylesheet" href="styles/detailsSuccess.css">
+	<link rel="stylesheet" href="styles/messageConfirmation.css">
+	<link rel="stylesheet" href="styles/responseAndOthersFailure.css">
 	<link rel="stylesheet" href="styles/global.css">
 	<link rel="stylesheet" href="styles/index.css">
 	<title>Contactify</title>
 </head>
 <body>
 
-	<div id="header"></div>
+	<div id="fade"></div>
+
+	<header class="header">
+		<div class="content">
+			<div class="box-img-logo">
+				<img src="/src/assets/img/ChatGPT Image 25 de mai. de 2025, 10_36_56.png" alt="img-logo" class="img-logo">
+			</div>
+
+			<nav class="nav" id="nav">
+				<ul class="menu">
+					<li class="menu-item select">
+						<img src="/src/assets/img/postagem-no-instagram.png" alt="">
+						<a href="/src/index.html" class="menu-link">Contatos</a>
+					</li>
+					<li class="menu-item menu-item-gerenciar-usuarios">
+						<img src="/src/assets/img/perfil-de-usuario.png" alt="">
+						<a href="/src/pages/gerenciarUsuarios.html" class="menu-link">Gerenciar Usuários</a>
+					</li>
+					<li class="menu-item">
+						<img src="/src/assets/img/configuracoes.png" alt="">
+						<a href="" class="menu-link">Configurações</a>
+					</li>
+				</ul>
+
+				<div class="info-account">
+					<div class="info-account-img">
+						<img src="/src/assets/img/homem (1).png" alt="">
+					</div>
+					<div class="info-account-data">
+						<h2>João Junio</h2>
+						<p>joaojunio818@gmail.com</p>
+					</div>
+				</div>
+			</nav>
+
+			<div class="box-menu" id="button-toggle">
+				<div class="menu-ham menu-ham-1"></div>
+				<div class="menu-ham menu-ham-2"></div>
+				<div class="menu-ham menu-ham-3"></div>
+			</div>
+		</div>
+	</header>
 
 	<main class="main">
 		<section class="section-search-contact">
 			<div class="box-title-img">
 				<h1>Contatos</h1>
 
-				<img src="assets/img/adicionar.png" alt="">
+				<img src="assets/img/adicionar.png" alt="" id="btn-open-modal-add-contact">
 			</div>
 
 			<div class="box-search">
@@ -26,199 +71,86 @@
 			</div>
 		</section>
 
-		<section class="section-contacts">
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
-
-			<div class="box-contact">
-				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
-					<div class="box-contact-header-info">
-						<h1>Contato de José</h1>
-						<p>zericardo@gmail.com</p>
-					</div>
-				</div>
-				<div class="box-contact-body">
-					<p>(17) 99703-4070</p>
-				</div>
-			</div>
+		<section class="section-contacts" id="contacts-section">
+			<p class="info-contacts"></p>
 		</section>
+		<p class="info"></p>
+	
+		<div class="container-add-contact">
+			<div class="container-add-contact-header">
+				<h2 class="title-edit-or-new-contact">Novo contato</h2>
+
+				<img src="../src/assets/img/botao-fechar.png" alt="" id="btn-close-modal-add-contact">
+			</div>
+			<div class="container-add-contact-body">
+				<form action="" class="form-add-contact">
+					<div class="form-add-contact-group">
+						<label for="title">Título</label>
+						<input type="text" id="title">
+					</div>
+					<div class="form-add-contact-group">
+						<label for="description">Descrição</label>
+						<textarea id="description" cols="2", rows="4"></textarea>
+					</div>
+					<div class="form-add-contact-group">
+						<label for="contact">Contato</label>
+						<input type="text" id="contact">
+						<input type="hidden" id="user" value="3">
+					</div>
+				</form>
+
+				<div class="box-button-add-contact">
+					<button id="btn-cancel-contact">Cancelar</button>
+					<button id="btn-add-contact">Adicionar</button>
+				</div>
+			</div>
+		</div>
+	
 	</main>
 
 	<button class="button-add-flutuante">
-		<img src="assets/img/botao-adicionar.png" alt="">
+		<img src="assets/img/botao-adicionar.png" alt="" id="btn-open-modal-add-contact">
 	</button>
 
-	<footer class="footer">
+	<div class="container-details-failure">
+		<p>Teste</p>
+		<span class="animation"></span>
+		<img src="assets/img/atencao.png" alt="" id="img-info">
+		<img src="assets/img/botao-fechar.png" alt="" id="btnCloseFailure">
+	</div>
 
+	<div class="container-details-success">
+		<p>Cadastrado com sucesso.</p>
+		<span class="animation-success"></span>
+		<img src="assets/img/check.png" alt="" id="img-info">
+		<img src="assets/img/botao-fechar.png" alt="" id="btnCloseSuccess">
+	</div>
+
+	<div class="message-failure-request">
+		<div class="message-failure-request-flex">
+			<img src="assets/img/erro.gif" alt="" id="gif-failure-request">
+			<p id="message-failure-request-text" class="message-failure-request-text-title">Erro ao cadastrar usúario!</p>
+			<p id="message-failure-request-text-details" class="message-failure-request-text-body">Failed fetch</p>
+		</div>		
+
+		<img src="assets/img/excluir (1).png" alt="" id="button-close-message-failure-request">
+	</div>
+
+	<div class="message-confirmation">
+		<p>Deseja deletar contato?</p>
+		<img src="assets/img/excluir (1).png" alt="" class="img-button-cancel">
+
+		<div class="message-confirmation-buttons">
+			<button class="buttonCancel">Cancelar</button>
+			<button class="buttonConfirmation">Confirmar</button>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<br><br><br><br><br><br><br>
 	</footer>
 
-	<script type="module" src="controllers/menuLoader.js"></script>
+	<script type="module" src="controllers/contactController.js" defer></script>
+	<script type="module" src="utils/messageConfirmation.js" defer></script>
 </body>
 </html>

@@ -3,16 +3,16 @@ export class User {
 	email = "";
 	password = "";
 	person = null;
-	status = "";
-	admin = "";
+	userStatus = "";
+	userAdmin = "";
 
-	constructor(id, email, password, person, status, admin) {
+	constructor(id, email, password, person, userStatus, userAdmin) {
 		this.id = null,
 		this.email = email,
 		this.password = password,
 		this.person = person,
-		this.status = status,
-		this.admin = admin;
+		this.userStatus = userStatus,
+		this.userAdmin = userAdmin;
 	};
 
 	getUser() {
@@ -21,8 +21,8 @@ export class User {
 			email: this.email,
 		    password: this.password,
 			person: this.person,
-			status: this.status,
-			admin: this.admin,
+			userStatus: this.userStatus,
+			userAdmin: this.userAdmin,
 		};
 		
 		return user;

@@ -15,10 +15,12 @@ function openMessageFailureRequest(dataError) {
 	
 }
 
-function closeMessageFailureRequest() {
+function closeMessageFailureRequest() {	
 	messageFailureRequest.classList.remove("show");
 }
 
-buttonClose.addEventListener('click', closeMessageFailureRequest);
+if (buttonClose) {
+	buttonClose.addEventListener('click', closeMessageFailureRequest);	
+}
 
 export { openMessageFailureRequest, closeMessageFailureRequest};

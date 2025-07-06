@@ -73,6 +73,9 @@ public class PersonService {
             .orElseThrow(() -> new NotFoundException("Not Found this ID : " + personDTO.getId()));
         entity.setFirstName(personDTO.getFirstName());
         entity.setLastName(personDTO.getLastName());
+        entity.setCpf(personDTO.getCpf());
+        entity.setRg(personDTO.getRg());
+        entity.setGender(personDTO.getGender());
         entity.setEmail(personDTO.getEmail());
         entity.setAddress(personDTO.getAddress());
         entity.setAddress(personDTO.getAddress());

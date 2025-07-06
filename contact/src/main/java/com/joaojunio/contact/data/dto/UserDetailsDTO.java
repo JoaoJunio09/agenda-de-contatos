@@ -14,7 +14,7 @@ public class UserDetailsDTO implements Serializable {
     private String email;
     private String password;
     private Integer status;
-    private Integer admin = 1;
+    private Integer admin;
     private Person person;
 
     public UserDetailsDTO() {}

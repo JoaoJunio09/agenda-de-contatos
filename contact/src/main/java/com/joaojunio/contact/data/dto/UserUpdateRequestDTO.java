@@ -1,5 +1,6 @@
 package com.joaojunio.contact.data.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joaojunio.contact.model.Person;
 import com.joaojunio.contact.model.enums.UserAdmin;
 import com.joaojunio.contact.model.enums.UserStatus;
@@ -13,7 +14,7 @@ public class UserUpdateRequestDTO implements Serializable {
     private String email;
     private String password;
     private Integer status;
-    private Integer admin = 1;
+    private Integer admin;
     private Person person;
 
     public UserUpdateRequestDTO() {}
@@ -79,6 +80,24 @@ public class UserUpdateRequestDTO implements Serializable {
         UserAdmin admin = UserAdmin.fromCode(code);
 
         this.admin = admin.getCode();
+    }
+
+    @JsonIgnore
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @JsonIgnore
+    public Integer getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Integer admin) {
+        this.admin = admin;
     }
 
     @Override

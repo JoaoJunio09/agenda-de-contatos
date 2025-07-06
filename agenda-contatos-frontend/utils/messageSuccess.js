@@ -1,5 +1,3 @@
-
-
 const messageSuccess = document.querySelector(".message-success");
 const buttonClose = document.querySelector("#button-close-message-success");
 
