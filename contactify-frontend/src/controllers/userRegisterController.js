@@ -132,7 +132,7 @@ async function create(user) {
 		openMessageSuccess("Cadastrado com sucesso.");
 
 		setTimeout(() => {
-			window.location.href = "../index.html";
+			window.location.href = "../pages/gerenciarContatos.html";
 		}, 12000);
 
 		return data;

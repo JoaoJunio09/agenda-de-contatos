@@ -1,157 +1,126 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="src/styles/detailsFailure.css">
-	<link rel="stylesheet" href="src/styles/detailsSuccess.css">
-	<link rel="stylesheet" href="src/styles/messageConfirmation.css">
-	<link rel="stylesheet" href="src/styles/responseAndOthersFailure.css">
-	<link rel="stylesheet" href="src/styles/global.css">
-	<link rel="stylesheet" href="src/styles/index.css">
-	<title>Contactify</title>
+	<link rel="stylesheet" href="/src/styles/global.css">
+	<link rel="stylesheet" href="/src/styles/landingPage.css">
+	<title>Contactify | Home</title>
 </head>
 <body>
 
-	<div id="fade"></div>
-
-	<header class="header">
-		<div class="content">
-			<div class="box-img-logo">
-				<img src="/src/assets/img/ChatGPT Image 25 de mai. de 2025, 10_36_56.png" alt="img-logo" class="img-logo">
-			</div>
-
-			<nav class="nav" id="nav">
-				<ul class="menu">
-					<li class="menu-item select">
-						<img src="src/assets/img/postagem-no-instagram.png" alt="">
-						<a href="src/index.html" class="menu-link">Contatos</a>
-					</li>
-					<li class="menu-item menu-item-gerenciar-usuarios">
-						<img src="src/assets/img/perfil-de-usuario.png" alt="">
-						<a href="src/pages/gerenciarUsuarios.html" class="menu-link">Gerenciar Usuários</a>
-					</li>
-					<li class="menu-item">
-						<img src="src/assets/img/configuracoes.png" alt="">
-						<a href="" class="menu-link">Configurações</a>
-					</li>
-				</ul>
-
-				<div class="info-account">
-					<div class="info-account-img">
-						<img src="src/assets/img/homem (1).png" alt="">
-					</div>
-					<div class="info-account-data">
-						<h2>João Junio</h2>
-						<p>joaojunio818@gmail.com</p>
-					</div>
-				</div>
-			</nav>
-
-			<div class="box-menu" id="button-toggle">
-				<div class="menu-ham menu-ham-1"></div>
-				<div class="menu-ham menu-ham-2"></div>
-				<div class="menu-ham menu-ham-3"></div>
-			</div>
-		</div>
-	</header>
+	<div class="video-fundo">
+		<video autoplay muted loop playsinline class="video">
+			<source src="src/assets/video/6036577_Laptop_Business_3840x2160.mp4" type="video/mp4">
+		</video>
+	</div>
+	
+	<section class="apresentation">
+		<h1 class="title-apresentation">Sua agenda, do seu jeito.</h1>
+	</section>
 
 	<main class="main">
-		<section class="section-search-contact">
-			<div class="box-title-img">
-				<h1>Contatos</h1>
-
-				<img src="src/assets/img/adicionar.png" alt="" id="btn-open-modal-add-contact">
+		<section class="section-1">
+			<div class="box-apresentation-agenda">
+				<h1>Contactfy Pro</h1>
+				<p>Facilite o controle de compromissos e contatos com nossa solução intuitiva.</p>
+				<button>Obter Agenda</button>
 			</div>
 
-			<div class="box-search">
-				<img src="src/assets/img/pesquisa.png" alt="">
-				<input type="text" placeholder="Buscar contatos">
+			<div class="box-img">
+				<img src="src/assets/img/icone-de-relogio-de-calendario-roxo-conceito-de-notificacao-de-lembrete-3d-website-ui-no-fundo-roxo-ilustracao-de-renderizacao-3d.png" alt="">
 			</div>
 		</section>
+		
+		<section class="section-2">
+			<h1>Funcionalidades pensadas para quem não quer perder tempo.</h1>
+			<p class="subtitulo-section-2">
+				Enquanto você pensa no que é mais importante, o Contactfy cuida dos detalhes — com agendamentos inteligentes, alertas precisos e uma experiência pensada para você.
+			</p>
 
-		<section class="section-contacts" id="contacts-section">
-			<p class="info-contacts"></p>
-		</section>
-		<p class="info"></p>
-	
-		<div class="container-add-contact">
-			<div class="container-add-contact-header">
-				<h2 class="title-edit-or-new-contact">Novo contato</h2>
-
-				<img src="src/assets/img/botao-fechar.png" alt="" id="btn-close-modal-add-contact">
-			</div>
-			<div class="container-add-contact-body">
-				<form action="" class="form-add-contact">
-					<div class="form-add-contact-group">
-						<label for="title">Título</label>
-						<input type="text" id="title">
+			<div class="flex-box-funcionalidades">
+				<div class="box-funcionalidades">
+					<div class="title-and-img">
+						<img src="src/assets/img/network_17556494.gif" alt="">
+						<h2>Organização Simples e Visual</h2>
 					</div>
-					<div class="form-add-contact-group">
-						<label for="description">Descrição</label>
-						<textarea id="description" cols="2", rows="4"></textarea>
+					<div class="body-p">
+						<p>Visualize compromissos de forma clara, elegante e intuitiva.</p>
 					</div>
-					<div class="form-add-contact-group">
-						<label for="contact">Contato</label>
-						<input type="text" id="contact">
-						<input type="hidden" id="user" value="3">
+					<div class="body-img img-1">
+						<!-- <img src="src/assets/img/still-life-graphic-design-day.jpg" alt=""> -->
 					</div>
-				</form>
-
-				<div class="box-button-add-contact">
-					<button id="btn-cancel-contact">Cancelar</button>
-					<button id="btn-add-contact">Adicionar</button>
+				</div>
+				<div class="box-funcionalidades">
+					<div class="title-and-img">
+						<img src="src/assets/img/circuit-board_16438925.gif" alt="">
+						<h2>Cadastro de Contatos</h2>
+					</div>
+					<div class="body-p">
+						<p>Adicione, edite e gerencie seus contatos com facilidade.</p>
+					</div>
+					<div class="body-img img-2">
+						<!-- <img src="src/assets/img/unrecognizable-woman-sitting-desk-indoors-writing-planner.jpg" alt=""> -->
+					</div>
+				</div>
+				<div class="box-funcionalidades">
+					<div class="title-and-img">
+						<img src="src/assets/img/nanotechnology_15568333.gif" alt="">
+						<h2>Planeje com Eficiência</h2>
+					</div>
+					<div class="body-p">
+						<p>Organize tarefas e compromissos com agilidade e clareza.</p>
+					</div>
+					<div class="body-img img-3">
+						<!-- <img src="src/assets/img/woman-writing-sticky-notes-office-window.jpg" alt=""> -->
+					</div>
 				</div>
 			</div>
-		</div>
-	
+		</section>
+		<section class="section-3">
+			<div class="box-text">
+				<h2>A agenda inteligente que você precisava.</h2>
+				<p>Economize tempo, evite esquecimentos e gerencie seus contatos como um profissional.</p>
+			</div>
+			<div class="box-video-and-img">
+				<img src="src/assets/img/handsome-stylish-bearded-guy-posing-against-white-wall.png" alt="">
+				<video autoplay muted loop playsinline class="video-agenda">
+					<source src="src/assets/video/Gravação de Tela 2025-07-06 191100.mp4" type="video/mp4">
+				</video>
+			</div>
+
+			<div class="container-box-adquirir-agenda">
+				<div class="box-adquirir-agenda">
+					<div class="box-content">
+						<p>Clique aqui para adquirir a Agenda</p>
+						<img src="src/assets/img/tap_13088030.png" alt="">
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="section-4">
+			<div class="box-section-4">
+				<div class="box-section-4-img">
+					<img src="src/assets/img/VISON COLOR (8).jpg" alt="">
+				</div>
+
+				<div class="box-section-4-text">
+					<h2>Desenvolvido por João Junio</h2>
+					<h4>Desenvolvedor de Software Fullstack</h4>
+
+					<p>
+						Sempre buscando a excelência através da criação de soluções inovadoras. <br>
+						& Equipe Asyncora.
+					</p>
+				</div>
+			</div>
+		</section>
 	</main>
 
-	<button class="button-add-flutuante">
-		<img src="src/assets/img/botao-adicionar.png" alt="" id="btn-open-modal-add-contact">
-	</button>
-
-	<div class="container-details-failure">
-		<p>Teste</p>
-		<span class="animation"></span>
-		<img src="src/assets/img/atencao.png" alt="" id="img-info">
-		<img src="src/assets/img/botao-fechar.png" alt="" id="btnCloseFailure">
-	</div>
-
-	<div class="container-details-success">
-		<p>Cadastrado com sucesso.</p>
-		<span class="animation-success"></span>
-		<img src="src/assets/img/check.png" alt="" id="img-info">
-		<img src="src/assets/img/botao-fechar.png" alt="" id="btnCloseSuccess">
-	</div>
-
-	<div class="message-failure-request">
-		<div class="message-failure-request-flex">
-			<img src="src/assets/img/erro.gif" alt="" id="gif-failure-request">
-			<p id="message-failure-request-text" class="message-failure-request-text-title">Erro ao cadastrar usúario!</p>
-			<p id="message-failure-request-text-details" class="message-failure-request-text-body">Failed fetch</p>
-		</div>		
-
-		<img src="src/assets/img/excluir (1).png" alt="" id="button-close-message-failure-request">
-	</div>
-
-	<div class="message-confirmation">
-		<p>Deseja deletar contato?</p>
-		<img src="src/assets/img/excluir (1).png" alt="" class="img-button-cancel">
-
-		<div class="message-confirmation-buttons">
-			<button class="buttonCancel">Cancelar</button>
-			<button class="buttonConfirmation">Confirmar</button>
-		</div>
-	</div>
-
-	<footer class="footer">
-		<br><br><br><br><br><br><br>
+	<footer>
+		
 	</footer>
 
-	<script type="module" src="src/controllers/contactController.js" defer></script>
-	<script type="module" src="src/controllers/navBarController.js" defer></script>
-	<script type="module" src="src/utils/messageConfirmation.js" defer></script>
+	<script type="module" src="src/controllers/landingPageController.js" defer></script>
 </body>
 </html>
