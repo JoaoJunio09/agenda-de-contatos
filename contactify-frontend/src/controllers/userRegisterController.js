@@ -10,11 +10,13 @@ const buttonRegisterUser = document.getElementById("btn-register");
 let user;
 let person;
 
-buttonRegisterUser.addEventListener('click', () => {
+buttonRegisterUser.addEventListener('click', async () => {
 	try {
 		const user = getData();
+
 		try {
-			create(user);
+			const data = await create(user);
+			localStorage.setItem("userId", data.id);
 		}
 		catch (error) {
 			showDetailsFailure("Erro ao cadastrar usuário");
@@ -23,7 +25,7 @@ buttonRegisterUser.addEventListener('click', () => {
 	catch (error) {
 		showDetailsFailure(error);
 	}
-})
+});
 
 function getData() {
 	const firstName = document.querySelector("#first-name-register").value;
@@ -132,13 +134,13 @@ async function create(user) {
 		openMessageSuccess("Cadastrado com sucesso.");
 
 		setTimeout(() => {
-			window.location.href = "../index.html";
+			window.location.href = "../pages/loginUsuarios.html";
 		}, 12000);
 
 		return data;
 	}
 	catch (error) {
 		console.log(error);
-		openMessageFailureRequest(error);
+		throw error;
 	}
 }
