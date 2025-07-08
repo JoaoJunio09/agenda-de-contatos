@@ -271,7 +271,7 @@ async function fillInContacts(list) {
 
 			boxContact.innerHTML = `
 				<div class="box-contact-header">
-					<img src="assets/img/homem (1).png" alt="">
+					<img src="../assets/img/homem (1).png" alt="">
 					<div class="box-contact-header-info">
 						<h1 class="title-contact">${data.title}</h1>
 						<p class="contact-contact">${data.contact}</p>
