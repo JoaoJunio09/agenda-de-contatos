@@ -1,6 +1,6 @@
 const BASE_URL = "https://contactfy-backend-production.up.railway.app";
 
-const API_BASE_URL_FINDALL = `${BASE_URL}api/user/v1`;
+const API_BASE_URL_FINDALL = `${BASE_URL}/api/user/v1`;
 const API_BASE_URL_FINDALLPAGEABLE = `${BASE_URL}/api/user/v1/pageable?page=:page&size=:size&direction=:direction`;
 const API_BASE_URL_FINDBYID = `${BASE_URL}/api/user/v1/:id`;
 const API_BASE_URL_DETAILS_USER = `${BASE_URL}/api/user/v1/:id/details`;

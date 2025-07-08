@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				listUsers.forEach(user => {
 					if (user.email === email && user.password === password) {
 						id = user.id;
-						console.log(user.userAdmin);
 						if (user.userAdmin === "ALLOWED") {
 							admin = true;
 						}
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				localStorage.setItem('userId', id);
 				localStorage.setItem('userAdmin', admin);
-				window.location.href = "../index.html";
+				window.location.href = "../pages/gerenciarContatos.html";
 			}
 			catch (error) {
 				showDetailsFailure(error.message);

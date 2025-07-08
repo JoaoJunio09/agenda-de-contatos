@@ -111,6 +111,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 	}
 
 	userId = localStorage.getItem("userId");
+	console.log(localStorage.getItem("userId"))
+	console.log(userId);
 	const container = document.querySelector(".section-contacts");
 	const info = document.createElement("p");
 
