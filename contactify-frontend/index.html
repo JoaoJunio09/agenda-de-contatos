@@ -9,6 +9,20 @@
 </head>
 <body>
 
+	<div class="box-button-flutuante-login">
+		<button id="button-login">
+			Login
+			<img src="src/assets/img/enter_1828466.png" alt="">
+		</button>
+	</div>
+
+	<script>
+		const buttonLoginUser = document.querySelector("#button-login");
+		buttonLoginUser.addEventListener('click', () => {
+			window.location.href = "src/pages/loginUsuarios.html";
+		});
+	</script>
+
 	<div class="video-fundo">
 		<video autoplay muted loop playsinline class="video">
 			<source src="src/assets/video/6036577_Laptop_Business_3840x2160.mp4" type="video/mp4">

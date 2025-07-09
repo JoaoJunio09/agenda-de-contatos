@@ -360,7 +360,7 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 	width: 100%;
 	display: flex;
 	position: absolute;
-	top: 320px;
+	top: 410px;
 	justify-content: center;
 }
 
@@ -457,6 +457,39 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 	box-shadow: 0px 0px 100px rgba(33, 33, 33, 0.674);
 }
 
+.box-button-flutuante-login button {
+	z-index: 200;
+	border-radius: 100px;
+	height: 55px;
+	width: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	font-family: "Poppins", sans-serif;
+	font-size: .9rem;
+	border: none;
+	background-color: #25007d;
+	color: #fff;
+	cursor: pointer;
+
+	transition: .5s all;
+
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+.box-button-flutuante-login button:hover {
+	border: 1px solid #25007d;
+	background-color: transparent;
+	color: #25007d;
+}
+
+.box-button-flutuante-login img {
+	width: 30px;
+}
+
 @keyframes animation-box-adquirir-agenda {
 	0% {
 		border-radius: 0px;
@@ -480,6 +513,22 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 	to {
 		opacity: 1;
 	}
+}
+
+@media (min-width: 330px) {
+
+	.container-box-adquirir-agenda {
+		top: 385px;
+	}
+
+}
+
+@media (min-width: 380px) {
+
+	.container-box-adquirir-agenda {
+		top: 325px;
+	}
+
 }
 
 @media (min-width: 400px) {
