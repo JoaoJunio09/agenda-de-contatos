@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../styles/detailsFailure.css">
 	<link rel="stylesheet" href="../styles/detailsSuccess.css">
 	<link rel="stylesheet" href="../styles/messageConfirmation.css">
 	<link rel="stylesheet" href="../styles/responseAndOthersFailure.css">
 	<link rel="stylesheet" href="../styles/global.css">
 	<link rel="stylesheet" href="../styles/index.css">
-	<title>Contactify</title>
+	<title>Contactify | Configurações</title>
 </head>
 <body>
-
-	<div id="fade"></div>
 
 	<header class="header">
 		<div class="content">
@@ -34,7 +31,7 @@
 					</li>
 					<li class="menu-item">
 						<img src="../assets/img/configuracoes.png" alt="">
-						<a href="configuracoesUsuarios.html" class="menu-link">Configurações</a>
+						<a href="" class="menu-link">Configurações</a>
 					</li>
 				</ul>
 
@@ -58,59 +55,52 @@
 	</header>
 
 	<main class="main">
-		<section class="section-search-contact">
-			<div class="box-title-img">
-				<h1>Contatos</h1>
+		<section class="section-configuration-user-data">
+			<div class="section-configuration-title">
+				<h2>Configurações</h2>
 
-				<img src="../assets/img/adicionar.png" alt="" id="btn-open-modal-add-contact">
+				<button id="button-exit-account">
+					Sair
+					<img src="../assets/img/right-arrow_724842.png" alt="">
+				</button>
 			</div>
 
-			<div class="box-search">
-				<img src="../assets/img/pesquisa.png" alt="">
-				<input type="text" placeholder="Buscar contatos">
-			</div>
-		</section>
+			<div class="box-configuration-data-user">
+				<span class="span-sensivel">Informações da conta</span>
 
-		<section class="section-contacts" id="contacts-section">
-			<p class="info-contacts"></p>
-		</section>
-		<p class="info"></p>
-	
-		<div class="container-add-contact">
-			<div class="container-add-contact-header">
-				<h2 class="title-edit-or-new-contact">Novo contato</h2>
+				<div class="box-group-data-user-configuration">
+					<button>Dados pessoais</button>
 
-				<img src="../assets/img/botao-fechar.png" alt="" id="btn-close-modal-add-contact">
-			</div>
-			<div class="container-add-contact-body">
-				<form action="" class="form-add-contact">
-					<div class="form-add-contact-group">
-						<label for="title">Título</label>
-						<input type="text" id="title">
-					</div>
-					<div class="form-add-contact-group">
-						<label for="description">Descrição</label>
-						<textarea id="description" cols="2", rows="4"></textarea>
-					</div>
-					<div class="form-add-contact-group">
-						<label for="contact">Contato</label>
-						<input type="text" id="contact">
-						<input type="hidden" id="user" value="3">
-					</div>
-				</form>
+					<img src="../assets/img/person_13937526.png" alt="">
+				</div>
 
-				<div class="box-button-add-contact">
-					<button id="btn-cancel-contact">Cancelar</button>
-					<button id="btn-add-contact">Adicionar</button>
+				<div class="box-group-data-user-configuration">
+					<button>Dados da conta</button>
+
+					<img src="../assets/img/add-task_17856989.png" alt="">
+				</div>
+
+				<div class="box-group-data-user-configuration">
+					<button>Informações senvíveis</button>
+
+					<img src="../assets/img/touch_8131008.png" alt="">
+				</div>
+
+				<div class="box-group-data-user-configuration configuration-refresh">
+					<button>Trocar de conta</button>
+
+					<img src="../assets/img/refresh_1345851.png" alt="">
+				</div>
+
+				<span class="span-sensivel">Sensível</span>
+				<div class="box-group-data-user-configuration configuration-exit">
+					<button id="button-exit-account">Sair</button>
+
+					<img src="../assets/img/right-arrow_724842.png" alt="">
 				</div>
 			</div>
-		</div>
-	
+		</section>
 	</main>
-
-	<button class="button-add-flutuante">
-		<img src="../assets/img/botao-adicionar.png" alt="" id="btn-open-modal-add-contact">
-	</button>
 
 	<div class="container-details-failure">
 		<p>Teste</p>
@@ -146,7 +136,7 @@
 		</div>
 	</div>
 
-	<script type="module" src="../controllers/contactController.js" defer></script>
+	<script type="module" src="../controllers/configurationController.js" defer></script>
 	<script type="module" src="../controllers/navBarController.js" defer></script>
 	<script type="module" src="../utils/messageConfirmation.js" defer></script>
 </body>

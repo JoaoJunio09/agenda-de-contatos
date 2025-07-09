@@ -13,16 +13,12 @@ let person;
 buttonRegisterUser.addEventListener('click', async () => {
 	try {
 		const user = getData();
-
-		try {
-			const data = await create(user);
-			localStorage.setItem("userId", data.id);
-		}
-		catch (error) {
-			showDetailsFailure("Erro ao cadastrar usuário");
-		}
+		
+		const data = await create(user);
+		localStorage.setItem("userId", data.id);
 	}
 	catch (error) {
+		console.log(error);
 		showDetailsFailure(error);
 	}
 });
@@ -140,7 +136,6 @@ async function create(user) {
 		return data;
 	}
 	catch (error) {
-		console.log(error);
-		throw error;
+		throw Error("Erro crítico ao cadastrar usuário");
 	}
 }

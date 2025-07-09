@@ -101,6 +101,13 @@ let userId;
 
 document.addEventListener('DOMContentLoaded', async () => {
 
+	userId = localStorage.getItem("userId");
+
+	const userLoginData = await UserService.findUserDetails(userId);
+
+	document.querySelector(".info-account-data h2").textContent = userLoginData.person.firstName;
+	document.querySelector(".info-account-data p").textContent = userLoginData.email;
+
 	const menu_item_gerenciar_usuarios = document.querySelector(".menu-item-gerenciar-usuarios");
 
 	if (localStorage.getItem('userAdmin') === "true") {
@@ -110,9 +117,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 		menu_item_gerenciar_usuarios.style.display = "none";
 	}
 
-	userId = localStorage.getItem("userId");
-	console.log(localStorage.getItem("userId"))
-	console.log(userId);
 	const container = document.querySelector(".section-contacts");
 	const info = document.createElement("p");
 
