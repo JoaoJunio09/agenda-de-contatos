@@ -518,12 +518,28 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 @media (min-width: 330px) {
 
 	.container-box-adquirir-agenda {
-		top: 385px;
+		top: 325px;
 	}
 
 }
 
-@media (min-width: 380px) {
+@media (min-width: 340px) {
+
+	.container-box-adquirir-agenda {
+		top: 420px;
+	}
+
+}
+
+@media (min-width: 360px) {
+
+	.container-box-adquirir-agenda {
+		top: 380px;
+	}
+
+}
+
+@media (min-width: 370px) {
 
 	.container-box-adquirir-agenda {
 		top: 325px;
@@ -531,7 +547,19 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 
 }
 
+@media (min-width: 380px) {
+
+	.container-box-adquirir-agenda {
+		top: 360px;
+	}
+
+}
+
 @media (min-width: 400px) {
+
+	.container-box-adquirir-agenda {
+		top: 370px;
+	}
 
 	.img-3 {
 		background-position-x: 0px;
