@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 	}, {
-		threshold: 0.4
+		threshold: 0.2
 	});
 
 	document.querySelectorAll(".box-funcionalidades").forEach(element => {

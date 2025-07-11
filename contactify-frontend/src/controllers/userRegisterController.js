@@ -1,7 +1,6 @@
 import { UserService } from "../service/userService.js";
 import { User } from "../models/userModel.js";
 import { Person } from "../models/personModal.js";
-import { openMessageFailureRequest, closeMessageFailureRequest } from "../utils/requestAndOthersfailure.js";
 import { showDetailsFailure } from "../utils/detailsFailure.js";
 import { openMessageSuccess } from "../utils/messageSuccess.js";
 

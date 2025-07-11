@@ -97,7 +97,7 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 
 	.container-details-success {
 		right: 20px;
-		top: 20px;
+		bottom: 20px;
 		width: 400px;
 	}
 

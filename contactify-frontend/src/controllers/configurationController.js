@@ -2,11 +2,14 @@ import { UserService } from "../service/userService.js";
 
 let userId = undefined;
 
-const buttonExitAccount = document.querySelector("#button-exit-account");
+const buttonsExitAccount = document.querySelectorAll("#button-exit-account");
 
-buttonExitAccount.addEventListener('click', () => {
-	localStorage.removeItem("userId");
-	window.location.href = "../../index.html";
+buttonsExitAccount.forEach(button => {
+	console.log
+	button.addEventListener('click', () => {
+		localStorage.removeItem("userId");
+		window.location.href = "../../index.html";
+	});
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -26,4 +29,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 	else {
 		menu_item_gerenciar_usuarios.style.display = "none";
 	}
-})
+});

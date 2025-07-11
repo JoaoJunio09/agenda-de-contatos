@@ -69,27 +69,45 @@
 				<span class="span-sensivel">Informações da conta</span>
 
 				<div class="box-group-data-user-configuration">
-					<button>Dados pessoais</button>
+					<button id="button-dados-pessoais">Dados pessoais</button>
 
 					<img src="../assets/img/person_13937526.png" alt="">
+
+					<script>
+						document.querySelector("#button-dados-pessoais").addEventListener('click', () => {
+							window.location.href = "dadosPessoais.html";
+						});
+					</script>
 				</div>
 
 				<div class="box-group-data-user-configuration">
-					<button>Dados da conta</button>
+					<button id="button-dados-da-pessoais">Dados da conta</button>
 
 					<img src="../assets/img/add-task_17856989.png" alt="">
+
+					<script>
+						document.querySelector("#button-dados-da-pessoais").addEventListener('click', () => {
+							window.location.href = "dadosConta.html";
+						});
+					</script>
 				</div>
 
 				<div class="box-group-data-user-configuration">
-					<button>Informações senvíveis</button>
+					<button>Acessibilidade</button>
 
 					<img src="../assets/img/touch_8131008.png" alt="">
 				</div>
 
 				<div class="box-group-data-user-configuration configuration-refresh">
-					<button>Trocar de conta</button>
+					<button id="button-trocar-de-conta">Trocar de conta</button>
 
 					<img src="../assets/img/refresh_1345851.png" alt="">
+
+					<script>
+						document.querySelector("#button-trocar-de-conta").addEventListener('click', () => {
+							window.location.href = "loginUsuarios.html";
+						});
+					</script>
 				</div>
 
 				<span class="span-sensivel">Sensível</span>

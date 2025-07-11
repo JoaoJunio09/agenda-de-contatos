@@ -569,7 +569,259 @@ textarea {
 	filter: invert(0%);
 }
 
+#button-back-account {
+	background-color: transparent;
+	border: none;
+}
+
+#button-back-account:hover {
+	background-color: transparent;
+	border: none;
+}
+
+#button-back-account img {
+	width: 35px;
+}
+
+.box-configuration-group-data-user-flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.box-configuration-group-data-user {
+	width: 100%;
+	display: flex;
+	gap: 4px;
+	flex-direction: column;
+}
+
+.box-configuration-group-data-user label {
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+	color: #9CA3AF;
+}
+
+.box-configuration-group-data-user input {
+	font-family: "Poppins", sans-serif;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	padding-inline: 5px;
+	font-size: .9rem;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.079);
+	background-color: rgba(249, 250, 251, 0.05);
+	color: #d5d5d5bf;
+}
+
+.box-configuration-group-data-user-flex-buttons {
+	display: flex;
+	justify-content: end;
+}
+
+.box-configuration-group-data-user-flex-buttons button {
+	height: 40px;
+	width: 90px;
+	font-family: "Poppins", sans-serif;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+
+	transition: .5s all;
+}
+
+.box-configuration-group-data-user-flex-buttons button:nth-child(1) {
+	background-color: rgb(8, 167, 15);
+	color: #fff;
+}
+
+.box-configuration-group-data-user-flex-buttons button:nth-child(1):hover {
+	background-color: transparent;
+	color: rgb(8, 167, 15);
+	border: 1px solid rgb(8, 167, 15);
+}
+
+.confirmation-configuration-user {
+	height: auto;
+	padding-block: 20px;
+	width: 95%;
+	border-radius: 8px;
+	background-color: #f2f2f2;
+	position: fixed;
+	z-index: -1;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+
+	opacity: 0;
+	transition: .3s ease;
+}
+
+.confirmation-configuration-user.active {
+	z-index: 3;
+	opacity: 1;
+}
+
+.fade {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.577);
+	z-index: -2;
+
+	opacity: 0;
+	transition: .3s ease;
+}
+
+.fade.active {
+	z-index: 3;
+	opacity: 1;
+	pointer-events: all;
+}
+
+.confirmation-configuration-user-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+}
+
+.confirmation-configuration-user-header h2 {
+	font-size: 1.2rem;
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-weight: 400;
+}
+
+.confirmation-configuration-user-header img {
+	width: 30px;
+	cursor: pointer;
+}
+
+.confirmation-configuration-user-footer {
+	display: flex;
+	padding-inline: 20px;
+	margin-top: 20px;
+	justify-content: end;
+}
+
+.confirmation-configuration-user-footer button {
+	height: 40px;
+	width: 160px;
+	font-family: "Poppins", sans-serif;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+	background-color: rgb(5, 155, 12);
+	color: #fff;
+
+	transition: .5s all;
+}
+
+.confirmation-configuration-user-footer button:hover {
+	background-color: transparent;
+	color: rgb(8, 167, 15);
+	border: 1px solid rgb(8, 167, 15);
+}
+
+.box-configuration-group-data-user input.active-input-alterado {
+	background-color: rgba(0, 255, 8, 0.105);
+}
+
+.confirmation-configuration-user-body {
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+	max-height: 450px;
+	overflow-y: auto;
+}
+
+.flex-contianer {
+	display: flex;
+	gap: 10px;
+}
+
+.p-info-comparation {
+	color: #000;
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.confirmation-configuration-user-body-comparation-container {
+	padding: 0px 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	width: 100%;
+}
+
+.flex-comparation {
+	
+}
+
+.confirmation-configuration-user-body-comparation {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	align-items: center;
+}
+
+.confirmation-configuration-user-body-comparation input {
+	width: 100%;
+	font-family: "Poppins", sans-serif;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-radius: 4px;
+	padding-inline: 5px;
+	font-size: .9rem;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.079);
+	background-color: rgba(249, 250, 251, 0.05);
+	color: #202020bf;
+}
+
+.confirmation-configuration-user-body-comparation label {
+	font-family: "Poppins", sans-serif;
+	font-size: .85rem;
+	color: #242424;
+}
+
+@media (min-width: 420px) {
+
+	.confirmation-configuration-user-header h2 {
+		font-size: 1.4rem;
+	}
+
+}
+
 @media (min-width: 1000px) {
+
+	.confirmation-configuration-user-body-comparation-container {
+		flex-wrap: nowrap;
+	}
+
+	.confirmation-configuration-user {
+		height: auto;
+		padding-block: 20px;
+		width: 700px;
+	}
+
+	.box-configuration-group-data-user-flex {
+		flex-wrap: nowrap;
+	}
+
+	.box-configuration-group-data-user label {
+		font-family: "Poppins", sans-serif;
+		font-size: 1rem;
+		color: #000;
+	}
+
+	.box-configuration-group-data-user input {
+		background-color: transparent;
+		color: #000000bf;
+	}
 	
 	.box-group-data-user-configuration img {
 		filter: invert(0%);
