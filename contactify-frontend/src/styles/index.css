@@ -43,12 +43,8 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 }
 
 .header {
-	background-color: #1c163e;
+	background-color: var(--bg-color-header);
 	height: 100px;
-}
-
-body {
-	background-color: #1c163e;
 }
 
 .header .content {
@@ -87,11 +83,11 @@ body {
 }
 
 .menu-item.select {
-	background-color: #4f46e5;
+	background-color: #ffffff0d;
 }
 
 .menu-item:hover {
-	background-color: #4f46e5;
+	background-color: #ffffff0d;
 }
 
 .menu-item img {
@@ -106,7 +102,7 @@ body {
 }
 
 .info-account {
-	background-color: rgba(56, 0, 161, 0.238);
+	background-color: var(--bg-color-header);
 	position: absolute;
 	height: 100px;
 	border-radius: 15px;
@@ -180,7 +176,7 @@ body {
 	padding: 10px;
 	left: 0;
 	top: -500px;
-	background-color: #1c163e;
+	background-color: var(--bg-color-header);
 	border-radius: 20px;
 
 	transition: ease-in-out .7s;
@@ -191,7 +187,6 @@ body {
 }
 
 .main {
-	background-color: #1c163e;
 	height: 100vh;
 }
 
@@ -218,11 +213,12 @@ body {
 	font-weight: 400;
 	letter-spacing: 0.3px;
 	font-size: 2rem;
-	color: #F9FAFB;
+	color: var(--text-color) !important;
 }
 
 .box-title-img img {
 	display: none;
+	filter: var(--filter-image);
 }
 
 .box-search {
@@ -253,7 +249,7 @@ body {
 	margin-right: 12px;
 	margin-top: 12px;
 	cursor: pointer;
-	filter: invert(40%);
+	filter: var(--filter-image) !important;
 }
 
 .box-contact {
@@ -283,13 +279,13 @@ body {
 .box-contact-header-info h1 {
 	font-family: "Roboto", sans-serif;
 	font-size: 1.5rem;
-	color: #F9FAFB;
+	color: var(--text-color);
 }
 
 .box-contact-header-info p {
 	font-family: "Poppins", sans-serif;
 	font-size: .9rem;
-	color: #9CA3AF;
+	color: var(--text-color-p-card-mobile);
 }
 
 .box-contact-body {
@@ -299,7 +295,7 @@ body {
 .box-contact-body p {
 	font-family: "Poppins", sans-serif;
 	font-size: 1.3rem;
-	color: #9CA3AF;
+	color: var(--text-color-p-card-mobile);
 }
 
 .box-contact-buttons {
@@ -378,6 +374,7 @@ body {
 	font-family: "Poppins", sans-serif;
 	font-size: 1.68rem;
 	font-weight: 500;
+	color: #000;
 }
 
 .container-add-contact-header img {
@@ -406,6 +403,7 @@ body {
 	font-size: .9rem;
 	margin-top: 6px;
 	opacity: .85;
+	color: #000;
 }
 
 .form-add-contact-group input {
@@ -479,7 +477,7 @@ textarea {
 	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-weight: 400;
 	font-size: 1.6rem;
-	color: #e6e6e6;
+	color: var(--text-color);
 }
 
 .section-configuration-title button img {
@@ -521,7 +519,7 @@ textarea {
 .box-group-data-user-configuration {
 	height: 60px;
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.042);
+	background-color: var(--bg-color-box-group-data-user-configuration);
 	border-radius: 12px;
 	position: relative;
 }
@@ -538,14 +536,14 @@ textarea {
 	font-family: "Poppins", sans-serif;
 	font-size: 1rem;
 	cursor: pointer;
-	color: #e9e9e9b8;
+	color: var(--text-color) !important;
 
 	transition: .3s ease;
 }
 
 .box-group-data-user-configuration button:hover {
 	background-color: #1c163e;
-	color: #fff;
+	color: var(--text-color-hover) !important;
 }
 
 .box-group-data-user-configuration img {
@@ -553,12 +551,12 @@ textarea {
 	position: absolute;
 	right: 20px;
 	margin-top: 15px;
-	filter: invert(50%);
+	filter: var(--filter-image) !important;
 }
 
 .span-sensivel {
 	font-family: "Poppins", sans-serif;
-	color: #e2e2e2;
+	color: var(--text-color) !important;
 }
 
 .configuration-exit {
@@ -599,7 +597,7 @@ textarea {
 .box-configuration-group-data-user label {
 	font-family: "Poppins", sans-serif;
 	font-size: 1rem;
-	color: #9CA3AF;
+	color: var(--text-color) !important;
 }
 
 .box-configuration-group-data-user input {
@@ -611,8 +609,8 @@ textarea {
 	padding-inline: 5px;
 	font-size: .9rem;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.079);
-	background-color: rgba(249, 250, 251, 0.05);
-	color: #d5d5d5bf;
+	background-color: var(--bg-color-input);
+	color: var(--text-color-input) !important;
 }
 
 .box-configuration-group-data-user-flex-buttons {
@@ -788,6 +786,56 @@ textarea {
 	color: #242424;
 }
 
+.section-configuration-acessibility {
+	
+}
+
+.box-section-configuration-acessibility {
+	padding-block: 50px;
+}
+
+.box-section-configuration-acessibility-theme {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--bg-color-box-alterar-theme);
+	border-radius: 20px;
+	padding: 15px;
+}
+
+.box-section-configuration-acessibility-theme h2 {
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+.box-section-configuration-acessibility-theme select {
+	border: none;
+	border-radius: 50px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.163);
+	padding-inline: 5px;
+	background-color: var(--bg-color-select-alterar-theme);
+	color: var(--text-color-select-alterar-theme);
+	height: 40px;
+	outline: none;
+	width: 80px;
+}
+
+.box-section-configuration-acessibility-theme select option {
+	border: none;
+	outline: none;
+}
+
+.box-section-configuration-acessibility-theme select option:nth-child(1) {
+	background-color: #fff;
+	color: #000;
+}
+
+.box-section-configuration-acessibility-theme select option:nth-child(2) {
+	background-color: #000;
+	color: #fff;
+}
+
 @media (min-width: 420px) {
 
 	.confirmation-configuration-user-header h2 {
@@ -831,10 +879,6 @@ textarea {
 		color: #000;
 	}
 
-	.box-group-data-user-configuration {
-		background-color: rgb(240, 240, 240);
-	}
-
 	.section-configuration-user-data {
 		height: 100vh;
 		width: 100%;
@@ -843,7 +887,6 @@ textarea {
 
 	.section-configuration-title h2 {
 		font-size: 2rem;
-		color: #000000;
 	}
 
 	.span-sensivel {
@@ -854,16 +897,11 @@ textarea {
 		background-color: rgba(255, 0, 0, 0.092);
 	}
 
-	body {
-		
-	}
-
 	.main {
 		width: calc(100% - 350px);
 		margin-left: auto;
 		min-height: 100vh;
 		height: auto;
-		background-color: #fafafa;
 	}
 
 	.header {
@@ -921,12 +959,12 @@ textarea {
 
 	.box-search {
 		margin-top: 40px;
-		background-color: #fff;
+		background-color: rgba(255, 255, 255, 0.042);
 		height: 60px;
 	}
 
 	.box-search input {
-		background-color: #fff;
+		background-color: transparent;
 	}
 
 	.box-search img {
@@ -937,20 +975,10 @@ textarea {
 
 	.box-contact {
 		width: 48%;
-		background-color: #fff;
-	}
-
-	.box-contact h1 {
-		color: #232323;
-	}
-
-	.box-contact p {
-		color: #434343;
 	}
 
 	.box-contact-body p {
 		font-size: 1.1rem;
-		color: #1a1a1a;
 	}
 
 	.container-add-contact {
@@ -963,7 +991,6 @@ textarea {
 
 	.box-contact {
 		width: 49%;
-		background-color: #fff;
 	}
 
 }

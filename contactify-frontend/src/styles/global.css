@@ -29,3 +29,54 @@ a {
 	background: #4e00e0;
 	border-radius: 4px;
 }
+
+.theme-light {
+  --bg-color: #f9f9f9;
+  --bg-color-input: rgba(249, 250, 251, 0.05);
+  --text-color: #000000;
+  --text-color-hover: #fff;
+  --text-color-input: #000;
+  --bg-color-box-group-data-user-configuration: rgb(237, 237, 237);
+  --filter-image: grayscale(0%) invert(0%);
+
+  --bg-color-table: rgb(255, 255, 255);
+  --border-table: 2px solid #f2f2f2;
+  --box-shadow-card-mobile: 0px 0px 80px rgba(0, 0, 0, 0.121);
+  --bg-color-card-mobile: transparent;
+
+  --text-color-p-card-mobile: #2a2a2a;
+
+  --bg-color-header: #111111;
+
+  --bg-color-box-alterar-theme: rgba(0, 0, 0, 0.039);
+  --bg-color-select-alterar-theme: #fff;
+  --text-color-select-alterar-theme: #000;
+}
+
+.theme-dark {
+  --bg-color: #1c163e;
+  --bg-color-input: rgba(249, 250, 251, 0.05);
+  --text-color: #e7e7e7;
+  --text-color-hover: #fff;
+  --text-color-input: #9CA3AF;
+  --bg-color-box-group-data-user-configuration: rgba(255, 255, 255, 0.042);
+  --filter-image: grayscale(70%) invert(70%);
+
+  --bg-color-table: rgba(249, 250, 251, 0.027);
+  --border-table: 2px solid #1c163e;
+  --box-shadow-card-mobile: 0px 0px 0px rgba(0, 0, 0, 0);
+  --bg-color-card-mobile: rgba(249, 250, 251, 0.05);
+
+  --text-color-p-card-mobile: #9ca3af;
+
+  --bg-color-header: #1c163e;
+
+  --bg-color-box-alterar-theme: rgba(249, 250, 251, 0.05);
+  --bg-color-select-alterar-theme: #1c163e;
+  --text-color-select-alterar-theme: #fff;
+}
+
+body {
+	background-color: var(--bg-color) !important;
+	color: var(--text-color) !important;
+}

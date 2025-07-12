@@ -32,7 +32,7 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 }
 
 .table {
-	background-color: rgb(255, 255, 255);
+	background-color: var(--bg-color-table);
 	width: 100%;
 	height: 500px;
 	border-collapse: collapse;
@@ -43,10 +43,11 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 th, td {
 	padding: 12px;
 	font-family: "Poppins", sans-serif;
+	color: var(--text-color-input);
 }
 
 th {
-	color: #262626;
+	color: var(--text-color);
 	font-weight: 400;
 }
 
@@ -55,7 +56,7 @@ tbody tr td:nth-child(1) {
 }
 
 tbody tr {
-	border-top: 2px solid #fafafa;
+	border-top: var(--border-table);
 }
 
 .atividade-usuario-ativo {
@@ -111,6 +112,10 @@ tbody tr td:nth-child(4) button img {
 	opacity: .9;
 }
 
+.img-button-edit-user {
+	filter: var(--filter-image);
+}
+
 .card-mobile {
 	display: initial;
 }
@@ -133,7 +138,8 @@ tbody tr td:nth-child(4) button img {
 	height: auto;
 	padding-bottom: 22px;
 	border-radius: 10px;
-	background-color: rgba(249, 250, 251, 0.05);
+	background-color: var(--bg-color-card-mobile);
+	box-shadow: var(--box-shadow-card-mobile);
 }
 
 .img-title {
@@ -157,14 +163,14 @@ tbody tr td:nth-child(4) button img {
 }
 
 .img-title div h1 {
-	color: #fff;
+	color: var(--text-color);
 	font-family: "Poppins", sans-serif;
 	font-weight: 600;
 	font-size: 1.4rem;
 }
 
 .img-title div p {
-	color: #9ca3af;
+	color: var(--text-color-p-card-mobile);
 	font-family: "Poppins", sans-serif;
 	font-size: .8rem;
 }

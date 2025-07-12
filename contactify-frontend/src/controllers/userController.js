@@ -289,7 +289,7 @@ function addsRequestDataToTheUserTableAndDard(data, tableBody, cardMobileContent
 				<td><div class="${classStyleStatusDesktop}">${status}</div></td>
 				<td>
 					<div>
-						<button class="btn-open-modal-edit-user"><img src="../assets/img/editar (3).png" alt=""></button>
+						<button class="btn-open-modal-edit-user"><img src="../assets/img/editar (3).png" alt="" class="img-button-edit-user"></button>
 						<button><img src="../assets/img/excluir (3).png" alt=""></button>
 					</div>
 				</td>

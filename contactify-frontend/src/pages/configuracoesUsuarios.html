@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" class="theme-light">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,9 +93,15 @@
 				</div>
 
 				<div class="box-group-data-user-configuration">
-					<button>Acessibilidade</button>
+					<button id="button-acessibilidade">Acessibilidade</button>
 
 					<img src="../assets/img/touch_8131008.png" alt="">
+
+					<script>
+						document.querySelector("#button-acessibilidade").addEventListener('click', () => {
+							window.location.href = "acessibility.html";
+						});
+					</script>
 				</div>
 
 				<div class="box-group-data-user-configuration configuration-refresh">
@@ -157,5 +163,6 @@
 	<script type="module" src="../controllers/configurationController.js" defer></script>
 	<script type="module" src="../controllers/navBarController.js" defer></script>
 	<script type="module" src="../utils/messageConfirmation.js" defer></script>
+	 <script type="module" src="../../app.js" defer></script>
 </body>
 </html>
