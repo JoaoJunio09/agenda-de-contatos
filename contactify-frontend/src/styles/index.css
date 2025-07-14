@@ -171,7 +171,7 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 .nav {
 	z-index: 1000;
 	width: 100%;
-	height: 450px;
+	height: 500px;
 	position: absolute;
 	padding: 10px;
 	left: 0;
@@ -608,7 +608,7 @@ textarea {
 	border-radius: 4px;
 	padding-inline: 5px;
 	font-size: .9rem;
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.079);
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.212);
 	background-color: var(--bg-color-input);
 	color: var(--text-color-input) !important;
 }
@@ -645,7 +645,7 @@ textarea {
 	padding-block: 20px;
 	width: 95%;
 	border-radius: 8px;
-	background-color: #f2f2f2;
+	background-color: var(--bg-color-confirmation-configuration);
 	position: fixed;
 	z-index: -1;
 	left: 50%;
@@ -689,6 +689,7 @@ textarea {
 	font-size: 1.2rem;
 	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-weight: 400;
+	color: var(--text-color);
 }
 
 .confirmation-configuration-user-header img {
@@ -740,7 +741,7 @@ textarea {
 }
 
 .p-info-comparation {
-	color: #000;
+	color: var(--text-color);
 	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-weight: bold;
 	font-size: 1rem;
@@ -777,13 +778,13 @@ textarea {
 	font-size: .9rem;
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.079);
 	background-color: rgba(249, 250, 251, 0.05);
-	color: #202020bf;
+	color: var(--text-color-input-cofirmatin-configuration);
 }
 
 .confirmation-configuration-user-body-comparation label {
 	font-family: "Poppins", sans-serif;
 	font-size: .85rem;
-	color: #242424;
+	color: var(--text-color-label-cofirmatin-configuration);
 }
 
 .section-configuration-acessibility {
@@ -792,6 +793,9 @@ textarea {
 
 .box-section-configuration-acessibility {
 	padding-block: 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .box-section-configuration-acessibility-theme {
@@ -826,14 +830,24 @@ textarea {
 	outline: none;
 }
 
-.box-section-configuration-acessibility-theme select option:nth-child(1) {
+#theme option:nth-child(1) {
 	background-color: #fff;
 	color: #000;
 }
 
-.box-section-configuration-acessibility-theme select option:nth-child(2) {
+#theme option:nth-child(2) {
 	background-color: #000;
 	color: #fff;
+}
+
+#theme-header option:nth-child(1) {
+	background-color: #000;
+	color: #fff;
+}
+
+#theme-header option:nth-child(2) {
+	background-color: #6600ff;
+	color: #ffffff;
 }
 
 @media (min-width: 420px) {

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="theme-light">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../styles/global.css">
+	<link rel="stylesheet" href="../styles/table.css">
+	<link rel="stylesheet" href="../styles/detailsFailure.css">
+	<link rel="stylesheet" href="../styles/userRegistration.css">
+	<link rel="stylesheet" href="../styles/messageSuccess.css">
+	<link rel="stylesheet" href="../styles/responseAndOthersFailure.css">
+	<title>Contactify | Cadastro</title>
+</head>
+<body>
+
+	<main class="main">
+
+		<div class="img-register">
+			<img src="../assets/img/3d-hand-hold-smartphone-with-authentication-form.jpg" alt="">
+		</div>
+
+		<section class="section-register-user">
+			<div class="register-user-title">
+				<h1>Cadastre-se</h1>
+
+				<img src="../assets/img/user_12319308.png" alt="">
+			</div>
+
+			<div class="register-user-form">
+				<form action="" class="form-register">
+					<div class="form-register-persona">
+						<p class="info">Informações pessoais.</p>
+						<div class="form-register-flex">
+							<div class="form-register-group">
+								<label for="first-name-register">Nome:</label>
+								<input type="text" id="first-name-register" placeholder="Informe seu nome">
+							</div>
+							<div class="form-register-group">
+								<label for="last-name-register">Sobrenome:</label>
+								<input type="text" id="last-name-register" placeholder="Informe seu sobrenome">
+							</div>
+						</div>
+						<div class="form-register-flex">
+							<div class="form-register-group">
+								<label for="birth-date-register">Data de Nascimento:</label>
+								<input type="date" id="birth-date-register">
+							</div>
+							<div class="form-register-group">
+								<label for="email-register">Email:</label>
+								<input type="email" id="email-register" placeholder="email@exemplo.com">
+							</div>
+						</div>
+						<div class="form-register-flex">
+							<div class="form-register-group">
+								<label for="phone-register">Telefone:</label>
+								<input type="text" id="phone-register" placeholder="17999999999">
+							</div>
+							<div class="form-register-group">
+								<label for="address-register">Endereço:</label>
+								<input type="text" id="address-register" placeholder="Rua exemplo">
+							</div>
+						</div>
+						<div class="form-register-flex">
+							<div class="form-register-group">
+								<label for="complement-register">Complemento:</label>
+								<input type="text" id="complement-register" placeholder="Casa/Apartamento">
+							</div>
+							<div class="form-register-group">
+								<label for="number-register">Número:</label>
+								<input type="number" id="number-register" placeholder="123">
+							</div>
+						</div>
+						<div class="form-register-flex">
+							<div class="form-register-group">
+								<label for="nationality-register">Nacionalidade:</label>
+								<input type="text" id="nationality-register" placeholder="País de nascimento">
+							</div>
+							<div class="form-register-group">
+								<label for="gender-register">Sexo:</label>
+								<select name="" id="gender-register" class="gender-register">
+									<option value="male">Masculino</option>
+									<option value="female">Feminino</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-register-flex">
+							<div class="form-register-group">
+								<label for="cpf-register">Cpf:</label>
+								<input type="text" id="cpf-register" placeholder="Cadastro de Pessoa Física">
+							</div>
+							<div class="form-register-group">
+								<label for="rg-register">Rg:</label>
+								<input type="text" id="rg-register" placeholder="Registro Geral">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-register-account">
+						<p class="info">Informações da conta.</p>
+						<div class="form-register-flex">
+							<div class="form-register-group">
+								<label for="email-account-register">Email:</label>
+								<input type="email" id="email-account-register" placeholder="emailConta@exemplo.com">
+							</div>
+							<div class="form-register-group">
+								<label for="password-account-register">Senha:</label>
+								<input type="password" id="password-account-register" placeholder="********">
+							</div>
+						</div>
+					</div>
+
+					<input type="hidden" id="status-account-register" value="1">
+					<input type="hidden" id="admin-account-register" value="2">
+				</form>
+				<div class="register-user-button">
+					<button id="btn-register">Cadastrar</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<div class="message-success">
+		<div class="message-success-flex">
+			<img src="../assets/img/Successfully Done (1).gif" alt="" id="gif-success">
+			<p id="message-success">Cadastrado com sucesso!</p>
+		</div>		
+
+		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-success">
+	</div>
+
+	<div class="container-details-failure">
+		<p>Teste</p>
+		<span class="animation"></span>
+		<img src="../assets/img/atencao.png" alt="" id="img-info">
+		<img src="../assets/img/botao-fechar.png" alt="" id="btnCloseFailure">
+	</div>
+
+	<div class="message-failure-request">
+		<div class="message-failure-request-flex">
+			<img src="../assets/img/erro.gif" alt="" id="gif-failure-request">
+			<p id="message-failure-request-text" class="message-failure-request-text-title">Erro ao cadastrar usúario!</p>
+			<p id="message-failure-request-text-details" class="message-failure-request-text-body">Failed fetch</p>
+		</div>		
+
+		<img src="../assets/img/excluir (1).png" alt="" id="button-close-message-failure-request">
+	</div>
+	
+	<script type="module" src="../controllers/userRegisterController.js"></script>
+	<script type="module" src="../utils/detailsFailure.js"></script>
+	<script type="module" src="../utils/messageSuccess.js"></script>
+	<script type="module" src="../utils/requestAndOthersfailure.js"></script>
+	 <script type="module" src="../../app.js" defer></script>
+</body>
+</html>

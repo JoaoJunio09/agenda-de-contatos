@@ -51,6 +51,10 @@ a {
   --bg-color-box-alterar-theme: rgba(0, 0, 0, 0.039);
   --bg-color-select-alterar-theme: #fff;
   --text-color-select-alterar-theme: #000;
+
+  --bg-color-confirmation-configuration: #f2f2f2;
+  --text-color-label-cofirmatin-configuration: #242424;
+  --text-color-input-cofirmatin-configuration: #202020bf;
 }
 
 .theme-dark {
@@ -74,9 +78,14 @@ a {
   --bg-color-box-alterar-theme: rgba(249, 250, 251, 0.05);
   --bg-color-select-alterar-theme: #1c163e;
   --text-color-select-alterar-theme: #fff;
+
+  --bg-color-confirmation-configuration: #101010;
+  --text-color-label-cofirmatin-configuration: #b8b8b8bf;
+  --text-color-input-cofirmatin-configuration: #868686bf;
 }
 
 body {
 	background-color: var(--bg-color) !important;
 	color: var(--text-color) !important;
+
 }

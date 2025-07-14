@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Galada&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*
+font-family: "Galada", cursive;
+font-family: "Poppins", sans-serif;
+font-family: "Roboto", sans-serif;
+
+#1c163e - roxo escuro
+#4f46e5 - roxo claro
+#9ca3af - branco cinza
+#059669 - verde
+#dc2626 - vermelho
+rgba(249, 250, 251, 0.05) - campos input e outros campos
+#9CA3AF - placeholder
+*/
+
+.section-dashboard {
+	padding: 30px;
+}
+
+.box-section-board-header {
+	height: 60px;
+	border-bottom: 1px solid #cccccc92;
+	width: 100%;
+}
+
+.box-section-board-header h1 {
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 2rem;
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.box-section-board-body {
+
+}
+
+.box-section-board-body-flex-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.box-section-board-body-chart {
+	height: 180px;
+	width: 270px;
+	background-color: #ffffff;
+	border: 1px solid #cccccc92;
+	border-radius: 12px;
+}
+
+.box-section-board-body-chart-grande {
+	border-radius: 20px;
+	height: 400px;
+	width: 100%;
+	background-color: #ffffff;
+	border: 1px solid #cccccc92;
+}
+
+.number-user {
+	background-image: linear-gradient(40deg, #2b006f, #5000d1);
+}
+
+.box-section-board-body-chart-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px 25px;
+}
+
+#h2-usuarios {
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	color: #ffffffd8;
+}
+
+.box-section-board-body-chart-header h2 {
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	color: #000000d8;
+}
+
+.box-section-board-body-chart-header img {
+	width: 30px;
+}
+
+.box-section-board-body-chart h1 {
+	padding-block: 20px;
+	padding-inline: 25px;
+	font-family: "Roboto", sans-serif;
+	font-size: 3.5rem;
+	font-weight: 400;
+	color: var(--text-color);
+}
+
+.box-section-board-body-flex-row-2-flex {
+	margin-top: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+
+.box-section-board-body-chart-flex-2 {
+	height: 400px;
+	width: 100%;
+	background-color: #fff;
+	border: 1px solid #cccccc92;
+	border-radius: 20px;
+	position: relative;
+}
+
+.box-section-board-body-flex-row-2-escolha {
+
+}
+
+.box-section-board-body-flex-row-2-escolha h2 {
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-weight: 550;
+	font-size: 1.5rem;
+	margin-top: 20px;
+	color: var(--text-color);
+}
+
+.flex-buttons-board {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.box-section-board-body-flex-row-2-escolha button {
+	margin-top: 5px;
+	height: 50px;
+	width: 180px;
+	border: none;
+	cursor: pointer;
+	color: rgb(54, 1, 177);
+	border-radius: 8px;
+	font-family: "Roboto", sans-serif;
+	font-size: 1rem;
+	background-color: transparent;
+	border: 1px solid rgb(54, 1, 177);
+
+	transition: .3s all;
+}
+
+.box-section-board-body-flex-row-2-escolha button.select {
+	background-color: rgb(54, 1, 177);
+	color: #fff;
+}
+
+.box-section-board-body-flex-row-2-escolha button:hover {
+	background-color: rgb(54, 1, 177);
+	color: #fff;
+}
+
+.span-acessos-diarios {
+	color: var(--text-color);
+	font-family: "Poppins", sans-serif;
+	font-size: 1rem;
+}
+
+#number-users {
+	color: #fff;
+}
+
+#chart-one, #chart-two, #chart-three {
+	height: 500px;
+	width: 100%;
+}
+
+@media (min-width: 800px) {
+
+	.box-section-board-body-flex-row-2-flex {
+		flex-wrap: nowrap;
+	}
+
+}
+
+@media (min-width: 1200px) {
+
+	.box-section-board-body-flex-row, .box-section-board-body-flex-row-2 {
+		flex-wrap: nowrap;
+	}
+
+}
