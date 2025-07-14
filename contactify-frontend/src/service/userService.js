@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://contactfy-backend-production.up.railway.app";
 
 const API_BASE_URL_FINDALL = `${BASE_URL}/api/user/v1`;
 const API_BASE_URL_FINDALLPAGEABLE = `${BASE_URL}/api/user/v1/pageable?page=:page&size=:size&direction=:direction`;
