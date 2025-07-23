@@ -14,7 +14,6 @@ document.querySelector(".table-body").addEventListener('click', async (event) =>
 	const btn = event.target.closest(".btn-open-modal-edit-user");
 	const row = event.target.closest("tr");
 	userId = row.getAttribute("data-id");
-	console.log(userId);
 
 	if (!btn || !row) return;
 

@@ -6,14 +6,10 @@ import com.joaojunio.contact.data.dto.*;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.exceptions.ObjectAlreadyExistsException;
 import com.joaojunio.contact.exceptions.RequiredObjectIsNullException;
-import com.joaojunio.contact.model.Contact;
-import com.joaojunio.contact.model.Person;
-import com.joaojunio.contact.model.RecordHistory;
-import com.joaojunio.contact.model.User;
+import com.joaojunio.contact.model.*;
 import com.joaojunio.contact.model.enums.UserAdmin;
 import com.joaojunio.contact.model.enums.UserStatus;
-import com.joaojunio.contact.repositories.PersonRepository;
-import com.joaojunio.contact.repositories.UserRepository;
+import com.joaojunio.contact.repositories.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,6 +28,8 @@ import static com.joaojunio.contact.mapper.ObjectMapper.parseObject;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -47,6 +45,15 @@ public class UserService {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    DailyRegistrationRepository dailyRegistrationRepository;
+
+    @Autowired
+    DailyLoginRepository dailyLoginRepository;
+
+    @Autowired
+    AddedContactsRepository addedContactsRepository;
 
     @Autowired
     PagedResourcesAssembler<UserResponseDTO> assembler;
@@ -205,8 +212,16 @@ public class UserService {
         user.setRecordHistory(recordHistory);
 
         User userSaved = repository.save(user);
-        var dto = parseObject(userSaved, UserResponseDTO.class);
 
+        LocalDate date = LocalDate.now();
+
+        DayOfWeek dayOfTheWeek = date.getDayOfWeek();
+        int day = dayOfTheWeek.getValue();
+
+        DailyRegistration register = new DailyRegistration(null, userSaved.getId(), day);
+        dailyRegistrationRepository.save(register);
+
+        var dto = parseObject(userSaved, UserResponseDTO.class);
         addHateoasLinks(dto);
 
         return dto;
@@ -262,6 +277,71 @@ public class UserService {
 
         repository.delete(entity);
         personRepository.delete(person);
+    }
+
+    @Transactional(readOnly = true)
+    public List<DailyRegistration> getAllDailyRegisters() {
+
+        logger.info("Geting all Daily Registers for Users");
+
+        updateDateValues();
+        return dailyRegistrationRepository.findAll();
+    }
+
+    private void updateDateValues() {
+
+        logger.info("Removing all daily registers");
+
+        LocalDate date = LocalDate.now();
+
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+        Integer dayValue = dayOfWeek.getValue();
+
+        dailyRegistrationRepository.findAll()
+            .forEach(dailyRegister -> {
+                if (dayValue == 7) {
+                    if (dailyRegister.getDay() < 7) dailyRegistrationRepository.delete(dailyRegister);
+                }
+                if (dailyRegister.getDay() > dayValue) dailyRegistrationRepository.delete(dailyRegister);
+            });
+    }
+
+    @Transactional(readOnly = true)
+    public List<DailyLogin> getAllDailyLogins() {
+
+        logger.info("Geting all Daily Logins for Users");
+
+        return dailyLoginRepository.findAll();
+    }
+
+    public DailyLogin registerDailyLogin(DailyLogin dailyLogin) {
+
+        logger.info("Register daily login for User");
+
+        dailyLogin.setDate(new Date());
+
+        repository.findById(dailyLogin.getUser_id())
+                .orElseThrow(() -> new NotFoundException("Not Found THIS id : " + dailyLogin.getUser_id()));
+        DailyLogin entity = new DailyLogin(null, dailyLogin.getUser_id(), dailyLogin.getDay(), dailyLogin.getDate());
+        return dailyLoginRepository.save(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<AddedContacts> getAllAddedContacts() {
+
+        logger.info("Geting all Addeds Contacts for Users");
+
+        return addedContactsRepository.findAll();
+    }
+
+    public AddedContacts registerAddedContacts(AddedContacts contact) {
+
+        logger.info("Register added contact for User");
+
+        if (contact == null) {
+            throw new IllegalArgumentException("Object AddedContacts this is null");
+        }
+        return addedContactsRepository.save(contact);
     }
 
     private void addPerson(User entity, UserResponseDTO dto) {

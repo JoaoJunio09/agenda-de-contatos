@@ -203,7 +203,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 					}
 				}
 				catch (error) {
-					console.log(error)
 					showDetailsFailure(error.message);
 				}
 				finally {

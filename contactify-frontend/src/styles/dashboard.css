@@ -136,18 +136,13 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 	border: none;
 	cursor: pointer;
 	color: rgb(54, 1, 177);
-	border-radius: 8px;
+	border-radius: 25px;
 	font-family: "Roboto", sans-serif;
 	font-size: 1rem;
 	background-color: transparent;
 	border: 1px solid rgb(54, 1, 177);
 
 	transition: .3s all;
-}
-
-.box-section-board-body-flex-row-2-escolha button.select {
-	background-color: rgb(54, 1, 177);
-	color: #fff;
 }
 
 .box-section-board-body-flex-row-2-escolha button:hover {
@@ -168,6 +163,14 @@ rgba(249, 250, 251, 0.05) - campos input e outros campos
 #chart-one, #chart-two, #chart-three {
 	height: 500px;
 	width: 100%;
+}
+
+.contact-board {
+	display: none;
+}
+
+.user-board {
+	display: initial;
 }
 
 @media (min-width: 800px) {

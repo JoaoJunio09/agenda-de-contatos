@@ -89,3 +89,11 @@ body {
 	color: var(--text-color) !important;
 
 }
+
+.container-white {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 10000;
+  background-color: black;
+}

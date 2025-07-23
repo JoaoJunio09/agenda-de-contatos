@@ -39,7 +39,7 @@
 						<img src="src/assets/img/configuracoes.png" alt="">
 						<a href="src/pages/configuracoesUsuarios.html" class="menu-link">Configurações</a>
 					</li>
-					<li class="menu-item">
+					<li class="menu-item menu-item-dashboard">
 						<img src="src/assets/img/dashboard-monitor_16105460.png" alt="">
 						<a href="dashboard.html" class="menu-link">Dashboard</a>
 					</li>
@@ -87,7 +87,7 @@
 							<img src="src/assets/img/activities_11883148.png" alt="">
 						</div>
 
-						<h1 id="number-users-active" class="h1-info-board">24</h1>
+						<h1 id="number-users-active" class="h1-info-board"></h1>
 					</div>
 					<div class="box-section-board-body-chart">
 						<div class="box-section-board-body-chart-header">
@@ -96,16 +96,16 @@
 							<img src="src/assets/img/address-book_10484765.png" alt="">
 						</div>
 
-						<h1 id="number-contacts" class="h1-info-board">24</h1>
+						<h1 id="number-contacts" class="h1-info-board"></h1>
 					</div>
 					<div class="box-section-board-body-chart">
 						<div class="box-section-board-body-chart-header">
-							<h2>Acessos 14/07</h2>
+							<h2>Acessos - <span id="dayOfWeekAccess"></span></h2>
 
 							<img src="src/assets/img/login-lock_19006837.png" alt="">
 						</div>
 
-						<h1 class="h1-info-board">0</h1>
+						<h1 id="number-access-day" class="h1-info-board"></h1>
 					</div>
 				</div>
 				<div class="box-section-board-body-flex-row-2">
@@ -113,21 +113,28 @@
 						<h2>Escolha:</h2>
 
 						<div class="flex-buttons-board">
-							<button id="user-register" class="select">Usuários cadastrados</button>
+							<button id="user-register">Usuários cadastrados</button>
 							<button id="contact-register">Contatos registrados</button>
 						</div>
 					</div>
 					<div class="box-section-board-body-flex-row-2-flex">
-						<div class="box-section-board-body-chart-flex-2">
+						<div class="box-section-board-body-chart-flex-2 user-board">
 							<canvas id="chart-one" width="0" height="0"></canvas>
 						</div>
-						<div class="box-section-board-body-chart-flex-2">
+						<div class="box-section-board-body-chart-flex-2 user-board">
+							<canvas id="chart-two" width="0" height="0"></canvas>
+						</div>
+
+						<div class="box-section-board-body-chart-flex-2 contact-board">
+							<canvas id="chart-one" width="0" height="0"></canvas>
+						</div>
+						<div class="box-section-board-body-chart-flex-2 contact-board">
 							<canvas id="chart-two" width="0" height="0"></canvas>
 						</div>
 					</div>
 					<br>
 					<span class="span-acessos-diarios">Atividade</span>
-					<br>
+					<br><br>
 					<div class="box-section-board-body-chart-grande">
 						<div class="box-section-board-body-chart-flex-2">
 							<canvas id="chart-three" width="0" height="0"></canvas>
@@ -137,9 +144,22 @@
 			</div>
 		</section>
 	</main>
+
+	<div class="container-details-failure">
+		<p>Teste</p>
+		<span class="animation"></span>
+		<img src="src/assets/img/atencao.png" alt="" id="img-info">
+		<img src="src/assets/img/botao-fechar.png" alt="" id="btnCloseFailure">
+	</div>
+
+	<div class="container-loading">
+		<img src="src/assets/img/loading_17905741.gif" alt="">
+		<h2>Carregando...</h2>
+	</div>
+
+	<div class="container-white"></div>
 	
 	<script type="module" src="src/controllers/configurationController.js" defer></script>
-	<script type="module" src="src/controllers/accessibilityController.js" defer></script>
 	<script type="module" src="src/controllers/navBarController.js" defer></script>
 	<script type="module" src="src/controllers/dashboardController.js" defer></script>
 	<script type="module" src="src/utils/messageConfirmation.js" defer></script>

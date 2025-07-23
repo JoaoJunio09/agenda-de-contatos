@@ -22,11 +22,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 	document.querySelector(".info-account-data p").textContent = userLoginData.email;
 
 	const menu_item_gerenciar_usuarios = document.querySelector(".menu-item-gerenciar-usuarios");
+	const menu_item_dashboard = document.querySelector(".menu-item-dashboard");
 
 	if (localStorage.getItem('userAdmin') === "true") {
 		menu_item_gerenciar_usuarios.style.display = "inherit";
+		menu_item_dashboard.style.display = "inherit";
 	}
 	else {
 		menu_item_gerenciar_usuarios.style.display = "none";
+		menu_item_dashboard.style.display = "none";
 	}
 });

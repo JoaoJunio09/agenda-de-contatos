@@ -5,13 +5,18 @@ import com.joaojunio.contact.controllers.docs.ContactControllerDocs;
 import com.joaojunio.contact.data.dto.ContactByUserResponseDTO;
 import com.joaojunio.contact.data.dto.ContactRequestDTO;
 import com.joaojunio.contact.data.dto.ContactResponseDTO;
+import com.joaojunio.contact.model.DailyContactRegistration;
+import com.joaojunio.contact.model.DeletedContact;
+import com.joaojunio.contact.model.EditedContact;
 import com.joaojunio.contact.services.ContactService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.attribute.standard.Media;
 import java.util.List;
 
 @RestController
@@ -101,5 +106,80 @@ public class ContactController implements ContactControllerDocs {
     public ResponseEntity<?> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(
+        value = "/getEditedContacts",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<List<EditedContact>> getAllEditedContacts() {
+        return ResponseEntity.ok().body(service.getAllEditedContacts());
+    }
+
+    @PostMapping(
+        value = "/registerEditedContact",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        },
+        consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<EditedContact> registerEditedContact(EditedContact editedContact) {
+        return ResponseEntity.ok().body(service.registerEditedContact(editedContact));
+    }
+
+    @GetMapping(
+        value = "/getDeletedContacts",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<List<DeletedContact>> getAllDeletedContacts() {
+        return ResponseEntity.ok().body(service.getAllDeletedContacts());
+    }
+
+    @PostMapping(
+        value = "/registerDeletedContact",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        },
+        consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<DeletedContact> registerDeletedContact(DeletedContact deletedContact) {
+        return ResponseEntity.ok().body(service.registerDeletedContact(deletedContact));
+    }
+
+    @GetMapping(
+        value = "/getDailyContactRegistration",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<List<DailyContactRegistration>> getAllDailyContactRegistration() {
+        return ResponseEntity.ok().body(service.getAllDailyContactRegistration());
     }
 }

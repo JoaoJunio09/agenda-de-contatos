@@ -31,6 +31,20 @@ document.addEventListener('DOMContentLoaded', () => {
 					return;
 				}
 
+				function processDayOfWeek() {
+					const todayDate = new Date();
+					return todayDate.getDay();
+				}
+
+				const dailyLogin = {
+					id: null,
+					user_id: id,
+					day: processDayOfWeek(),
+					date: null
+				};
+
+				await UserService.registerDailyLogin(dailyLogin);
+
 				localStorage.setItem('userId', id);
 				localStorage.setItem('userAdmin', admin);
 				window.location.href = "../pages/gerenciarContatos.html";

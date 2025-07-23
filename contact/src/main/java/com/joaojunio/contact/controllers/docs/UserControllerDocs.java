@@ -1,6 +1,9 @@
 package com.joaojunio.contact.controllers.docs;
 
 import com.joaojunio.contact.data.dto.*;
+import com.joaojunio.contact.model.AddedContacts;
+import com.joaojunio.contact.model.DailyLogin;
+import com.joaojunio.contact.model.DailyRegistration;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -159,4 +162,112 @@ public interface UserControllerDocs {
         }
     )
     ResponseEntity<?> delete(@PathVariable Long id);
+
+    @Operation(
+        summary = "Get All daily users registers.",
+        description = "Get All daily users registers.",
+        tags = {"User"},
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = {
+                    @Content(
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                        array = @ArraySchema(schema = @Schema(implementation = DailyRegistration.class))
+                    )
+                }
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Unauthorized", responseCode = "402", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<List<DailyRegistration>> getAllDailyRegisters();
+
+    @Operation(
+        summary = "Get All daily users logins.",
+        description = "Get All daily users logins.",
+        tags = {"User"},
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = {
+                    @Content(
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                        array = @ArraySchema(schema = @Schema(implementation = DailyLogin.class))
+                    )
+                }
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Unauthorized", responseCode = "402", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<List<DailyLogin>> getAllDailyLogins();
+
+    @Operation(
+        tags = {"User"},
+        summary = "Create a new daily login for User entity.",
+        description = "Create a new daily login for User entity.",
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = @Content(schema = @Schema(implementation = DailyLogin.class))
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<DailyLogin> registerDailyLogin(@RequestBody DailyLogin dailyLogin);
+
+    @Operation(
+        summary = "Get All added contacts logins.",
+        description = "Get All added contacts logins.",
+        tags = {"User"},
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = {
+                    @Content(
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                        array = @ArraySchema(schema = @Schema(implementation = AddedContacts.class))
+                    )
+                }
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Unauthorized", responseCode = "402", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<List<AddedContacts>> getAllAddedContacts();
+
+    @Operation(
+        tags = {"User"},
+        summary = "Create a new added contact for User entity.",
+        description = "Create a new added contact for User entity.",
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = @Content(schema = @Schema(implementation = AddedContacts.class))
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<AddedContacts> registerAddedContacts(@RequestBody AddedContacts addedContacts);
 }

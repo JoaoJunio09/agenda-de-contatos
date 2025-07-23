@@ -1,11 +1,16 @@
-const BASE_URL = "https://contactfy-backend-production.up.railway.app";
+const BASE_URL = "http://localhost:8080";
 
-const API_BASE_URL_FINDALL = `${BASE_URL}/api/contact/v1`;
-const API_BASE_URL_FINDBYID = `${BASE_URL}/api/contact/v1/:id`;
-const API_BASE_URL_DELETE = `${BASE_URL}/api/contact/v1/:id`;
-const API_BASE_URL_FINDCONTACTSBYUSER = `${BASE_URL}/api/contact/v1/findContactsByUser/:id`;
-const API_BASE_URL_CREATE = `${BASE_URL}/api/contact/v1`;
-const API_BASE_URL_UPDATE = `${BASE_URL}/api/contact/v1`;
+const API_BASE_URL_FINDALL  		    		  = `${BASE_URL}/api/contact/v1`;
+const API_BASE_URL_FINDBYID 		    		  = `${BASE_URL}/api/contact/v1/:id`;
+const API_BASE_URL_DELETE               		  = `${BASE_URL}/api/contact/v1/:id`;
+const API_BASE_URL_FINDCONTACTSBYUSER   		  = `${BASE_URL}/api/contact/v1/findContactsByUser/:id`;
+const API_BASE_URL_CREATE   		    		  = `${BASE_URL}/api/contact/v1`;
+const API_BASE_URL_UPDATE   		     		  = `${BASE_URL}/api/contact/v1`;
+const API_BASE_URL_GETALLEDITEDCONTACTS  		  = `${BASE_URL}/api/contact/v1/getEditedContacts`;
+const API_BASE_URL_REGISTEREDITEDCONTACT  		  = `${BASE_URL}/api/contact/v1/registerEditedContact`;
+const API_BASE_URL_GETALLDELETEDCONTACTS  		  = `${BASE_URL}/api/contact/v1/getDeletedContacts`;
+const API_BASE_URL_REGISTERDELETEDCONTACT         = `${BASE_URL}/api/contact/v1/registerDeletedContact`;
+const API_BASE_URL_GETALLDAILYCONTACTREGISTRATION = `${BASE_URL}/api/contact/v1/getDailyContactRegistration`;
 
 async function findAll() {
 	const response = await fetch(API_BASE_URL_FINDALL, {
@@ -95,11 +100,92 @@ async function deleteContact(id) {
 	}
 }
 
+async function getAllEditedContacts() {
+	const response = await fetch(API_BASE_URL_GETALLEDITEDCONTACTS, {
+		method: 'GET'
+	});
+
+	if (!response.ok) {
+		throw new Error("Não foi possível obter os dados dos contatos.");
+	}
+
+	const data = await response.json();
+	return data;
+}
+
+async function registerEditedContact(editedContact) {
+	const response = await fetch(API_BASE_URL_REGISTEREDITEDCONTACT, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(editedContact)
+	});
+
+	if (!response.ok) {
+		throw new Error("Não foi possível adicionar o contato editado.");
+	}
+
+	const data = response.json();
+	return data;
+}
+
+async function getAllDeletedContacts() {
+	const response = await fetch(API_BASE_URL_GETALLDELETEDCONTACTS, {
+		method: 'GET'
+	});
+
+	if (!response.ok) {
+		throw new Error("Não foi possível obter os dados dos contatos.");
+	}
+
+	const data = await response.json();
+	return data;
+}
+
+async function registerDeletedContact(deletedContact) {
+	const response = await fetch(API_BASE_URL_REGISTERDELETEDCONTACT, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(deletedContact)
+	});
+
+	if (!response.ok) {
+		throw new Error("Não foi possível adicionar o contato editado.");
+	}
+
+	const data = response.json();
+	return data;
+}
+
+async function getAllDailyContactRegistration() {
+	const response = await fetch(API_BASE_URL_GETALLDAILYCONTACTREGISTRATION, {
+		method: 'GET',
+		headers: {
+			'Content-Type': "application/xml"
+		}
+	});
+
+	if (!response.ok) {
+		throw new Error("Não foi possível obter os dados dos contatos.");
+	}
+
+	const data = await response.json();
+	return data;
+}
+
 export const ContactService = {
 	findAll,
 	findById,
 	findContactsByUser,
 	create,
 	update,
-	deleteContact
+	deleteContact,
+	getAllEditedContacts,
+	registerEditedContact,
+	getAllDeletedContacts,
+	registerDeletedContact,
+	getAllDailyContactRegistration
 }

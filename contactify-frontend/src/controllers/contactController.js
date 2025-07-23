@@ -7,6 +7,7 @@ import { openMessageFailureRequest } from "../utils/requestAndOthersfailure.js";
 import { openMessageConfirmation } from "../utils/messageConfirmation.js";
 
 let update = { trueOrFalse: false, contactId : null };
+let userId;
 
 document.querySelector(".section-contacts").addEventListener('click', async (event) => {
 	const buttonEditContact = event.target.closest(".button-edit-contact");
@@ -71,6 +72,10 @@ document.querySelector(".section-contacts").addEventListener('click', async (eve
 					}
 					
 					showDetailsSuccess(data.message);
+					await ContactService.registerDeletedContact({
+						id: null,
+						user_id: userId
+					});
 
 					if (contacts != null && contacts != undefined && contacts.length > 0) {
 						fillInContacts(contacts);
@@ -89,15 +94,12 @@ document.querySelector(".section-contacts").addEventListener('click', async (eve
 						}, 4500);
 					}
 				}
-			}
-			catch (error) {
+			} catch (error) {
 				console.log("Inespected Error : " + error.message);
 			}
 		});
 	}
 });
-
-let userId;
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -109,12 +111,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 	document.querySelector(".info-account-data p").textContent = userLoginData.email;
 
 	const menu_item_gerenciar_usuarios = document.querySelector(".menu-item-gerenciar-usuarios");
+	const menu_item_dashboard = document.querySelector(".menu-item-dashboard");
 
 	if (localStorage.getItem('userAdmin') === "true") {
 		menu_item_gerenciar_usuarios.style.display = "inherit";
+		menu_item_dashboard.style.display = "inherit";
 	}
 	else {
 		menu_item_gerenciar_usuarios.style.display = "none";
+		menu_item_dashboard.style.display = "none";
 	}
 
 	const container = document.querySelector(".section-contacts");
@@ -213,7 +218,6 @@ async function createOrUpdate(code) {
 
 		validationData(titleContent, descriptionContent, contactContent, userLogin);
 
-		console.log(obj);
 		let data = { type: null, data: null };
 
 		if (code == 0) {
@@ -228,8 +232,19 @@ async function createOrUpdate(code) {
 		if (data != null && data != undefined) {
 			closeShowDetailsFailure();
 
-			if (data.type === "create") showDetailsSuccess("Registrado com sucesso.");
-			else showDetailsSuccess("Atualizado com sucesso.");
+			const addedContactAndEditedContact = {
+				id: null,
+				user_id: userLogin.id
+			};
+
+			if (data.type === "create") {
+				showDetailsSuccess("Registrado com sucesso.");
+				await UserService.registerAddedContact(addedContactAndEditedContact);
+			} 
+			else {
+				showDetailsSuccess("Atualizado com sucesso.");
+				await ContactService.registerEditedContact(addedContactAndEditedContact)
+			}
 
 			closeModalAddContact();
 
@@ -239,8 +254,7 @@ async function createOrUpdate(code) {
 				fillInContacts(contacts);
 			}
 		}
-	}
-	catch (error) {
+	} catch (error) {
 		showDetailsFailure(error.message);
 	}
 }
@@ -249,8 +263,7 @@ async function findByIdUser(id) {
 	try {
 		const user = await UserService.findById(id);
 		return user;
-	}
-	catch (error) {
+	} catch (error) {
 		throw Error("Não foi possível buscar usuário no banco.");
 	}
 }
@@ -259,8 +272,7 @@ async function findContactsByUser(id) {
 	try {
 		const data = await ContactService.findContactsByUser(id);
 		return data;
-	}
-	catch (error) {
+	} catch (error) {
 		openMessageFailureRequest({ title: "Erro inesperado", body: "Não foi possível listar os contatos." });
 	}
 }
@@ -294,8 +306,7 @@ async function fillInContacts(list) {
 
 			container.appendChild(boxContact);
 		});
-	}
-	catch (error) {
+	} catch (error) {
 		showDetailsFailure(error.message);
 	}
 }

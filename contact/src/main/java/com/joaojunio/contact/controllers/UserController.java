@@ -4,6 +4,9 @@ import com.joaojunio.contact.controllers.docs.UserControllerDocs;
 import com.joaojunio.contact.data.dto.*;
 import com.joaojunio.contact.exceptions.NotFoundException;
 import com.joaojunio.contact.exceptions.ObjectAlreadyExistsException;
+import com.joaojunio.contact.model.AddedContacts;
+import com.joaojunio.contact.model.DailyLogin;
+import com.joaojunio.contact.model.DailyRegistration;
 import com.joaojunio.contact.services.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -148,7 +151,81 @@ public class UserController implements UserControllerDocs {
     @Override
     public ResponseEntity<?> delete(@PathVariable Long id) {
         service.delete(id);
-
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(
+        value = "/getDailyRegisters",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<List<DailyRegistration>> getAllDailyRegisters() {
+        return ResponseEntity.ok().body(service.getAllDailyRegisters());
+    }
+
+    @GetMapping(
+        value = "/getDailyLogins",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<List<DailyLogin>> getAllDailyLogins() {
+        return ResponseEntity.ok().body(service.getAllDailyLogins());
+    }
+
+    @PostMapping(
+        value = "/registerDailyLogin",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        },
+        consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<DailyLogin> registerDailyLogin(DailyLogin dailyLogin) {
+        return ResponseEntity.ok().body(service.registerDailyLogin(dailyLogin));
+    }
+
+    @GetMapping(
+        value = "/getAddedContacts",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<List<AddedContacts>> getAllAddedContacts() {
+        return ResponseEntity.ok().body(service.getAllAddedContacts());
+    }
+
+    @PostMapping(
+        value = "/registerAddedContact",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        },
+        consumes = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<AddedContacts> registerAddedContacts(AddedContacts addedContacts) {
+        return ResponseEntity.ok().body(service.registerAddedContacts(addedContacts));
     }
 }
