@@ -850,6 +850,20 @@ textarea {
 	color: #ffffff;
 }
 
+.box-search-content {
+	padding-top: 30px;
+	padding-left: 5px;
+	width: 100%;
+	display: none;
+}
+
+.box-search-content h2 {
+	text-align: left;
+	font-weight: 500;
+	font-size: 1.4rem;
+	font-family: "Poppins", sans-serif;
+}
+
 @media (min-width: 420px) {
 
 	.confirmation-configuration-user-header h2 {

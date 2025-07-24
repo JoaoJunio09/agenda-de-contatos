@@ -201,7 +201,7 @@ function fillsInTheDailyRegistrationChart(dailyRegisters) {
 					display: true,
 					text: "Cadastros diários",
 					font: {
-						size: 24,
+						size: 20,
 						weight: 'bold'
 					},
 					color: '#333'
@@ -305,7 +305,7 @@ function processesAndFillsInTheAgeRelationshipOfUsersChart(users) {
 					display: true,
 					text: 'Relação de idade',
 					font: {
-						size: 24,
+						size: 20,
 						weight: 'bold'
 					},
 					color: '#333'

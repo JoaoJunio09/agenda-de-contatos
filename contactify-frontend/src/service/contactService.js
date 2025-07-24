@@ -11,6 +11,7 @@ const API_BASE_URL_REGISTEREDITEDCONTACT  		  = `${BASE_URL}/api/contact/v1/regi
 const API_BASE_URL_GETALLDELETEDCONTACTS  		  = `${BASE_URL}/api/contact/v1/getDeletedContacts`;
 const API_BASE_URL_REGISTERDELETEDCONTACT         = `${BASE_URL}/api/contact/v1/registerDeletedContact`;
 const API_BASE_URL_GETALLDAILYCONTACTREGISTRATION = `${BASE_URL}/api/contact/v1/getDailyContactRegistration`;
+const API_BASE_URL_FINDCONTACTSBYSEARCH 		  = `${BASE_URL}/api/contact/v1/findContactsBySearch/:search`;
 
 async function findAll() {
 	const response = await fetch(API_BASE_URL_FINDALL, {
@@ -176,6 +177,25 @@ async function getAllDailyContactRegistration() {
 	return data;
 }
 
+async function findContactsBySearch(search, user) {
+	const url = API_BASE_URL_FINDCONTACTSBYSEARCH.replace(":search", search);
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(user)
+	});
+
+	if (!response.ok) {
+		throw new Error("Contato não encontrado");
+	}
+
+	const data = await response.json();
+	return data;
+}
+
 export const ContactService = {
 	findAll,
 	findById,
@@ -187,5 +207,6 @@ export const ContactService = {
 	registerEditedContact,
 	getAllDeletedContacts,
 	registerDeletedContact,
-	getAllDailyContactRegistration
-}
+	getAllDailyContactRegistration,
+	findContactsBySearch
+};

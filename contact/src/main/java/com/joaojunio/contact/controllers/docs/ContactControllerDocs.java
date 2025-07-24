@@ -14,12 +14,10 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -252,4 +250,30 @@ public interface ContactControllerDocs {
         }
     )
     ResponseEntity<List<DailyContactRegistration>> getAllDailyContactRegistration();
+
+    @Operation(
+        summary = "Finding All Contacts By Search.",
+        description = "FFinding All Contacts By Search.",
+        tags = {"Contact"},
+        responses = {
+            @ApiResponse(
+                description = "Success",
+                responseCode = "200",
+                content = {
+                    @Content(
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
+                        array = @ArraySchema(schema = @Schema(implementation = ContactResponseDTO.class))
+                    )
+                }
+            ),
+            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
+            @ApiResponse(description = "Unauthorized", responseCode = "402", content = @Content),
+            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
+        }
+    )
+    ResponseEntity<List<ContactResponseDTO>> findContactsBySearch(
+        @PathVariable("search") String search, @PathVariable("user") UserResponseDTO user
+    );
 }

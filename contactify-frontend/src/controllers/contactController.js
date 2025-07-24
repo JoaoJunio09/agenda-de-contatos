@@ -1,10 +1,8 @@
-import { Contact } from "../models/contactModel.js";
 import { UserService } from "../service/userService.js";
 import { ContactService } from "../service/contactService.js";
 import { showDetailsFailure, closeShowDetailsFailure } from "../utils/detailsFailure.js";
 import { showDetailsSuccess } from "../utils/detailsSuccess.js";
-import { openMessageFailureRequest } from "../utils/requestAndOthersfailure.js";
-import { openMessageConfirmation } from "../utils/messageConfirmation.js";
+import { closeMessageFailureRequest, openMessageFailureRequest } from "../utils/requestAndOthersfailure.js";
 
 let update = { trueOrFalse: false, contactId : null };
 let userId;
@@ -84,7 +82,7 @@ document.querySelector(".section-contacts").addEventListener('click', async (eve
 						openMessageFailureRequest({ title: "Não foi possível listar contatos", body: "Você não possui contatos registrados." });
 						
 						const container = document.querySelector(".section-contacts");
-						const info = document.createElement("p");
+						const info = document.querySelector(".info");
 
 						setTimeout(() => {
 							info.textContent = "Você não possui contatos registrados.";
@@ -102,6 +100,48 @@ document.querySelector(".section-contacts").addEventListener('click', async (eve
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
+
+	const buttonSearch = document.querySelector(".box-search img");
+	const infoSearch = document.querySelector(".box-search-content");
+	const contentSearch = document.querySelector(".content-search");
+
+	buttonSearch.addEventListener('click', async () => {
+		const search = document.querySelector(".box-search input").value;
+
+		if (search == "") {
+			return;
+		} 
+		else {
+			infoSearch.style.display = "initial";
+
+			const user = await UserService.findUserDetails(userId);
+
+			const contacts = await ContactService.findById(search, user);
+
+			console.log(contacts);
+			// closeMessageFailureRequest();
+
+			// const container = document.querySelector(".section-contacts");
+			// const info = document.querySelector(".info");
+
+			// info.style.display = "none";
+			
+			// if (contacts.length == 0) {
+			// 	contentSearch.textContent = "Nenhum resultado encontrado";
+			// }
+			// else {
+			// 	contentSearch.textContent = `Resultado para ${search}`;
+
+			// 	fillInContacts(contacts);
+			// }
+		}
+	});
+
+	document.addEventListener('keydown', function(event) {
+		if (event.key == "Enter") {
+			buttonSearch.click();
+		}
+	});
 
 	userId = localStorage.getItem("userId");
 
@@ -134,6 +174,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		openMessageFailureRequest({ title: "Não foi possível listar contatos", body: "Você não possui contatos registrados." });
 		
 		setTimeout(() => {
+			info.className = "info-not-contacts";
 			info.textContent = "Você não possui contatos registrados.";
 			info.style.color = "red";
 			info.style.fontSize = "1rem";
@@ -190,7 +231,6 @@ async function createOrUpdate(code) {
 	try {
 		let obj;
 
-		console.log(userId);
 		const user = await findByIdUser(userId);
 
 		const userLogin = {

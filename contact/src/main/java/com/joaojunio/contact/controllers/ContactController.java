@@ -5,6 +5,7 @@ import com.joaojunio.contact.controllers.docs.ContactControllerDocs;
 import com.joaojunio.contact.data.dto.ContactByUserResponseDTO;
 import com.joaojunio.contact.data.dto.ContactRequestDTO;
 import com.joaojunio.contact.data.dto.ContactResponseDTO;
+import com.joaojunio.contact.data.dto.UserResponseDTO;
 import com.joaojunio.contact.model.DailyContactRegistration;
 import com.joaojunio.contact.model.DeletedContact;
 import com.joaojunio.contact.model.EditedContact;
@@ -95,7 +96,7 @@ public class ContactController implements ContactControllerDocs {
         }
     )
     @Override
-    public ResponseEntity<ContactResponseDTO> update(ContactRequestDTO contactDto) {
+    public ResponseEntity<ContactResponseDTO> update(@RequestBody ContactRequestDTO contactDto) {
         return ResponseEntity.ok().body(service.update(contactDto));
     }
 
@@ -135,7 +136,7 @@ public class ContactController implements ContactControllerDocs {
         }
     )
     @Override
-    public ResponseEntity<EditedContact> registerEditedContact(EditedContact editedContact) {
+    public ResponseEntity<EditedContact> registerEditedContact(@RequestBody EditedContact editedContact) {
         return ResponseEntity.ok().body(service.registerEditedContact(editedContact));
     }
 
@@ -166,7 +167,7 @@ public class ContactController implements ContactControllerDocs {
         }
     )
     @Override
-    public ResponseEntity<DeletedContact> registerDeletedContact(DeletedContact deletedContact) {
+    public ResponseEntity<DeletedContact> registerDeletedContact(@RequestBody DeletedContact deletedContact) {
         return ResponseEntity.ok().body(service.registerDeletedContact(deletedContact));
     }
 
@@ -181,5 +182,18 @@ public class ContactController implements ContactControllerDocs {
     @Override
     public ResponseEntity<List<DailyContactRegistration>> getAllDailyContactRegistration() {
         return ResponseEntity.ok().body(service.getAllDailyContactRegistration());
+    }
+
+    @GetMapping(
+        value = "findContactsBySearch/{search}",
+        produces = {
+            MediaType.APPLICATION_JSON_VALUE,
+            MediaType.APPLICATION_XML_VALUE,
+            MediaType.APPLICATION_YAML_VALUE
+        }
+    )
+    @Override
+    public ResponseEntity<List<ContactResponseDTO>> findContactsBySearch(@PathVariable String search, @RequestBody UserResponseDTO user) {
+        return ResponseEntity.ok().body(service.findContactsBySearch(search, user));
     }
 }
