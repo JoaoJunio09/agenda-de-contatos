@@ -250,30 +250,4 @@ public interface ContactControllerDocs {
         }
     )
     ResponseEntity<List<DailyContactRegistration>> getAllDailyContactRegistration();
-
-    @Operation(
-        summary = "Finding All Contacts By Search.",
-        description = "FFinding All Contacts By Search.",
-        tags = {"Contact"},
-        responses = {
-            @ApiResponse(
-                description = "Success",
-                responseCode = "200",
-                content = {
-                    @Content(
-                        mediaType = MediaType.APPLICATION_JSON_VALUE,
-                        array = @ArraySchema(schema = @Schema(implementation = ContactResponseDTO.class))
-                    )
-                }
-            ),
-            @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
-            @ApiResponse(description = "No Content", responseCode = "201", content = @Content),
-            @ApiResponse(description = "Unauthorized", responseCode = "402", content = @Content),
-            @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
-            @ApiResponse(description = "Internal Server Error", responseCode = "500", content = @Content)
-        }
-    )
-    ResponseEntity<List<ContactResponseDTO>> findContactsBySearch(
-        @PathVariable("search") String search, @PathVariable("user") UserResponseDTO user
-    );
 }

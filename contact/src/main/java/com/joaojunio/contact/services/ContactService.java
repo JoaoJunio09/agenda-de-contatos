@@ -184,31 +184,6 @@ public class ContactService {
         return dailyContactRegistrationRepository.findAll();
     }
 
-    @Transactional(readOnly = true)
-    public List<ContactResponseDTO> findContactsBySearch(String search, UserResponseDTO user) {
-
-        logger.info("Finds Contacts by Search");
-
-        List<Contact> list = repository.findContactsBySearch(search, user.getId());
-        return list.stream()
-            .map(entity -> {
-                ContactResponseDTO dto = new ContactResponseDTO();
-                dto.setId(entity.getId());
-                dto.setTitle(entity.getTitle());
-                dto.setContact(entity.getContact());
-                dto.setDescription(entity.getDescription());
-
-                if (entity.getUser() == null) {
-                    throw new IllegalArgumentException("User entity by Contact is null.");
-                }
-
-                addUser(entity.getUser(), dto);
-                addHateoasLinks(dto);
-                return dto;
-            })
-            .toList();
-    }
-
     private void addUser(User entity, ContactResponseDTO dto) {
         UserResponseDTO userDTO = new UserResponseDTO();
         userDTO.setId(entity.getPerson().getId());

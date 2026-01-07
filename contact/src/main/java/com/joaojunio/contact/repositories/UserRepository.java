@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
@@ -15,5 +17,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Transactional
     @Query("UPDATE User user SET user.status = :statusCode WHERE user.id = :id")
     void inactiveUserStatus(@Param("statusCode") Integer statusCode, @Param("id") Long id);
+/*
+    @Query("SELECT u FROM User u WHERE u.firstName LIKE LOWER(CONCAT ('%', :search, '%')) AND u.id = :id")
+    List<User> findUsersBySearch(@Param("search") String search, @Param("id") Long id);
+
+ */
 
 }

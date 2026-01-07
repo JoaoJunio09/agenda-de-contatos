@@ -2,14 +2,14 @@ package com.joaojunio.contact.experimental;
 
 import java.util.Objects;
 
-public class ExperimentalContactSearchRequestDTO {
+public class ExperimentalUserSearchRequestDTO {
 
     private Long userId;
     private String search;
 
-    public ExperimentalContactSearchRequestDTO() {}
+    public ExperimentalUserSearchRequestDTO() {}
 
-    public ExperimentalContactSearchRequestDTO(Long userId, String search) {
+    public ExperimentalUserSearchRequestDTO(Long userId, String search) {
         this.userId = userId;
         this.search = search;
     }
@@ -33,7 +33,7 @@ public class ExperimentalContactSearchRequestDTO {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        ExperimentalContactSearchRequestDTO that = (ExperimentalContactSearchRequestDTO) o;
+        ExperimentalUserSearchRequestDTO that = (ExperimentalUserSearchRequestDTO) o;
         return Objects.equals(getUserId(), that.getUserId()) && Objects.equals(getSearch(), that.getSearch());
     }
 

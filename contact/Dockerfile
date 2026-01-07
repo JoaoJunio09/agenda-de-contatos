@@ -1,0 +1,3 @@
+FROM eclipse-mosquitto:21-jdk
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]

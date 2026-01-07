@@ -104,6 +104,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 	const buttonSearch = document.querySelector(".box-search img");
 	const infoSearch = document.querySelector(".box-search-content");
 	const contentSearch = document.querySelector(".content-search");
+	const buttonClearSearch = document.querySelector(".button-clear-search");
+
+	buttonClearSearch.addEventListener('click', async () => {
+		fillInContacts(await ContactService.findAll());
+
+		infoSearch.style.display = "none";
+		buttonClearSearch.style.display = "none";
+	});
 
 	buttonSearch.addEventListener('click', async () => {
 		const search = document.querySelector(".box-search input").value;
@@ -112,28 +120,33 @@ document.addEventListener('DOMContentLoaded', async () => {
 			return;
 		} 
 		else {
-			infoSearch.style.display = "initial";
+			infoSearch.style.display = "flex";
+			buttonClearSearch.style.display = "flex";
 
 			const user = await UserService.findUserDetails(userId);
 
-			const contacts = await ContactService.findById(search, user);
+			const contacts = await ContactService.findContactsBySearch({
+				search: search,
+				userId: userId
+			});
 
-			console.log(contacts);
-			// closeMessageFailureRequest();
+			closeMessageFailureRequest();
 
-			// const container = document.querySelector(".section-contacts");
-			// const info = document.querySelector(".info");
-
-			// info.style.display = "none";
+			const container = document.querySelector(".section-contacts");
 			
-			// if (contacts.length == 0) {
-			// 	contentSearch.textContent = "Nenhum resultado encontrado";
-			// }
-			// else {
-			// 	contentSearch.textContent = `Resultado para ${search}`;
+			const info = document.querySelector(".info");
 
-			// 	fillInContacts(contacts);
-			// }
+			info.style.display = "none";
+			
+			if (contacts.length == 0) {
+				contentSearch.textContent = "Nenhum resultado encontrado";
+				container.innerHTML = "";
+			}
+			else {
+				contentSearch.textContent = `Resultado para: ${search}`;
+
+				fillInContacts(contacts);
+			}
 		}
 	});
 

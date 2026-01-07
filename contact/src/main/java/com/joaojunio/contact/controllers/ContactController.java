@@ -183,17 +183,4 @@ public class ContactController implements ContactControllerDocs {
     public ResponseEntity<List<DailyContactRegistration>> getAllDailyContactRegistration() {
         return ResponseEntity.ok().body(service.getAllDailyContactRegistration());
     }
-
-    @GetMapping(
-        value = "findContactsBySearch/{search}",
-        produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_YAML_VALUE
-        }
-    )
-    @Override
-    public ResponseEntity<List<ContactResponseDTO>> findContactsBySearch(@PathVariable String search, @RequestBody UserResponseDTO user) {
-        return ResponseEntity.ok().body(service.findContactsBySearch(search, user));
-    }
 }

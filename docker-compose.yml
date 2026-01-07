@@ -1,0 +1,38 @@
+version: '3.4'
+services:
+  db:
+    image: mysql:9.1.0
+    command: mysqld --default_authentication_plugin=mysql_native_password
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: admin123
+      MYSQL_DATABASE: contact
+    ports:
+      - "3308:3306"
+    expose:
+      - 3306
+    networks:
+      - joaojunio-network
+  contactfy:
+    image: joaojunio/contactfy:latest
+    restart: always
+    build: ./contact
+    working_dir: /contact
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/contact?useTimezone=true&serveTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin123
+    command: mvn spring-boot:run
+    ports:
+      - 8080:80
+    depends_on:
+        - db
+    networks:
+      - joaojunio-network
+networks:
+  joaojunio-network:
+    driver: bridge

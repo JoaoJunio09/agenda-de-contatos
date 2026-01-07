@@ -114,7 +114,7 @@ function fillInFields(user) {
 		}
 
 		modalEdit.classList.add("show-modal-edit-user");
-        fade.classList.add("show-fade");
+    fade.classList.add("show-fade");
 }
 
 async function findUserDetails(id) {
@@ -144,10 +144,10 @@ btnsCloseModalEditUser.forEach(btn => {
 });
 
 function closeModal() {
+	currentStage = 0;
+
     modalEdit.classList.remove("show-modal-edit-user");
     fade.classList.remove("show-fade");
-
-	currentStage = 0;
 }
 
 const btnNextPage = document.getElementById("btn-next-page");
@@ -266,6 +266,7 @@ function addsRequestDataToTheUserTableAndDard(data, tableBody, cardMobileContent
 			let status = undefined;
 			let classStyleStatusDesktop;
 			let classStyleStatusMobile;
+			
 			if (user.userStatus === "ACTIVE") {
 				status = "Ativo";
 				classStyleStatusDesktop = "atividade-usuario-ativo";
@@ -595,24 +596,24 @@ function validationPage2() {
 
 function validationPage3() {
 	var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    var passwordRegex = /^(?=.*[a-z])(?=.*\d).{8,}$/;
+  var passwordRegex = /^(?=.*[a-z])(?=.*\d).{8,}$/;
 
-    const inputsPage3 = document.querySelectorAll(".form-3 input");
+  const inputsPage3 = document.querySelectorAll(".form-3 input");
 	const emailAccount = document.querySelector("#email-account").value;
 	const passwordAccount = document.querySelector("#password-account").value;
 
 	let hasEmptyField = false;
 	errors = errors.filter(error => error.type !== "all");
 
-    inputsPage3.forEach(input => {
-        if (input.value == undefined || input.value == null || input.value == "") {		
-			input.classList.add("input-error");
+	inputsPage3.forEach(input => {
+    if (input.value == undefined || input.value == null || input.value == "") {		
+		  input.classList.add("input-error");
 			hasEmptyField = true;
 		}
 		else {
-			input.classList.remove("input-error");
+		  input.classList.remove("input-error");
 		}
-    });
+  });
 
 	if (hasEmptyField) {
 		errors.push({ type: "all", message: "Preencha todos os campos." });
@@ -660,13 +661,13 @@ function getDataFormPage1() {
 	const gender    = document.getElementById("gender").value;
 
     person.setDataFormPage1(
-		null,
-        firstName, 
-        lastName, 
-        birthDate, 
-        email, 
-        phone, 
-        gender
+			null,
+      firstName, 
+      lastName, 
+      birthDate, 
+      email, 
+      phone, 
+      gender
     );
 }
 
@@ -695,12 +696,12 @@ function getDataFormPage3() {
 	const statusAccount   = document.getElementById("status-account").value;
 
     user = new User(
-        null,
-        emailAccount,
-        passwordAccount,
-		person,
-		statusAccount,
-        adminAccount,        
+      null,
+      emailAccount,
+      passwordAccount,
+			person,
+			statusAccount,
+      adminAccount,        
     );
 }
 

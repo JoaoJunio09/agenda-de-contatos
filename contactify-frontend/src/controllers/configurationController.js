@@ -5,7 +5,6 @@ let userId = undefined;
 const buttonsExitAccount = document.querySelectorAll("#button-exit-account");
 
 buttonsExitAccount.forEach(button => {
-	console.log
 	button.addEventListener('click', () => {
 		localStorage.removeItem("userId");
 		window.location.href = "../../index.html";
@@ -13,7 +12,6 @@ buttonsExitAccount.forEach(button => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
-
 	userId = localStorage.getItem("userId");
 	
 	const userLoginData = await UserService.findUserDetails(userId);
