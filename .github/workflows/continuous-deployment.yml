@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - "main"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,8 +17,24 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_ACCESS_TOKEN_CONTACTFY }}
 
+    - name: Setup Java 21
     - uses: actions/setup-java@v4
       with:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+
+    - name: Build Application .jar
+      working-directory: ./contact
+      run: mvn clean package
+
+    - name: Docker Compose Build
+      working-directory: ./
+      run: docker compose build
+
+    - name: Push to Docker Hub Container Registry
+      run: |
+        docker tag ${{ secrets.DOCKER_USERNAME }}/contactfy:latest ${{ secrets.DOCKER_USERNAME }}/contactfy:${{ github.run_id }}
+        
+        docker push ${{ secrets.DOCKER_USERNAME }}/contact:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/contact:${{ github.run_id }}

@@ -16,7 +16,7 @@ services:
     networks:
       - joaojunio-network
   contactfy:
-    image: joaojunio/contactfy:latest
+    image: joaojunio/contactfy
     restart: always
     build: ./contact
     working_dir: /contact
