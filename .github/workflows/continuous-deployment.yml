@@ -25,11 +25,11 @@ jobs:
         cache: maven
 
     - name: Build Application .jar
-      working-directory: ./contact
+      working-directory: ./fullstack-agenda/contact
       run: mvn clean package
 
     - name: Docker Compose Build
-      working-directory: ./
+      working-directory: ./fullstack-agenda
       run: docker compose build
 
     - name: Push to Docker Hub Container Registry
