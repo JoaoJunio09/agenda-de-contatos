@@ -36,5 +36,5 @@ jobs:
       run: |
         docker tag ${{ secrets.DOCKER_USERNAME }}/contactfy:latest ${{ secrets.DOCKER_USERNAME }}/contactfy:${{ github.run_id }}
         
-        docker push ${{ secrets.DOCKER_USERNAME }}/contact:latest
-        docker push ${{ secrets.DOCKER_USERNAME }}/contact:${{ github.run_id }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/contactfy:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/contactfy:${{ github.run_id }}
